@@ -1,6 +1,6 @@
 export {
-  SUPABASE_VAULT_SECRET_STORE_PROVIDER,
   createSupabaseVaultAdapter,
+  SUPABASE_VAULT_SECRET_STORE_PROVIDER,
 } from "./adapter";
 export {
   SUPABASE_VAULT_MIGRATION_ID,
