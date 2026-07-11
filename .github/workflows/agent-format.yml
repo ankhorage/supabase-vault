@@ -1,0 +1,34 @@
+name: Agent Format
+
+on:
+  push:
+    branches:
+      - agent/phase2-supabase-vault
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/phase2-supabase-vault
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.3.13'
+      - run: bun install --frozen-lockfile
+      - run: bun run format
+      - name: Commit adapter formatting
+        run: |
+          if git diff --quiet -- src/adapter.ts; then
+            exit 0
+          fi
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add src/adapter.ts
+          git commit -m "chore: format vault adapter"
+          git push origin HEAD:agent/phase2-supabase-vault
