@@ -1,0 +1,86 @@
+{
+  "name": "@ankhorage/supabase-vault",
+  "version": "0.1.0",
+  "description": "Server-only Supabase Vault secret-store adapter for Ankhorage.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankhorage/supabase-vault.git"
+  },
+  "homepage": "https://github.com/ankhorage/supabase-vault#readme",
+  "bugs": {
+    "url": "https://github.com/ankhorage/supabase-vault/issues"
+  },
+  "keywords": [
+    "ankhorage",
+    "supabase",
+    "vault",
+    "secrets",
+    "adapter"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "migrations",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "package.json"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./migrations": {
+      "types": "./dist/migrations.d.ts",
+      "import": "./dist/migrations.js",
+      "default": "./dist/migrations.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "ankh": {
+    "category": "secret-store",
+    "provider": "supabase-vault",
+    "capabilities": [
+      "secret-store.metadata",
+      "secret-store.resolve",
+      "secret-store.rotate"
+    ]
+  },
+  "scripts": {
+    "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json",
+    "typecheck": "bun x tsc --noEmit -p tsconfig.json",
+    "test": "bun test src",
+    "lint": "ankhorage-eslint . --max-warnings=0",
+    "lint:fix": "ankhorage-eslint . --fix --max-warnings=0",
+    "format": "ankhorage-prettier --write .",
+    "format:check": "ankhorage-prettier --check .",
+    "knip": "ankhorage-knip",
+    "docs": "paradox",
+    "changeset": "changeset",
+    "changeset:status": "changeset status --since=origin/main",
+    "version-packages": "changeset version",
+    "prepack": "bun run build"
+  },
+  "dependencies": {
+    "@ankhorage/contracts": "^2.1.0"
+  },
+  "devDependencies": {
+    "@ankhorage/devtools": "^1.0.6",
+    "@ankhorage/paradox": "^0.1.16",
+    "@changesets/cli": "^2.31.0",
+    "@types/bun": "^1.3.13",
+    "@types/node": "^25.6.0",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "bun@1.3.13"
+}

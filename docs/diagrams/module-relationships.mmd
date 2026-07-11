@@ -1,0 +1,7 @@
+graph LR
+  module_src_adapter_ts["src/adapter.ts"]
+  module_src_index_ts["src/index.ts"]
+  module_src_migrations_ts["src/migrations.ts"]
+  module_src_types_ts["src/types.ts"]
+  module_src_adapter_ts --> module_src_migrations_ts
+  module_src_adapter_ts --> module_src_types_ts
