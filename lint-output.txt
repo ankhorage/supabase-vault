@@ -5,15 +5,13 @@ $ ankhorage-eslint . --max-warnings=0
   24:3   error  Async method 'rpc' has no 'await' expression                 @typescript-eslint/require-await
 
 /home/runner/work/supabase-vault/supabase-vault/src/adapter.ts
-    1:1   error  Run autofix to sort these imports!                             simple-import-sort/imports
-  236:15  error  Unsafe object destructuring of a property with an `any` value  @typescript-eslint/no-unsafe-assignment
-  271:9   error  Use object destructuring                                       @typescript-eslint/prefer-destructuring
-  272:9   error  Use object destructuring                                       @typescript-eslint/prefer-destructuring
+  239:19  error  Replace `·message:·"Supabase·Vault·returned·an·invalid·RPC·response."` with `⏎············message:·"Supabase·Vault·returned·an·invalid·RPC·response.",⏎·········`              prettier/prettier
+  249:19  error  Replace `·message:·"Supabase·Vault·returned·an·invalid·RPC·error·response."` with `⏎············message:·"Supabase·Vault·returned·an·invalid·RPC·error·response.",⏎·········`  prettier/prettier
 
 /home/runner/work/supabase-vault/supabase-vault/src/index.ts
   1:1  error  Run autofix to sort these exports!  simple-import-sort/exports
 
-✖ 7 problems (7 errors, 0 warnings)
-  5 errors and 0 warnings potentially fixable with the `--fix` option.
+✖ 5 problems (5 errors, 0 warnings)
+  4 errors and 0 warnings potentially fixable with the `--fix` option.
 
 error: script "lint" exited with code 1
