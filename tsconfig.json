@@ -1,13 +1,24 @@
 {
-  "extends": "@ankhorage/devtools/tsconfig.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist",
+    "target": "ES2022",
+    "inlineSources": true,
+    "lib": ["ES2022"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": false,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "noEmit": false
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "rootDir": "src",
+    "outDir": "dist"
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["src/**/*.test.ts", "dist", "node_modules"]
+  "exclude": ["dist", "node_modules", "src/**/*.test.ts"]
 }
