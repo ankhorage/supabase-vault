@@ -1,17 +1,10 @@
 $ ankhorage-eslint . --max-warnings=0
 
-/home/runner/work/supabase-vault/supabase-vault/src/adapter.test.ts
-  17:19  error  Array type using 'Array<T>' is forbidden. Use 'T[]' instead  @typescript-eslint/array-type
-  24:3   error  Async method 'rpc' has no 'await' expression                 @typescript-eslint/require-await
-
 /home/runner/work/supabase-vault/supabase-vault/src/adapter.ts
   239:19  error  Replace `·message:·"Supabase·Vault·returned·an·invalid·RPC·response."` with `⏎············message:·"Supabase·Vault·returned·an·invalid·RPC·response.",⏎·········`              prettier/prettier
   249:19  error  Replace `·message:·"Supabase·Vault·returned·an·invalid·RPC·error·response."` with `⏎············message:·"Supabase·Vault·returned·an·invalid·RPC·error·response.",⏎·········`  prettier/prettier
 
-/home/runner/work/supabase-vault/supabase-vault/src/index.ts
-  1:1  error  Run autofix to sort these exports!  simple-import-sort/exports
-
-✖ 5 problems (5 errors, 0 warnings)
-  4 errors and 0 warnings potentially fixable with the `--fix` option.
+✖ 2 problems (2 errors, 0 warnings)
+  2 errors and 0 warnings potentially fixable with the `--fix` option.
 
 error: script "lint" exited with code 1
