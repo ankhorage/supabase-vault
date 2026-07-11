@@ -28,15 +28,31 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Capture lint diagnostics
-        run: bun run lint > lint-output.txt 2>&1 || true
+      - name: Apply canonical lint and format fixes
+        run: |
+          bun run lint:fix
+          bun run format
 
-      - name: Commit diagnostics
+      - name: Validate fixed source
+        run: |
+          bun run build
+          bun run typecheck
+          bun run lint
+          bun run format:check
+          bun run test
+          bun run knip
+          bun run docs
+
+      - name: Commit canonical fixes
         if: github.event_name == 'pull_request' && github.actor != 'github-actions[bot]'
         run: |
           git restore .github/workflows
+          rm -f lint-output.txt
+          if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
+            exit 0
+          fi
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add lint-output.txt
-          git commit -m "ci: capture lint diagnostics"
+          git add -A
+          git commit -m "chore: apply canonical package fixes"
           git push origin HEAD:${{ github.head_ref }}
