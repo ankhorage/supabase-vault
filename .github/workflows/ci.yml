@@ -55,7 +55,8 @@ jobs:
       - name: Commit bootstrap output
         if: github.event_name == 'pull_request' && github.actor != 'github-actions[bot]'
         run: |
-          if git diff --quiet; then
+          git restore .github/workflows
+          if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
             exit 0
           fi
           git config user.name github-actions[bot]
