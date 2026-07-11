@@ -1,0 +1,805 @@
+{
+  "packageName": "@ankhorage/supabase-vault",
+  "packageId": "@ankhorage/supabase-vault",
+  "description": "Server-only Supabase Vault adapter for Ankhorage secret-store contracts and protected migrations.",
+  "badges": [
+    {
+      "id": "license",
+      "label": "license",
+      "value": "MIT",
+      "color": "2563eb"
+    },
+    {
+      "id": "npm",
+      "label": "npm",
+      "value": "v0.0.0",
+      "color": "cb3837"
+    },
+    {
+      "id": "runtime",
+      "label": "runtime",
+      "value": "bun",
+      "color": "f59e0b"
+    },
+    {
+      "id": "typescript",
+      "label": "typescript",
+      "value": "strict",
+      "color": "2563eb"
+    },
+    {
+      "id": "eslint",
+      "label": "eslint",
+      "value": "configured",
+      "color": "2563eb"
+    },
+    {
+      "id": "prettier",
+      "label": "prettier",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "build",
+      "label": "build",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "tests",
+      "label": "tests",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "docs",
+      "label": "docs",
+      "value": "paradox",
+      "color": "0f766e"
+    }
+  ],
+  "usage": null,
+  "readmeUsage": [],
+  "config": null,
+  "entrypoints": [
+    "src/index.ts",
+    "src/migration.ts"
+  ],
+  "modules": [
+    {
+      "path": "src/adapter.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/errors.ts",
+        "src/types.ts"
+      ],
+      "exports": [
+        "createSupabaseVaultAdapter",
+        "SUPABASE_VAULT_SECRET_STORE_PROVIDER"
+      ]
+    },
+    {
+      "path": "src/errors.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/types.ts"
+      ],
+      "exports": [
+        "createSecretStoreError",
+        "mapSupabaseVaultError",
+        "mapUnexpectedError"
+      ]
+    },
+    {
+      "path": "src/index.ts",
+      "isEntrypoint": true,
+      "dependencies": [],
+      "exports": [
+        "createSupabaseVaultAdapter",
+        "SUPABASE_VAULT_MIGRATION_ID",
+        "SUPABASE_VAULT_MIGRATION_SQL",
+        "SUPABASE_VAULT_SECRET_STORE_PROVIDER",
+        "SupabaseVaultAdapterOptions",
+        "SupabaseVaultRpcClient",
+        "SupabaseVaultRpcError",
+        "SupabaseVaultRpcResponse"
+      ]
+    },
+    {
+      "path": "src/migration.ts",
+      "isEntrypoint": true,
+      "dependencies": [],
+      "exports": [
+        "SUPABASE_VAULT_MIGRATION_ID",
+        "SUPABASE_VAULT_MIGRATION_SQL"
+      ]
+    },
+    {
+      "path": "src/types.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "SupabaseVaultAdapterOptions",
+        "SupabaseVaultRpcClient",
+        "SupabaseVaultRpcError",
+        "SupabaseVaultRpcResponse"
+      ]
+    }
+  ],
+  "exports": [
+    {
+      "name": "createSupabaseVaultAdapter",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "function",
+      "modulePath": "src/adapter.ts",
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 34,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "SupabaseVaultAdapterOptions"
+      ],
+      "signatures": [
+        {
+          "label": "(options: SupabaseVaultAdapterOptions) => SecretStoreAdapter",
+          "parameters": [
+            {
+              "name": "options",
+              "type": "SupabaseVaultAdapterOptions",
+              "required": true,
+              "description": null
+            }
+          ],
+          "returnType": "SecretStoreAdapter",
+          "returnDescription": null
+        }
+      ],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "SUPABASE_VAULT_MIGRATION_ID",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/migration.ts",
+      "sourceLocation": {
+        "filePath": "src/migration.ts",
+        "line": 1,
+        "column": 14
+      },
+      "exportPaths": [
+        "src/index.ts",
+        "src/migration.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "SUPABASE_VAULT_MIGRATION_SQL",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/migration.ts",
+      "sourceLocation": {
+        "filePath": "src/migration.ts",
+        "line": 9,
+        "column": 14
+      },
+      "exportPaths": [
+        "src/index.ts",
+        "src/migration.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "SUPABASE_VAULT_SECRET_STORE_PROVIDER",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/adapter.ts",
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 32,
+        "column": 14
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "SupabaseVaultAdapterOptions",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types.ts",
+      "sourceLocation": {
+        "filePath": "src/types.ts",
+        "line": 19,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "SupabaseVaultRpcClient"
+      ],
+      "signatures": [],
+      "members": [
+        {
+          "name": "client",
+          "kind": "property",
+          "type": "SupabaseVaultRpcClient | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "serviceRoleKey",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "url",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "SupabaseVaultRpcClient",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types.ts",
+      "sourceLocation": {
+        "filePath": "src/types.ts",
+        "line": 12,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "SupabaseVaultRpcResponse"
+      ],
+      "signatures": [],
+      "members": [
+        {
+          "name": "rpc",
+          "kind": "method",
+          "type": "(functionName: string, parameters?: Record<string, unknown>) => PromiseLike<SupabaseVaultRpcResponse>",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "SupabaseVaultRpcError",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types.ts",
+      "sourceLocation": {
+        "filePath": "src/types.ts",
+        "line": 1,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "code",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "message",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "SupabaseVaultRpcResponse",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types.ts",
+      "sourceLocation": {
+        "filePath": "src/types.ts",
+        "line": 6,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "SupabaseVaultRpcError"
+      ],
+      "signatures": [],
+      "members": [
+        {
+          "name": "data",
+          "kind": "property",
+          "type": "unknown",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "error",
+          "kind": "property",
+          "type": "SupabaseVaultRpcError | null",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    }
+  ],
+  "components": [],
+  "sourceFunctions": [
+    {
+      "name": "createSupabaseVaultAdapter",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 34,
+        "column": 1
+      }
+    },
+    {
+      "name": "call",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 39,
+        "column": 9
+      }
+    },
+    {
+      "name": "resolveClient",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 188,
+        "column": 1
+      }
+    },
+    {
+      "name": "prepareScopedRef",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 253,
+        "column": 1
+      }
+    },
+    {
+      "name": "parseMetadata",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 266,
+        "column": 1
+      }
+    },
+    {
+      "name": "parsePayload",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 307,
+        "column": 1
+      }
+    },
+    {
+      "name": "invalidProviderResponse",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 320,
+        "column": 1
+      }
+    },
+    {
+      "name": "normalizeOptional",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 330,
+        "column": 1
+      }
+    },
+    {
+      "name": "isRecord",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 335,
+        "column": 1
+      }
+    },
+    {
+      "name": "createSecretStoreError",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/errors.ts",
+        "line": 8,
+        "column": 1
+      }
+    },
+    {
+      "name": "mapSupabaseVaultError",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/errors.ts",
+        "line": 15,
+        "column": 1
+      }
+    },
+    {
+      "name": "mapUnexpectedError",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/errors.ts",
+        "line": 55,
+        "column": 1
+      }
+    }
+  ],
+  "sequenceScenarios": [
+    {
+      "kind": "export",
+      "name": "createSupabaseVaultAdapter",
+      "sourcePath": "src/adapter.ts",
+      "symbolName": "createSupabaseVaultAdapter",
+      "description": null,
+      "isReadme": false
+    }
+  ],
+  "graphs": {
+    "imports": [
+      {
+        "fromPath": "src/adapter.ts",
+        "toPath": "src/errors.ts",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromPath": "src/adapter.ts",
+        "toPath": "src/types.ts",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromPath": "src/errors.ts",
+        "toPath": "src/types.ts",
+        "sourcePath": "src/errors.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/adapter.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/migration.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/types.ts",
+        "sourcePath": "src/index.ts"
+      }
+    ],
+    "calls": [
+      {
+        "fromSymbol": "createSupabaseVaultAdapter",
+        "toSymbol": "resolveClient",
+        "callExpression": "resolveClient",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "call",
+        "toSymbol": "rpc",
+        "callExpression": "clientResult.data.rpc",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "call",
+        "toSymbol": "mapSupabaseVaultError",
+        "callExpression": "mapSupabaseVaultError",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "call",
+        "toSymbol": "mapUnexpectedError",
+        "callExpression": "mapUnexpectedError",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "list",
+        "toSymbol": "normalizeSecretScope",
+        "callExpression": "normalizeSecretScope",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "list",
+        "toSymbol": "call",
+        "callExpression": "call",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "list",
+        "toSymbol": "normalizeOptional",
+        "callExpression": "normalizeOptional",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "list",
+        "toSymbol": "invalidProviderResponse",
+        "callExpression": "invalidProviderResponse",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "list",
+        "toSymbol": "parseMetadata",
+        "callExpression": "parseMetadata",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "getMetadata",
+        "toSymbol": "prepareScopedRef",
+        "callExpression": "prepareScopedRef",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "getMetadata",
+        "toSymbol": "call",
+        "callExpression": "call",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "getMetadata",
+        "toSymbol": "parseMetadata",
+        "callExpression": "parseMetadata",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "create",
+        "toSymbol": "prepareScopedRef",
+        "callExpression": "prepareScopedRef",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "create",
+        "toSymbol": "createSecretStoreError",
+        "callExpression": "createSecretStoreError",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "create",
+        "toSymbol": "validateSecretPayload",
+        "callExpression": "validateSecretPayload",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "create",
+        "toSymbol": "call",
+        "callExpression": "call",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "create",
+        "toSymbol": "normalizeOptional",
+        "callExpression": "normalizeOptional",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "create",
+        "toSymbol": "parseMetadata",
+        "callExpression": "parseMetadata",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "replace",
+        "toSymbol": "prepareScopedRef",
+        "callExpression": "prepareScopedRef",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "replace",
+        "toSymbol": "validateSecretPayload",
+        "callExpression": "validateSecretPayload",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "replace",
+        "toSymbol": "call",
+        "callExpression": "call",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "replace",
+        "toSymbol": "parseMetadata",
+        "callExpression": "parseMetadata",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "remove",
+        "toSymbol": "prepareScopedRef",
+        "callExpression": "prepareScopedRef",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "remove",
+        "toSymbol": "call",
+        "callExpression": "call",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "remove",
+        "toSymbol": "invalidProviderResponse",
+        "callExpression": "invalidProviderResponse",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "resolve",
+        "toSymbol": "prepareScopedRef",
+        "callExpression": "prepareScopedRef",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "resolve",
+        "toSymbol": "call",
+        "callExpression": "call",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "resolve",
+        "toSymbol": "parsePayload",
+        "callExpression": "parsePayload",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "resolveClient",
+        "toSymbol": "createSecretStoreError",
+        "callExpression": "createSecretStoreError",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "resolveClient",
+        "toSymbol": "createClient",
+        "callExpression": "createClient",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "prepareScopedRef",
+        "toSymbol": "normalizeSecretScope",
+        "callExpression": "normalizeSecretScope",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "prepareScopedRef",
+        "toSymbol": "normalizeSecretRef",
+        "callExpression": "normalizeSecretRef",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "parseMetadata",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "parseMetadata",
+        "toSymbol": "invalidProviderResponse",
+        "callExpression": "invalidProviderResponse",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "parsePayload",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "parsePayload",
+        "toSymbol": "invalidProviderResponse",
+        "callExpression": "invalidProviderResponse",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "parsePayload",
+        "toSymbol": "validateSecretPayload",
+        "callExpression": "validateSecretPayload",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "invalidProviderResponse",
+        "toSymbol": "createSecretStoreError",
+        "callExpression": "createSecretStoreError",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "mapSupabaseVaultError",
+        "toSymbol": "createSecretStoreError",
+        "callExpression": "createSecretStoreError",
+        "sourcePath": "src/errors.ts"
+      },
+      {
+        "fromSymbol": "mapUnexpectedError",
+        "toSymbol": "createSecretStoreError",
+        "callExpression": "createSecretStoreError",
+        "sourcePath": "src/errors.ts"
+      }
+    ],
+    "typeReferences": [
+      {
+        "fromSymbol": "createSupabaseVaultAdapter",
+        "toType": "SecretStoreAdapter",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "createSupabaseVaultAdapter",
+        "toType": "SupabaseVaultAdapterOptions",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "SupabaseVaultAdapterOptions",
+        "toType": "SupabaseVaultRpcClient",
+        "sourcePath": "src/types.ts"
+      },
+      {
+        "fromSymbol": "SupabaseVaultRpcClient",
+        "toType": "PromiseLike",
+        "sourcePath": "src/types.ts"
+      },
+      {
+        "fromSymbol": "SupabaseVaultRpcClient",
+        "toType": "SupabaseVaultRpcResponse",
+        "sourcePath": "src/types.ts"
+      },
+      {
+        "fromSymbol": "SupabaseVaultRpcResponse",
+        "toType": "SupabaseVaultRpcError",
+        "sourcePath": "src/types.ts"
+      }
+    ],
+    "componentComposition": []
+  }
+}

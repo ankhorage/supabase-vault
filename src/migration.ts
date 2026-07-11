@@ -1,4 +1,4 @@
-export const SUPABASE_VAULT_MIGRATION_ID = '20260711_001_ankh_secret_store';
+export const SUPABASE_VAULT_MIGRATION_ID = "20260711_001_ankh_secret_store";
 
 /**
  * Canonical Supabase migration for the Ankhorage secret store.

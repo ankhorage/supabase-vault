@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from "@supabase/supabase-js";
 
 import type {
   SecretCreateInput,
@@ -11,21 +11,25 @@ import type {
   SecretResolveInput,
   SecretStoreAdapter,
   SecretStoreResult,
-} from '@ankhorage/contracts/secrets';
+} from "@ankhorage/contracts/secrets";
 import {
   normalizeSecretRef,
   normalizeSecretScope,
   validateSecretPayload,
-} from '@ankhorage/contracts/secrets';
+} from "@ankhorage/contracts/secrets";
 
-import { createSecretStoreError, mapSupabaseVaultError, mapUnexpectedError } from './errors';
+import {
+  createSecretStoreError,
+  mapSupabaseVaultError,
+  mapUnexpectedError,
+} from "./errors";
 import type {
   SupabaseVaultAdapterOptions,
   SupabaseVaultRpcClient,
   SupabaseVaultRpcResponse,
-} from './types';
+} from "./types";
 
-export const SUPABASE_VAULT_SECRET_STORE_PROVIDER = 'supabase-vault' as const;
+export const SUPABASE_VAULT_SECRET_STORE_PROVIDER = "supabase-vault" as const;
 
 export function createSupabaseVaultAdapter(
   options: SupabaseVaultAdapterOptions,
@@ -42,7 +46,10 @@ export function createSupabaseVaultAdapter(
     try {
       const response = await clientResult.data.rpc(functionName, parameters);
       if (response.error !== null) {
-        return { ok: false, error: mapSupabaseVaultError(operation, response.error) };
+        return {
+          ok: false,
+          error: mapSupabaseVaultError(operation, response.error),
+        };
       }
       return { ok: true, data: response.data };
     } catch {
@@ -51,18 +58,21 @@ export function createSupabaseVaultAdapter(
   };
 
   return {
-    async list(input: SecretListInput): Promise<SecretStoreResult<readonly SecretMetadata[]>> {
+    async list(
+      input: SecretListInput,
+    ): Promise<SecretStoreResult<readonly SecretMetadata[]>> {
       const scopeResult = normalizeSecretScope(input.scope);
       if (!scopeResult.ok) return scopeResult;
 
-      const result = await call('list secrets', 'ankh_secret_list', {
+      const result = await call("list secrets", "ankh_secret_list", {
         p_project_id: scopeResult.data.projectId,
         p_environment: scopeResult.data.environment,
         p_kind: normalizeOptional(input.kind),
         p_provider: normalizeOptional(input.provider),
       });
       if (!result.ok) return result;
-      if (!Array.isArray(result.data)) return invalidProviderResponse('list secrets');
+      if (!Array.isArray(result.data))
+        return invalidProviderResponse("list secrets");
 
       const metadata: SecretMetadata[] = [];
       for (const candidate of result.data) {
@@ -79,16 +89,22 @@ export function createSupabaseVaultAdapter(
       const prepared = prepareScopedRef(input.scope, input.ref);
       if (!prepared.ok) return prepared;
 
-      const result = await call('read secret metadata', 'ankh_secret_get_metadata', {
-        p_project_id: prepared.data.scope.projectId,
-        p_environment: prepared.data.scope.environment,
-        p_secret_ref: prepared.data.ref,
-      });
+      const result = await call(
+        "read secret metadata",
+        "ankh_secret_get_metadata",
+        {
+          p_project_id: prepared.data.scope.projectId,
+          p_environment: prepared.data.scope.environment,
+          p_secret_ref: prepared.data.ref,
+        },
+      );
       if (!result.ok) return result;
       return parseMetadata(result.data);
     },
 
-    async create(input: SecretCreateInput): Promise<SecretStoreResult<SecretMetadata>> {
+    async create(
+      input: SecretCreateInput,
+    ): Promise<SecretStoreResult<SecretMetadata>> {
       const prepared = prepareScopedRef(input.scope, input.ref);
       if (!prepared.ok) return prepared;
 
@@ -96,14 +112,17 @@ export function createSupabaseVaultAdapter(
       if (kind.length === 0) {
         return {
           ok: false,
-          error: createSecretStoreError('invalid_payload', 'Secret kind must not be empty.'),
+          error: createSecretStoreError(
+            "invalid_payload",
+            "Secret kind must not be empty.",
+          ),
         };
       }
 
       const payloadResult = validateSecretPayload(input.payload);
       if (!payloadResult.ok) return payloadResult;
 
-      const result = await call('create a secret', 'ankh_secret_create', {
+      const result = await call("create a secret", "ankh_secret_create", {
         p_project_id: prepared.data.scope.projectId,
         p_environment: prepared.data.scope.environment,
         p_secret_ref: prepared.data.ref,
@@ -115,14 +134,16 @@ export function createSupabaseVaultAdapter(
       return parseMetadata(result.data);
     },
 
-    async replace(input: SecretReplaceInput): Promise<SecretStoreResult<SecretMetadata>> {
+    async replace(
+      input: SecretReplaceInput,
+    ): Promise<SecretStoreResult<SecretMetadata>> {
       const prepared = prepareScopedRef(input.scope, input.ref);
       if (!prepared.ok) return prepared;
 
       const payloadResult = validateSecretPayload(input.payload);
       if (!payloadResult.ok) return payloadResult;
 
-      const result = await call('replace a secret', 'ankh_secret_replace', {
+      const result = await call("replace a secret", "ankh_secret_replace", {
         p_project_id: prepared.data.scope.projectId,
         p_environment: prepared.data.scope.environment,
         p_secret_ref: prepared.data.ref,
@@ -136,21 +157,24 @@ export function createSupabaseVaultAdapter(
       const prepared = prepareScopedRef(input.scope, input.ref);
       if (!prepared.ok) return prepared;
 
-      const result = await call('remove a secret', 'ankh_secret_remove', {
+      const result = await call("remove a secret", "ankh_secret_remove", {
         p_project_id: prepared.data.scope.projectId,
         p_environment: prepared.data.scope.environment,
         p_secret_ref: prepared.data.ref,
       });
       if (!result.ok) return result;
-      if (result.data !== true) return invalidProviderResponse('remove a secret');
+      if (result.data !== true)
+        return invalidProviderResponse("remove a secret");
       return { ok: true };
     },
 
-    async resolve(input: SecretResolveInput): Promise<SecretStoreResult<SecretPayload>> {
+    async resolve(
+      input: SecretResolveInput,
+    ): Promise<SecretStoreResult<SecretPayload>> {
       const prepared = prepareScopedRef(input.scope, input.ref);
       if (!prepared.ok) return prepared;
 
-      const result = await call('resolve a secret', 'ankh_secret_resolve', {
+      const result = await call("resolve a secret", "ankh_secret_resolve", {
         p_project_id: prepared.data.scope.projectId,
         p_environment: prepared.data.scope.environment,
         p_secret_ref: prepared.data.ref,
@@ -166,15 +190,15 @@ function resolveClient(
 ): SecretStoreResult<SupabaseVaultRpcClient> {
   if (options.client !== undefined) return { ok: true, data: options.client };
 
-  const url = options.url?.trim() ?? '';
-  const serviceRoleKey = options.serviceRoleKey?.trim() ?? '';
+  const url = options.url?.trim() ?? "";
+  const serviceRoleKey = options.serviceRoleKey?.trim() ?? "";
 
   if (url.length === 0 || serviceRoleKey.length === 0) {
     return {
       ok: false,
       error: createSecretStoreError(
-        'invalid_config',
-        'Supabase Vault requires a project URL and server-only service-role key.',
+        "invalid_config",
+        "Supabase Vault requires a project URL and server-only service-role key.",
       ),
     };
   }
@@ -185,17 +209,24 @@ function resolveClient(
   } catch {
     return {
       ok: false,
-      error: createSecretStoreError('invalid_config', 'Supabase Vault URL must be valid.'),
+      error: createSecretStoreError(
+        "invalid_config",
+        "Supabase Vault URL must be valid.",
+      ),
     };
   }
 
-  const supabase = createClient(parsedUrl.toString().replace(/\/+$/, ''), serviceRoleKey, {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-      detectSessionInUrl: false,
+  const supabase = createClient(
+    parsedUrl.toString().replace(/\/+$/, ""),
+    serviceRoleKey,
+    {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+        detectSessionInUrl: false,
+      },
     },
-  });
+  );
 
   const client: SupabaseVaultRpcClient = {
     async rpc(
@@ -220,9 +251,9 @@ function resolveClient(
 }
 
 function prepareScopedRef(
-  scope: SecretGetMetadataInput['scope'],
-  ref: SecretGetMetadataInput['ref'],
-): SecretStoreResult<{ scope: SecretGetMetadataInput['scope']; ref: string }> {
+  scope: SecretGetMetadataInput["scope"],
+  ref: SecretGetMetadataInput["ref"],
+): SecretStoreResult<{ scope: SecretGetMetadataInput["scope"]; ref: string }> {
   const scopeResult = normalizeSecretScope(scope);
   if (!scopeResult.ok) return scopeResult;
 
@@ -234,24 +265,26 @@ function prepareScopedRef(
 
 function parseMetadata(value: unknown): SecretStoreResult<SecretMetadata> {
   if (!isRecord(value) || !isRecord(value.scope)) {
-    return invalidProviderResponse('read secret metadata');
+    return invalidProviderResponse("read secret metadata");
   }
 
   const configuredFields = value.configuredFields;
   const provider = value.provider;
 
   if (
-    typeof value.ref !== 'string' ||
-    typeof value.scope.projectId !== 'string' ||
-    typeof value.scope.environment !== 'string' ||
-    typeof value.kind !== 'string' ||
+    typeof value.ref !== "string" ||
+    typeof value.scope.projectId !== "string" ||
+    typeof value.scope.environment !== "string" ||
+    typeof value.kind !== "string" ||
     !Array.isArray(configuredFields) ||
-    !configuredFields.every((field) => typeof field === 'string') ||
-    (provider !== null && provider !== undefined && typeof provider !== 'string') ||
-    typeof value.createdAt !== 'string' ||
-    typeof value.updatedAt !== 'string'
+    !configuredFields.every((field) => typeof field === "string") ||
+    (provider !== null &&
+      provider !== undefined &&
+      typeof provider !== "string") ||
+    typeof value.createdAt !== "string" ||
+    typeof value.updatedAt !== "string"
   ) {
-    return invalidProviderResponse('read secret metadata');
+    return invalidProviderResponse("read secret metadata");
   }
 
   return {
@@ -263,7 +296,7 @@ function parseMetadata(value: unknown): SecretStoreResult<SecretMetadata> {
         environment: value.scope.environment,
       },
       kind: value.kind,
-      ...(typeof provider === 'string' ? { provider } : {}),
+      ...(typeof provider === "string" ? { provider } : {}),
       configuredFields,
       createdAt: value.createdAt,
       updatedAt: value.updatedAt,
@@ -272,11 +305,12 @@ function parseMetadata(value: unknown): SecretStoreResult<SecretMetadata> {
 }
 
 function parsePayload(value: unknown): SecretStoreResult<SecretPayload> {
-  if (!isRecord(value)) return invalidProviderResponse('resolve a secret');
+  if (!isRecord(value)) return invalidProviderResponse("resolve a secret");
 
   const payload: Record<string, string> = {};
   for (const [field, fieldValue] of Object.entries(value)) {
-    if (typeof fieldValue !== 'string') return invalidProviderResponse('resolve a secret');
+    if (typeof fieldValue !== "string")
+      return invalidProviderResponse("resolve a secret");
     payload[field] = fieldValue;
   }
 
@@ -287,17 +321,17 @@ function invalidProviderResponse<T>(operation: string): SecretStoreResult<T> {
   return {
     ok: false,
     error: createSecretStoreError(
-      'provider_error',
+      "provider_error",
       `Supabase Vault returned an invalid response while attempting to ${operation}.`,
     ),
   };
 }
 
 function normalizeOptional(value: string | undefined): string | null {
-  const normalized = value?.trim() ?? '';
+  const normalized = value?.trim() ?? "";
   return normalized.length === 0 ? null : normalized;
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null && !Array.isArray(value);
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }

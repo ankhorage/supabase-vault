@@ -1,0 +1,246 @@
+[
+  {
+    "name": "createSupabaseVaultAdapter",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/adapter.ts",
+    "sourceLocation": {
+      "filePath": "src/adapter.ts",
+      "line": 34,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SupabaseVaultAdapterOptions"
+    ],
+    "signatures": [
+      {
+        "label": "(options: SupabaseVaultAdapterOptions) => SecretStoreAdapter",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "SupabaseVaultAdapterOptions",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "SecretStoreAdapter",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "SUPABASE_VAULT_MIGRATION_ID",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/migration.ts",
+    "sourceLocation": {
+      "filePath": "src/migration.ts",
+      "line": 1,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts",
+      "src/migration.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "SUPABASE_VAULT_MIGRATION_SQL",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/migration.ts",
+    "sourceLocation": {
+      "filePath": "src/migration.ts",
+      "line": 9,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts",
+      "src/migration.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "SUPABASE_VAULT_SECRET_STORE_PROVIDER",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/adapter.ts",
+    "sourceLocation": {
+      "filePath": "src/adapter.ts",
+      "line": 32,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "SupabaseVaultAdapterOptions",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types.ts",
+    "sourceLocation": {
+      "filePath": "src/types.ts",
+      "line": 19,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SupabaseVaultRpcClient"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "client",
+        "kind": "property",
+        "type": "SupabaseVaultRpcClient | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "serviceRoleKey",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "url",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "SupabaseVaultRpcClient",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types.ts",
+    "sourceLocation": {
+      "filePath": "src/types.ts",
+      "line": 12,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SupabaseVaultRpcResponse"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "rpc",
+        "kind": "method",
+        "type": "(functionName: string, parameters?: Record<string, unknown>) => PromiseLike<SupabaseVaultRpcResponse>",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "SupabaseVaultRpcError",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types.ts",
+    "sourceLocation": {
+      "filePath": "src/types.ts",
+      "line": 1,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "code",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "message",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "SupabaseVaultRpcResponse",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types.ts",
+    "sourceLocation": {
+      "filePath": "src/types.ts",
+      "line": 6,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "SupabaseVaultRpcError"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "data",
+        "kind": "property",
+        "type": "unknown",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "error",
+        "kind": "property",
+        "type": "SupabaseVaultRpcError | null",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  }
+]

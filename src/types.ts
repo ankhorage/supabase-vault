@@ -10,7 +10,10 @@ export interface SupabaseVaultRpcResponse {
 
 /** Minimal trusted RPC surface used by the adapter and test fakes. */
 export interface SupabaseVaultRpcClient {
-  rpc(functionName: string, parameters?: Record<string, unknown>): PromiseLike<SupabaseVaultRpcResponse>;
+  rpc(
+    functionName: string,
+    parameters?: Record<string, unknown>,
+  ): PromiseLike<SupabaseVaultRpcResponse>;
 }
 
 export interface SupabaseVaultAdapterOptions {

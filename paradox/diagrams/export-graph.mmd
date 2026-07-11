@@ -1,0 +1,26 @@
+graph LR
+  module_src_adapter_ts["src/adapter.ts"]
+  module_src_errors_ts["src/errors.ts"]
+  module_src_index_ts["src/index.ts"]
+  module_src_migration_ts["src/migration.ts"]
+  module_src_types_ts["src/types.ts"]
+  export_createSupabaseVaultAdapter["createSupabaseVaultAdapter"]
+  module_src_adapter_ts --> export_createSupabaseVaultAdapter
+  export_createSupabaseVaultAdapter -.-> export_SupabaseVaultAdapterOptions
+  export_SUPABASE_VAULT_MIGRATION_ID["SUPABASE_VAULT_MIGRATION_ID"]
+  module_src_migration_ts --> export_SUPABASE_VAULT_MIGRATION_ID
+  export_SUPABASE_VAULT_MIGRATION_SQL["SUPABASE_VAULT_MIGRATION_SQL"]
+  module_src_migration_ts --> export_SUPABASE_VAULT_MIGRATION_SQL
+  export_SUPABASE_VAULT_SECRET_STORE_PROVIDER["SUPABASE_VAULT_SECRET_STORE_PROVIDER"]
+  module_src_adapter_ts --> export_SUPABASE_VAULT_SECRET_STORE_PROVIDER
+  export_SupabaseVaultAdapterOptions["SupabaseVaultAdapterOptions"]
+  module_src_types_ts --> export_SupabaseVaultAdapterOptions
+  export_SupabaseVaultAdapterOptions -.-> export_SupabaseVaultRpcClient
+  export_SupabaseVaultRpcClient["SupabaseVaultRpcClient"]
+  module_src_types_ts --> export_SupabaseVaultRpcClient
+  export_SupabaseVaultRpcClient -.-> export_SupabaseVaultRpcResponse
+  export_SupabaseVaultRpcError["SupabaseVaultRpcError"]
+  module_src_types_ts --> export_SupabaseVaultRpcError
+  export_SupabaseVaultRpcResponse["SupabaseVaultRpcResponse"]
+  module_src_types_ts --> export_SupabaseVaultRpcResponse
+  export_SupabaseVaultRpcResponse -.-> export_SupabaseVaultRpcError

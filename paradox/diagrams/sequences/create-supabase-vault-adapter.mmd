@@ -1,0 +1,11 @@
+sequenceDiagram
+  participant participant_createClient as createClient
+  participant participant_createSecretStoreError as createSecretStoreError
+  participant participant_createSupabaseVaultAdapter as createSupabaseVaultAdapter
+  participant participant_resolveClient as resolveClient
+  participant_createSupabaseVaultAdapter->>participant_resolveClient: resolveClient()
+  participant_resolveClient->>participant_createSecretStoreError: createSecretStoreError()
+  participant_createSecretStoreError-->>participant_resolveClient: return
+  participant_resolveClient->>participant_createClient: createClient()
+  participant_createClient-->>participant_resolveClient: return
+  participant_resolveClient-->>participant_createSupabaseVaultAdapter: return
