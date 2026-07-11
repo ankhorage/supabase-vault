@@ -26,15 +26,15 @@ The public manifest contains logical references such as `auth/oauth/google`. Raw
 import {
   createSupabaseVaultAdapter,
   SUPABASE_VAULT_MIGRATION_SQL,
-} from '@ankhorage/supabase-vault';
+} from "@ankhorage/supabase-vault";
 
 const adapter = createSupabaseVaultAdapter({ client: trustedSqlClient });
 
 await adapter.create({
-  scope: { projectId: 'scanner', environment: 'local' },
-  ref: 'auth/oauth/google',
-  kind: 'oauth',
-  provider: 'google',
+  scope: { projectId: "scanner", environment: "local" },
+  ref: "auth/oauth/google",
+  kind: "oauth",
+  provider: "google",
   payload: {
     clientId: process.env.GOOGLE_CLIENT_ID!,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET!,

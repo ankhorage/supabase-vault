@@ -15,8 +15,22 @@
   "bugs": {
     "url": "https://github.com/ankhorage/supabase-vault/issues"
   },
-  "keywords": ["ankhorage", "supabase", "vault", "secrets", "adapter"],
-  "files": ["dist", "src", "migrations", "README.md", "CHANGELOG.md", "LICENSE", "package.json"],
+  "keywords": [
+    "ankhorage",
+    "supabase",
+    "vault",
+    "secrets",
+    "adapter"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "migrations",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "package.json"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -36,7 +50,11 @@
   "ankh": {
     "category": "secret-store",
     "provider": "supabase-vault",
-    "capabilities": ["secret-store.metadata", "secret-store.resolve", "secret-store.rotate"]
+    "capabilities": [
+      "secret-store.metadata",
+      "secret-store.resolve",
+      "secret-store.rotate"
+    ]
   },
   "scripts": {
     "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json",
