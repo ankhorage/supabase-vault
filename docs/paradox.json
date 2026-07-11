@@ -12,7 +12,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.1.0",
+      "value": "v0.2.0",
       "color": "cb3837"
     },
     {
@@ -120,7 +120,7 @@
       "modulePath": "src/adapter.ts",
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 51,
+        "line": 45,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -224,7 +224,7 @@
       "modulePath": "src/types.ts",
       "sourceLocation": {
         "filePath": "src/types.ts",
-        "line": 32,
+        "line": 30,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -242,7 +242,7 @@
       "modulePath": "src/types.ts",
       "sourceLocation": {
         "filePath": "src/types.ts",
-        "line": 28,
+        "line": 26,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -294,7 +294,7 @@
       "modulePath": "src/types.ts",
       "sourceLocation": {
         "filePath": "src/types.ts",
-        "line": 22,
+        "line": 20,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -327,7 +327,7 @@
       "modulePath": "src/types.ts",
       "sourceLocation": {
         "filePath": "src/types.ts",
-        "line": 11,
+        "line": 9,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -352,7 +352,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 51,
+        "line": 45,
         "column": 1
       }
     },
@@ -361,7 +361,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 271,
+        "line": 247,
         "column": 1
       }
     },
@@ -370,7 +370,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 281,
+        "line": 255,
         "column": 1
       }
     },
@@ -379,7 +379,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 289,
+        "line": 263,
         "column": 1
       }
     },
@@ -388,7 +388,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 304,
+        "line": 278,
         "column": 1
       }
     },
@@ -397,7 +397,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 319,
+        "line": 293,
         "column": 1
       }
     },
@@ -406,7 +406,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 331,
+        "line": 305,
         "column": 1
       }
     },
@@ -415,7 +415,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 339,
+        "line": 309,
         "column": 1
       }
     },
@@ -424,7 +424,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 356,
+        "line": 321,
         "column": 1
       }
     },
@@ -433,7 +433,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 363,
+        "line": 328,
         "column": 1
       }
     },
@@ -442,7 +442,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 370,
+        "line": 335,
         "column": 1
       }
     }

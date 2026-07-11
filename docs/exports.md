@@ -4,7 +4,7 @@
 
 Kind: `function`
 Module: `src/adapter.ts`
-Source: `src/adapter.ts:51:1`
+Source: `src/adapter.ts:45:1`
 
 ### Signatures
 
@@ -40,13 +40,13 @@ Source: `src/types.ts:3:14`
 
 Kind: `unknown`
 Module: `src/types.ts`
-Source: `src/types.ts:32:1`
+Source: `src/types.ts:30:1`
 
 ## SupabaseVaultAdapterOptions
 
 Kind: `type`
 Module: `src/types.ts`
-Source: `src/types.ts:28:1`
+Source: `src/types.ts:26:1`
 
 ### Members
 
@@ -70,7 +70,7 @@ Source: `src/types.ts:5:1`
 
 Kind: `type`
 Module: `src/types.ts`
-Source: `src/types.ts:22:1`
+Source: `src/types.ts:20:1`
 
 ### Members
 
@@ -83,7 +83,7 @@ Source: `src/types.ts:22:1`
 
 Kind: `type`
 Module: `src/types.ts`
-Source: `src/types.ts:11:1`
+Source: `src/types.ts:9:1`
 
 ### Members
 
