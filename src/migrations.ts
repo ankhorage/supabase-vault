@@ -1,5 +1,5 @@
-export const SUPABASE_VAULT_SCHEMA = "ankh_secret_store";
-export const SUPABASE_VAULT_METADATA_TABLE = "secret_metadata";
+export const SUPABASE_VAULT_SCHEMA = 'ankh_secret_store';
+export const SUPABASE_VAULT_METADATA_TABLE = 'secret_metadata';
 
 /**
  * Idempotent migration required by the adapter. Infra must apply this through the

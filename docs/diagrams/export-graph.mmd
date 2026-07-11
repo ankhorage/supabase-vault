@@ -1,0 +1,30 @@
+graph LR
+  module_src_adapter_ts["src/adapter.ts"]
+  module_src_index_ts["src/index.ts"]
+  module_src_migrations_ts["src/migrations.ts"]
+  module_src_types_ts["src/types.ts"]
+  export_createSupabaseVaultAdapter["createSupabaseVaultAdapter"]
+  module_src_adapter_ts --> export_createSupabaseVaultAdapter
+  export_createSupabaseVaultAdapter -.-> export_SupabaseVaultAdapterOptions
+  export_SUPABASE_VAULT_METADATA_TABLE["SUPABASE_VAULT_METADATA_TABLE"]
+  module_src_migrations_ts --> export_SUPABASE_VAULT_METADATA_TABLE
+  export_SUPABASE_VAULT_MIGRATION_SQL["SUPABASE_VAULT_MIGRATION_SQL"]
+  module_src_migrations_ts --> export_SUPABASE_VAULT_MIGRATION_SQL
+  export_SUPABASE_VAULT_SCHEMA["SUPABASE_VAULT_SCHEMA"]
+  module_src_migrations_ts --> export_SUPABASE_VAULT_SCHEMA
+  export_SUPABASE_VAULT_SECRET_STORE_PROVIDER["SUPABASE_VAULT_SECRET_STORE_PROVIDER"]
+  module_src_types_ts --> export_SUPABASE_VAULT_SECRET_STORE_PROVIDER
+  export_SupabaseVaultAdapter["SupabaseVaultAdapter"]
+  module_src_types_ts --> export_SupabaseVaultAdapter
+  export_SupabaseVaultAdapterOptions["SupabaseVaultAdapterOptions"]
+  module_src_types_ts --> export_SupabaseVaultAdapterOptions
+  export_SupabaseVaultAdapterOptions -.-> export_SupabaseVaultSqlClient
+  export_SupabaseVaultQueryResult["SupabaseVaultQueryResult"]
+  module_src_types_ts --> export_SupabaseVaultQueryResult
+  export_SupabaseVaultSqlClient["SupabaseVaultSqlClient"]
+  module_src_types_ts --> export_SupabaseVaultSqlClient
+  export_SupabaseVaultSqlClient -.-> export_SupabaseVaultQueryResult
+  export_SupabaseVaultSqlClient -.-> export_SupabaseVaultSqlExecutor
+  export_SupabaseVaultSqlExecutor["SupabaseVaultSqlExecutor"]
+  module_src_types_ts --> export_SupabaseVaultSqlExecutor
+  export_SupabaseVaultSqlExecutor -.-> export_SupabaseVaultQueryResult

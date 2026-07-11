@@ -1,0 +1,760 @@
+{
+  "packageName": "SUPABASE-VAULT",
+  "packageId": "@ankhorage/supabase-vault",
+  "description": "Server-only Supabase Vault secret-store adapter for Ankhorage.",
+  "badges": [
+    {
+      "id": "license",
+      "label": "license",
+      "value": "MIT",
+      "color": "2563eb"
+    },
+    {
+      "id": "npm",
+      "label": "npm",
+      "value": "v0.1.0",
+      "color": "cb3837"
+    },
+    {
+      "id": "runtime",
+      "label": "runtime",
+      "value": "bun",
+      "color": "f59e0b"
+    },
+    {
+      "id": "typescript",
+      "label": "typescript",
+      "value": "strict",
+      "color": "2563eb"
+    },
+    {
+      "id": "eslint",
+      "label": "eslint",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "prettier",
+      "label": "prettier",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "build",
+      "label": "build",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "tests",
+      "label": "tests",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "docs",
+      "label": "docs",
+      "value": "paradox",
+      "color": "0f766e"
+    }
+  ],
+  "usage": null,
+  "readmeUsage": [],
+  "config": null,
+  "entrypoints": ["src/index.ts"],
+  "modules": [
+    {
+      "path": "src/adapter.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/migrations.ts", "src/types.ts"],
+      "exports": ["createSupabaseVaultAdapter"]
+    },
+    {
+      "path": "src/index.ts",
+      "isEntrypoint": true,
+      "dependencies": [],
+      "exports": [
+        "createSupabaseVaultAdapter",
+        "SUPABASE_VAULT_METADATA_TABLE",
+        "SUPABASE_VAULT_MIGRATION_SQL",
+        "SUPABASE_VAULT_SCHEMA",
+        "SUPABASE_VAULT_SECRET_STORE_PROVIDER",
+        "SupabaseVaultAdapter",
+        "SupabaseVaultAdapterOptions",
+        "SupabaseVaultQueryResult",
+        "SupabaseVaultSqlClient",
+        "SupabaseVaultSqlExecutor"
+      ]
+    },
+    {
+      "path": "src/migrations.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "SUPABASE_VAULT_METADATA_TABLE",
+        "SUPABASE_VAULT_MIGRATION_SQL",
+        "SUPABASE_VAULT_SCHEMA"
+      ]
+    },
+    {
+      "path": "src/types.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "SUPABASE_VAULT_SECRET_STORE_PROVIDER",
+        "SupabaseVaultAdapter",
+        "SupabaseVaultAdapterOptions",
+        "SupabaseVaultQueryResult",
+        "SupabaseVaultSqlClient",
+        "SupabaseVaultSqlExecutor"
+      ]
+    }
+  ],
+  "exports": [
+    {
+      "name": "createSupabaseVaultAdapter",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "function",
+      "modulePath": "src/adapter.ts",
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 51,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["SupabaseVaultAdapterOptions"],
+      "signatures": [
+        {
+          "label": "(options: SupabaseVaultAdapterOptions) => SecretStoreAdapter",
+          "parameters": [
+            {
+              "name": "options",
+              "type": "SupabaseVaultAdapterOptions",
+              "required": true,
+              "description": null
+            }
+          ],
+          "returnType": "SecretStoreAdapter",
+          "returnDescription": null
+        }
+      ],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "SUPABASE_VAULT_METADATA_TABLE",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/migrations.ts",
+      "sourceLocation": {
+        "filePath": "src/migrations.ts",
+        "line": 2,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "SUPABASE_VAULT_MIGRATION_SQL",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/migrations.ts",
+      "sourceLocation": {
+        "filePath": "src/migrations.ts",
+        "line": 8,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "SUPABASE_VAULT_SCHEMA",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/migrations.ts",
+      "sourceLocation": {
+        "filePath": "src/migrations.ts",
+        "line": 1,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "SUPABASE_VAULT_SECRET_STORE_PROVIDER",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/types.ts",
+      "sourceLocation": {
+        "filePath": "src/types.ts",
+        "line": 3,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "SupabaseVaultAdapter",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/types.ts",
+      "sourceLocation": {
+        "filePath": "src/types.ts",
+        "line": 32,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "SupabaseVaultAdapterOptions",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types.ts",
+      "sourceLocation": {
+        "filePath": "src/types.ts",
+        "line": 28,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["SupabaseVaultSqlClient"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "client",
+          "kind": "property",
+          "type": "SupabaseVaultSqlClient | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "SupabaseVaultQueryResult",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types.ts",
+      "sourceLocation": {
+        "filePath": "src/types.ts",
+        "line": 5,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "rows",
+          "kind": "property",
+          "type": "readonly TRow[]",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "SupabaseVaultSqlClient",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types.ts",
+      "sourceLocation": {
+        "filePath": "src/types.ts",
+        "line": 22,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["SupabaseVaultQueryResult", "SupabaseVaultSqlExecutor"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "query",
+          "kind": "method",
+          "type": "<TRow extends Record<string, unknown>>(sql: string, parameters?: readonly unknown[]) => Promise<SupabaseVaultQueryResult<TRow>>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "transaction",
+          "kind": "method",
+          "type": "<TResult>(operation: (executor: SupabaseVaultSqlExecutor) => Promise<TResult>) => Promise<TResult>",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "SupabaseVaultSqlExecutor",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types.ts",
+      "sourceLocation": {
+        "filePath": "src/types.ts",
+        "line": 11,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["SupabaseVaultQueryResult"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "query",
+          "kind": "method",
+          "type": "<TRow extends Record<string, unknown>>(sql: string, parameters?: readonly unknown[]) => Promise<SupabaseVaultQueryResult<TRow>>",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    }
+  ],
+  "components": [],
+  "sourceFunctions": [
+    {
+      "name": "createSupabaseVaultAdapter",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 51,
+        "column": 1
+      }
+    },
+    {
+      "name": "normalizeLookup",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 271,
+        "column": 1
+      }
+    },
+    {
+      "name": "normalizeWrite",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 281,
+        "column": 1
+      }
+    },
+    {
+      "name": "selectMetadata",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 289,
+        "column": 1
+      }
+    },
+    {
+      "name": "selectInternalMetadata",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 304,
+        "column": 1
+      }
+    },
+    {
+      "name": "toMetadata",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 319,
+        "column": 1
+      }
+    },
+    {
+      "name": "buildInternalName",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 331,
+        "column": 1
+      }
+    },
+    {
+      "name": "parsePayload",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 339,
+        "column": 1
+      }
+    },
+    {
+      "name": "notFound",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 356,
+        "column": 1
+      }
+    },
+    {
+      "name": "conflict",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 363,
+        "column": 1
+      }
+    },
+    {
+      "name": "providerFailure",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 370,
+        "column": 1
+      }
+    }
+  ],
+  "sequenceScenarios": [
+    {
+      "kind": "export",
+      "name": "createSupabaseVaultAdapter",
+      "sourcePath": "src/adapter.ts",
+      "symbolName": "createSupabaseVaultAdapter",
+      "description": null,
+      "isReadme": false
+    }
+  ],
+  "graphs": {
+    "imports": [
+      {
+        "fromPath": "src/adapter.ts",
+        "toPath": "src/migrations.ts",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromPath": "src/adapter.ts",
+        "toPath": "src/types.ts",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/adapter.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/migrations.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/types.ts",
+        "sourcePath": "src/index.ts"
+      }
+    ],
+    "calls": [
+      {
+        "fromSymbol": "list",
+        "toSymbol": "normalizeSecretScope",
+        "callExpression": "normalizeSecretScope",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "list",
+        "toSymbol": "query",
+        "callExpression": "client.query",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "list",
+        "toSymbol": "providerFailure",
+        "callExpression": "providerFailure",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "getMetadata",
+        "toSymbol": "normalizeLookup",
+        "callExpression": "normalizeLookup",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "getMetadata",
+        "toSymbol": "selectMetadata",
+        "callExpression": "selectMetadata",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "getMetadata",
+        "toSymbol": "toMetadata",
+        "callExpression": "toMetadata",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "getMetadata",
+        "toSymbol": "notFound",
+        "callExpression": "notFound",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "getMetadata",
+        "toSymbol": "providerFailure",
+        "callExpression": "providerFailure",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "create",
+        "toSymbol": "normalizeWrite",
+        "callExpression": "normalizeWrite",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "create",
+        "toSymbol": "transaction",
+        "callExpression": "client.transaction",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "src/adapter.ts",
+        "toSymbol": "selectMetadata",
+        "callExpression": "selectMetadata",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "src/adapter.ts",
+        "toSymbol": "conflict",
+        "callExpression": "conflict",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "src/adapter.ts",
+        "toSymbol": "buildInternalName",
+        "callExpression": "buildInternalName",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "src/adapter.ts",
+        "toSymbol": "query",
+        "callExpression": "executor.query",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "src/adapter.ts",
+        "toSymbol": "providerFailure",
+        "callExpression": "providerFailure",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "src/adapter.ts",
+        "toSymbol": "toMetadata",
+        "callExpression": "toMetadata",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "create",
+        "toSymbol": "providerFailure",
+        "callExpression": "providerFailure",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "replace",
+        "toSymbol": "normalizeWrite",
+        "callExpression": "normalizeWrite",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "replace",
+        "toSymbol": "transaction",
+        "callExpression": "client.transaction",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "src/adapter.ts",
+        "toSymbol": "selectInternalMetadata",
+        "callExpression": "selectInternalMetadata",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "src/adapter.ts",
+        "toSymbol": "notFound",
+        "callExpression": "notFound",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "replace",
+        "toSymbol": "providerFailure",
+        "callExpression": "providerFailure",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "remove",
+        "toSymbol": "normalizeLookup",
+        "callExpression": "normalizeLookup",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "remove",
+        "toSymbol": "transaction",
+        "callExpression": "client.transaction",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "remove",
+        "toSymbol": "providerFailure",
+        "callExpression": "providerFailure",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "resolve",
+        "toSymbol": "normalizeLookup",
+        "callExpression": "normalizeLookup",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "resolve",
+        "toSymbol": "query",
+        "callExpression": "client.query",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "resolve",
+        "toSymbol": "notFound",
+        "callExpression": "notFound",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "resolve",
+        "toSymbol": "parsePayload",
+        "callExpression": "parsePayload",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "resolve",
+        "toSymbol": "providerFailure",
+        "callExpression": "providerFailure",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "normalizeLookup",
+        "toSymbol": "normalizeSecretScope",
+        "callExpression": "normalizeSecretScope",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "normalizeLookup",
+        "toSymbol": "normalizeSecretRef",
+        "callExpression": "normalizeSecretRef",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "normalizeWrite",
+        "toSymbol": "normalizeLookup",
+        "callExpression": "normalizeLookup",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "normalizeWrite",
+        "toSymbol": "validateSecretPayload",
+        "callExpression": "validateSecretPayload",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "selectMetadata",
+        "toSymbol": "query",
+        "callExpression": "executor.query",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "selectInternalMetadata",
+        "toSymbol": "query",
+        "callExpression": "executor.query",
+        "sourcePath": "src/adapter.ts"
+      }
+    ],
+    "typeReferences": [
+      {
+        "fromSymbol": "createSupabaseVaultAdapter",
+        "toType": "SecretStoreAdapter",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "createSupabaseVaultAdapter",
+        "toType": "SupabaseVaultAdapterOptions",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "SupabaseVaultAdapterOptions",
+        "toType": "SupabaseVaultSqlClient",
+        "sourcePath": "src/types.ts"
+      },
+      {
+        "fromSymbol": "SupabaseVaultQueryResult",
+        "toType": "TRow",
+        "sourcePath": "src/types.ts"
+      },
+      {
+        "fromSymbol": "SupabaseVaultSqlClient",
+        "toType": "SupabaseVaultQueryResult",
+        "sourcePath": "src/types.ts"
+      },
+      {
+        "fromSymbol": "SupabaseVaultSqlClient",
+        "toType": "SupabaseVaultSqlExecutor",
+        "sourcePath": "src/types.ts"
+      },
+      {
+        "fromSymbol": "SupabaseVaultSqlClient",
+        "toType": "TResult",
+        "sourcePath": "src/types.ts"
+      },
+      {
+        "fromSymbol": "SupabaseVaultSqlClient",
+        "toType": "TRow",
+        "sourcePath": "src/types.ts"
+      },
+      {
+        "fromSymbol": "SupabaseVaultSqlExecutor",
+        "toType": "SupabaseVaultQueryResult",
+        "sourcePath": "src/types.ts"
+      },
+      {
+        "fromSymbol": "SupabaseVaultSqlExecutor",
+        "toType": "TRow",
+        "sourcePath": "src/types.ts"
+      }
+    ],
+    "componentComposition": []
+  }
+}

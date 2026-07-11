@@ -12,16 +12,10 @@ import {
   type SecretStoreAdapter,
   type SecretStoreResult,
   validateSecretPayload,
-} from "@ankhorage/contracts/secrets";
+} from '@ankhorage/contracts/secrets';
 
-import {
-  SUPABASE_VAULT_METADATA_TABLE,
-  SUPABASE_VAULT_SCHEMA,
-} from "./migrations.js";
-import type {
-  SupabaseVaultAdapterOptions,
-  SupabaseVaultSqlExecutor,
-} from "./types.js";
+import { SUPABASE_VAULT_METADATA_TABLE, SUPABASE_VAULT_SCHEMA } from './migrations.js';
+import type { SupabaseVaultAdapterOptions, SupabaseVaultSqlExecutor } from './types.js';
 
 interface MetadataRow extends Record<string, unknown> {
   project_id: string;
@@ -51,10 +45,8 @@ const metadataTable = `${SUPABASE_VAULT_SCHEMA}.${SUPABASE_VAULT_METADATA_TABLE}
 export function createSupabaseVaultAdapter(
   options: SupabaseVaultAdapterOptions,
 ): SecretStoreAdapter {
-  if (!options.client || typeof options.client.query !== "function") {
-    throw new TypeError(
-      "Supabase Vault adapter requires a trusted SQL client.",
-    );
+  if (!options.client || typeof options.client.query !== 'function') {
+    throw new TypeError('Supabase Vault adapter requires a trusted SQL client.');
   }
 
   const { client } = options;
@@ -83,7 +75,7 @@ export function createSupabaseVaultAdapter(
 
         return { ok: true, data: result.rows.map(toMetadata) };
       } catch {
-        return providerFailure("Could not list secret metadata.");
+        return providerFailure('Could not list secret metadata.');
       }
     },
 
@@ -92,16 +84,10 @@ export function createSupabaseVaultAdapter(
       if (!normalized.ok) return normalized;
 
       try {
-        const row = await selectMetadata(
-          client,
-          normalized.data.scope,
-          normalized.data.ref,
-        );
-        return row
-          ? { ok: true, data: toMetadata(row) }
-          : notFound(normalized.data.ref);
+        const row = await selectMetadata(client, normalized.data.scope, normalized.data.ref);
+        return row ? { ok: true, data: toMetadata(row) } : notFound(normalized.data.ref);
       } catch {
-        return providerFailure("Could not read secret metadata.");
+        return providerFailure('Could not read secret metadata.');
       }
     },
 
@@ -125,17 +111,11 @@ export function createSupabaseVaultAdapter(
           );
           const created = await executor.query<VaultIdRow>(
             `select vault.create_secret($1, $2, $3)::text as id`,
-            [
-              JSON.stringify(normalized.data.payload),
-              internalName,
-              "Managed by Ankhorage",
-            ],
+            [JSON.stringify(normalized.data.payload), internalName, 'Managed by Ankhorage'],
           );
           const vaultId = created.rows[0]?.id;
           if (!vaultId)
-            return providerFailure(
-              "Supabase Vault did not return a secret identifier.",
-            );
+            return providerFailure('Supabase Vault did not return a secret identifier.');
 
           const inserted = await executor.query<MetadataRow>(
             `insert into ${metadataTable}
@@ -157,10 +137,10 @@ export function createSupabaseVaultAdapter(
           const row = inserted.rows[0];
           return row
             ? { ok: true as const, data: toMetadata(row) }
-            : providerFailure("Secret metadata was not created.");
+            : providerFailure('Secret metadata was not created.');
         });
       } catch {
-        return providerFailure("Could not create the secret.");
+        return providerFailure('Could not create the secret.');
       }
     },
 
@@ -199,10 +179,10 @@ export function createSupabaseVaultAdapter(
           const row = updated.rows[0];
           return row
             ? { ok: true as const, data: toMetadata(row) }
-            : providerFailure("Secret metadata was not updated.");
+            : providerFailure('Secret metadata was not updated.');
         });
       } catch {
-        return providerFailure("Could not replace the secret.");
+        return providerFailure('Could not replace the secret.');
       }
     },
 
@@ -232,7 +212,7 @@ export function createSupabaseVaultAdapter(
           return { ok: true as const };
         });
       } catch {
-        return providerFailure("Could not remove the secret.");
+        return providerFailure('Could not remove the secret.');
       }
     },
 
@@ -248,11 +228,7 @@ export function createSupabaseVaultAdapter(
             where metadata.project_id = $1
               and metadata.environment = $2
               and metadata.secret_ref = $3`,
-          [
-            normalized.data.scope.projectId,
-            normalized.data.scope.environment,
-            normalized.data.ref,
-          ],
+          [normalized.data.scope.projectId, normalized.data.scope.environment, normalized.data.ref],
         );
         const serialized = result.rows[0]?.decrypted_secret;
         if (!serialized) return notFound(normalized.data.ref);
@@ -260,17 +236,15 @@ export function createSupabaseVaultAdapter(
         const payload = parsePayload(serialized);
         return payload
           ? { ok: true, data: payload }
-          : providerFailure("Stored secret payload is invalid.");
+          : providerFailure('Stored secret payload is invalid.');
       } catch {
-        return providerFailure("Could not resolve the secret.");
+        return providerFailure('Could not resolve the secret.');
       }
     },
   };
 }
 
-function normalizeLookup(
-  input: SecretGetMetadataInput | SecretRemoveInput | SecretResolveInput,
-) {
+function normalizeLookup(input: SecretGetMetadataInput | SecretRemoveInput | SecretResolveInput) {
   const scope = normalizeSecretScope(input.scope);
   if (!scope.ok) return scope;
   const ref = normalizeSecretRef(input.ref);
@@ -328,25 +302,16 @@ function toMetadata(row: MetadataRow): SecretMetadata {
   };
 }
 
-function buildInternalName(
-  projectId: string,
-  environment: string,
-  ref: string,
-): string {
+function buildInternalName(projectId: string, environment: string, ref: string): string {
   return `ankhorage/${encodeURIComponent(projectId)}/${encodeURIComponent(environment)}/${ref}`;
 }
 
 function parsePayload(serialized: string): SecretPayload | null {
   try {
     const value: unknown = JSON.parse(serialized);
-    if (typeof value !== "object" || value === null || Array.isArray(value))
-      return null;
+    if (typeof value !== 'object' || value === null || Array.isArray(value)) return null;
     const entries = Object.entries(value);
-    if (
-      entries.length === 0 ||
-      entries.some(([, item]) => typeof item !== "string")
-    )
-      return null;
+    if (entries.length === 0 || entries.some(([, item]) => typeof item !== 'string')) return null;
     return Object.freeze(Object.fromEntries(entries) as Record<string, string>);
   } catch {
     return null;
@@ -356,19 +321,17 @@ function parsePayload(serialized: string): SecretPayload | null {
 function notFound<TData = never>(ref: string): SecretStoreResult<TData> {
   return {
     ok: false,
-    error: { code: "not_found", message: `Secret ${ref} was not found.` },
+    error: { code: 'not_found', message: `Secret ${ref} was not found.` },
   };
 }
 
 function conflict<TData = never>(ref: string): SecretStoreResult<TData> {
   return {
     ok: false,
-    error: { code: "conflict", message: `Secret ${ref} already exists.` },
+    error: { code: 'conflict', message: `Secret ${ref} already exists.` },
   };
 }
 
-function providerFailure<TData = never>(
-  message: string,
-): SecretStoreResult<TData> {
-  return { ok: false, error: { code: "provider_error", message } };
+function providerFailure<TData = never>(message: string): SecretStoreResult<TData> {
+  return { ok: false, error: { code: 'provider_error', message } };
 }

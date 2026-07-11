@@ -1,10 +1,8 @@
-import type { SecretStoreAdapter } from "@ankhorage/contracts/secrets";
+import type { SecretStoreAdapter } from '@ankhorage/contracts/secrets';
 
-export const SUPABASE_VAULT_SECRET_STORE_PROVIDER = "supabase-vault" as const;
+export const SUPABASE_VAULT_SECRET_STORE_PROVIDER = 'supabase-vault' as const;
 
-export interface SupabaseVaultQueryResult<
-  TRow extends Record<string, unknown>,
-> {
+export interface SupabaseVaultQueryResult<TRow extends Record<string, unknown>> {
   readonly rows: readonly TRow[];
 }
 
