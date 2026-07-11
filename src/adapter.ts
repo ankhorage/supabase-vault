@@ -134,7 +134,7 @@ export function createSupabaseVaultAdapter(
             ],
           );
 
-          const row = inserted.rows[0];
+          const [row] = inserted.rows;
           return row
             ? { ok: true as const, data: toMetadata(row) }
             : providerFailure('Secret metadata was not created.');
@@ -176,7 +176,7 @@ export function createSupabaseVaultAdapter(
             ],
           );
 
-          const row = updated.rows[0];
+          const [row] = updated.rows;
           return row
             ? { ok: true as const, data: toMetadata(row) }
             : providerFailure('Secret metadata was not updated.');
