@@ -20,10 +20,6 @@
       "@ankhorage/supabase-vault/migration": ["src/migration.ts"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "eslint.config.mjs",
-    "paradox.config.ts"
-  ],
+  "include": ["src/**/*.ts", "eslint.config.mjs", "paradox.config.ts"],
   "exclude": ["dist", "node_modules"]
 }

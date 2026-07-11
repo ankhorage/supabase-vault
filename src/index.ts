@@ -1,14 +1,8 @@
-export {
-  createSupabaseVaultAdapter,
-  SUPABASE_VAULT_SECRET_STORE_PROVIDER,
-} from "./adapter";
-export {
-  SUPABASE_VAULT_MIGRATION_ID,
-  SUPABASE_VAULT_MIGRATION_SQL,
-} from "./migration";
+export { createSupabaseVaultAdapter, SUPABASE_VAULT_SECRET_STORE_PROVIDER } from './adapter';
+export { SUPABASE_VAULT_MIGRATION_ID, SUPABASE_VAULT_MIGRATION_SQL } from './migration';
 export type {
   SupabaseVaultAdapterOptions,
   SupabaseVaultRpcClient,
   SupabaseVaultRpcError,
   SupabaseVaultRpcResponse,
-} from "./types";
+} from './types';

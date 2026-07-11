@@ -61,34 +61,19 @@
   "usage": null,
   "readmeUsage": [],
   "config": null,
-  "entrypoints": [
-    "src/index.ts",
-    "src/migration.ts"
-  ],
+  "entrypoints": ["src/index.ts", "src/migration.ts"],
   "modules": [
     {
       "path": "src/adapter.ts",
       "isEntrypoint": false,
-      "dependencies": [
-        "src/errors.ts",
-        "src/types.ts"
-      ],
-      "exports": [
-        "createSupabaseVaultAdapter",
-        "SUPABASE_VAULT_SECRET_STORE_PROVIDER"
-      ]
+      "dependencies": ["src/errors.ts", "src/types.ts"],
+      "exports": ["createSupabaseVaultAdapter", "SUPABASE_VAULT_SECRET_STORE_PROVIDER"]
     },
     {
       "path": "src/errors.ts",
       "isEntrypoint": false,
-      "dependencies": [
-        "src/types.ts"
-      ],
-      "exports": [
-        "createSecretStoreError",
-        "mapSupabaseVaultError",
-        "mapUnexpectedError"
-      ]
+      "dependencies": ["src/types.ts"],
+      "exports": ["createSecretStoreError", "mapSupabaseVaultError", "mapUnexpectedError"]
     },
     {
       "path": "src/index.ts",
@@ -109,10 +94,7 @@
       "path": "src/migration.ts",
       "isEntrypoint": true,
       "dependencies": [],
-      "exports": [
-        "SUPABASE_VAULT_MIGRATION_ID",
-        "SUPABASE_VAULT_MIGRATION_SQL"
-      ]
+      "exports": ["SUPABASE_VAULT_MIGRATION_ID", "SUPABASE_VAULT_MIGRATION_SQL"]
     },
     {
       "path": "src/types.ts",
@@ -139,12 +121,8 @@
         "line": 34,
         "column": 1
       },
-      "exportPaths": [
-        "src/index.ts"
-      ],
-      "relatedSymbols": [
-        "SupabaseVaultAdapterOptions"
-      ],
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["SupabaseVaultAdapterOptions"],
       "signatures": [
         {
           "label": "(options: SupabaseVaultAdapterOptions) => SecretStoreAdapter",
@@ -175,10 +153,7 @@
         "line": 1,
         "column": 14
       },
-      "exportPaths": [
-        "src/index.ts",
-        "src/migration.ts"
-      ],
+      "exportPaths": ["src/index.ts", "src/migration.ts"],
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
@@ -196,10 +171,7 @@
         "line": 9,
         "column": 14
       },
-      "exportPaths": [
-        "src/index.ts",
-        "src/migration.ts"
-      ],
+      "exportPaths": ["src/index.ts", "src/migration.ts"],
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
@@ -217,9 +189,7 @@
         "line": 32,
         "column": 14
       },
-      "exportPaths": [
-        "src/index.ts"
-      ],
+      "exportPaths": ["src/index.ts"],
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
@@ -237,12 +207,8 @@
         "line": 19,
         "column": 1
       },
-      "exportPaths": [
-        "src/index.ts"
-      ],
-      "relatedSymbols": [
-        "SupabaseVaultRpcClient"
-      ],
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["SupabaseVaultRpcClient"],
       "signatures": [],
       "members": [
         {
@@ -281,12 +247,8 @@
         "line": 12,
         "column": 1
       },
-      "exportPaths": [
-        "src/index.ts"
-      ],
-      "relatedSymbols": [
-        "SupabaseVaultRpcResponse"
-      ],
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["SupabaseVaultRpcResponse"],
       "signatures": [],
       "members": [
         {
@@ -311,9 +273,7 @@
         "line": 1,
         "column": 1
       },
-      "exportPaths": [
-        "src/index.ts"
-      ],
+      "exportPaths": ["src/index.ts"],
       "relatedSymbols": [],
       "signatures": [],
       "members": [
@@ -346,12 +306,8 @@
         "line": 6,
         "column": 1
       },
-      "exportPaths": [
-        "src/index.ts"
-      ],
-      "relatedSymbols": [
-        "SupabaseVaultRpcError"
-      ],
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["SupabaseVaultRpcError"],
       "signatures": [],
       "members": [
         {

@@ -38,11 +38,11 @@ Source: `src/types.ts:19:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| client | property | `SupabaseVaultRpcClient \| undefined` | no |  |
-| serviceRoleKey | property | `string \| undefined` | no |  |
-| url | property | `string \| undefined` | no |  |
+| Name           | Kind     | Type                                  | Required | Description |
+| -------------- | -------- | ------------------------------------- | -------- | ----------- |
+| client         | property | `SupabaseVaultRpcClient \| undefined` | no       |             |
+| serviceRoleKey | property | `string \| undefined`                 | no       |             |
+| url            | property | `string \| undefined`                 | no       |             |
 
 ## SupabaseVaultRpcClient
 
@@ -52,9 +52,9 @@ Source: `src/types.ts:12:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| rpc | method | `(functionName: string, parameters?: Record<string, unknown>) => PromiseLike<SupabaseVaultRpcResponse>` | yes |  |
+| Name | Kind   | Type                                                                                                    | Required | Description |
+| ---- | ------ | ------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| rpc  | method | `(functionName: string, parameters?: Record<string, unknown>) => PromiseLike<SupabaseVaultRpcResponse>` | yes      |             |
 
 ## SupabaseVaultRpcError
 
@@ -64,10 +64,10 @@ Source: `src/types.ts:1:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| code | property | `string \| undefined` | no |  |
-| message | property | `string` | yes |  |
+| Name    | Kind     | Type                  | Required | Description |
+| ------- | -------- | --------------------- | -------- | ----------- |
+| code    | property | `string \| undefined` | no       |             |
+| message | property | `string`              | yes      |             |
 
 ## SupabaseVaultRpcResponse
 
@@ -77,7 +77,7 @@ Source: `src/types.ts:6:1`
 
 ### Members
 
-| Name | Kind | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| data | property | `unknown` | yes |  |
-| error | property | `SupabaseVaultRpcError \| null` | yes |  |
+| Name  | Kind     | Type                            | Required | Description |
+| ----- | -------- | ------------------------------- | -------- | ----------- |
+| data  | property | `unknown`                       | yes      |             |
+| error | property | `SupabaseVaultRpcError \| null` | yes      |             |
