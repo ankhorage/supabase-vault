@@ -51,6 +51,9 @@ jobs:
       - name: Verify generated docs are committed
         run: git diff --exit-code
 
+      - name: Run Doctor validation
+        run: bunx @ankhorage/doctor@0.7.0 validate .
+
       - name: Check changesets
         if: github.event_name == 'pull_request'
         run: bash ./scripts/check-changeset-status.sh
