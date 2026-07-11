@@ -7,7 +7,7 @@ on:
       - main
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   validate:
@@ -17,7 +17,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref || github.ref_name }}
           fetch-depth: 0
 
       - name: Setup Bun
@@ -28,31 +27,30 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Apply canonical lint and format fixes
-        run: |
-          bun run lint:fix
-          bun run format
+      - name: Run build
+        run: bun run build
 
-      - name: Validate fixed source
-        run: |
-          bun run build
-          bun run typecheck
-          bun run lint
-          bun run format:check
-          bun run test
-          bun run knip
-          bun run docs
+      - name: Run typecheck
+        run: bun run typecheck
 
-      - name: Commit canonical fixes
-        if: github.event_name == 'pull_request' && github.actor != 'github-actions[bot]'
-        run: |
-          git restore .github/workflows
-          rm -f lint-output.txt
-          if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
-            exit 0
-          fi
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -A
-          git commit -m "chore: apply canonical package fixes"
-          git push origin HEAD:${{ github.head_ref }}
+      - name: Run lint
+        run: bun run lint
+
+      - name: Run format check
+        run: bun run format:check
+
+      - name: Run tests
+        run: bun run test
+
+      - name: Run Knip
+        run: bun run knip
+
+      - name: Generate docs
+        run: bun run docs
+
+      - name: Verify generated docs are committed
+        run: git diff --exit-code
+
+      - name: Check changesets
+        if: github.event_name == 'pull_request'
+        run: bash ./scripts/check-changeset-status.sh
