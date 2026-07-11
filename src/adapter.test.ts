@@ -11,13 +11,13 @@ class RecordingClient implements SupabaseVaultSqlClient {
   readonly calls: { sql: string; parameters: readonly unknown[] }[] = [];
   readonly queue: (readonly Record<string, unknown>[])[] = [];
 
-  async query<TRow extends Record<string, unknown>>(
+  query<TRow extends Record<string, unknown>>(
     sql: string,
     parameters: readonly unknown[] = [],
   ): Promise<SupabaseVaultQueryResult<TRow>> {
     this.calls.push({ sql, parameters });
     const rows = this.queue.shift() ?? [];
-    return { rows: rows as readonly TRow[] };
+    return Promise.resolve({ rows: rows as readonly TRow[] });
   }
 
   async transaction<TResult>(
