@@ -17,19 +17,10 @@ jobs:
         with:
           bun-version: 1.3.13
       - run: bun install
-      - name: Capture lint diagnostics
-        id: lint
-        shell: bash
-        run: |
-          set +e
-          bun run lint > lint.log 2>&1
-          status=$?
-          echo "status=$status" >> "$GITHUB_OUTPUT"
-          exit 0
-      - uses: actions/upload-artifact@v4
-        with:
-          name: lint-diagnostics
-          path: lint.log
-      - name: Fail when lint failed
-        if: steps.lint.outputs.status != '0'
-        run: exit 1
+      - run: bun run build
+      - run: bun run typecheck
+      - run: bun run lint
+      - run: bun run test
+      - run: bun run knip
+      - run: bun run format:check
+      - run: bun run docs
