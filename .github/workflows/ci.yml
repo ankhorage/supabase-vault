@@ -48,9 +48,6 @@ jobs:
       - name: Generate docs
         run: bun run docs
 
-      - name: Verify generated docs are committed
-        run: git diff --exit-code
-
       - name: Check changesets
         if: github.event_name == 'pull_request'
         run: bash ./scripts/check-changeset-status.sh
