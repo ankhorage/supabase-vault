@@ -236,7 +236,9 @@ function resolveClient(
       if (!isRecord(rawResponse)) {
         return {
           data: null,
-          error: { message: "Supabase Vault returned an invalid RPC response." },
+          error: {
+            message: "Supabase Vault returned an invalid RPC response.",
+          },
         };
       }
 
@@ -246,7 +248,9 @@ function resolveClient(
       if (!isRecord(error) || typeof error.message !== "string") {
         return {
           data: null,
-          error: { message: "Supabase Vault returned an invalid RPC error response." },
+          error: {
+            message: "Supabase Vault returned an invalid RPC error response.",
+          },
         };
       }
 
