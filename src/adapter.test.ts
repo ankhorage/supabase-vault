@@ -14,21 +14,21 @@ const metadata = {
 };
 
 class FakeRpcClient implements SupabaseVaultRpcClient {
-  readonly calls: Array<{
+  readonly calls: {
     functionName: string;
     parameters?: Record<string, unknown>;
-  }> = [];
+  }[] = [];
 
   constructor(private readonly responses: SupabaseVaultRpcResponse[]) {}
 
-  async rpc(
+  rpc(
     functionName: string,
     parameters?: Record<string, unknown>,
   ): Promise<SupabaseVaultRpcResponse> {
     this.calls.push({ functionName, parameters });
     const response = this.responses.shift();
     if (response === undefined) throw new Error("Missing fake RPC response.");
-    return response;
+    return Promise.resolve(response);
   }
 }
 
