@@ -1,0 +1,88 @@
+{
+  "name": "@ankhorage/supabase-vault",
+  "version": "0.0.0",
+  "description": "Server-only Supabase Vault adapter for Ankhorage secret-store contracts.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "homepage": "https://github.com/ankhorage/supabase-vault#readme",
+  "bugs": {
+    "url": "https://github.com/ankhorage/supabase-vault/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankhorage/supabase-vault.git"
+  },
+  "keywords": [
+    "ankhorage",
+    "supabase",
+    "vault",
+    "secrets",
+    "secret-store",
+    "adapter",
+    "server-only"
+  ],
+  "ankh": {
+    "category": "secrets",
+    "provider": null,
+    "capabilities": [
+      "secrets.store",
+      "secrets.resolve",
+      "secrets.migrations"
+    ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./migration": {
+      "types": "./dist/migration.d.ts",
+      "import": "./dist/migration.js",
+      "default": "./dist/migration.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "src",
+    "package.json",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json",
+    "changeset": "changeset",
+    "changeset:status": "changeset status --since=origin/main",
+    "docs": "paradox",
+    "knip": "ankhorage-knip",
+    "lint": "ankhorage-eslint . --max-warnings=0",
+    "lint:fix": "ankhorage-eslint . --fix --max-warnings=0",
+    "format": "ankhorage-prettier --write .",
+    "format:check": "ankhorage-prettier --check .",
+    "prepack": "bun run build",
+    "test": "bun test src",
+    "typecheck": "bun x tsc --noEmit -p tsconfig.json",
+    "version-packages": "changeset version"
+  },
+  "dependencies": {
+    "@ankhorage/contracts": "^2.1.0",
+    "@supabase/supabase-js": "^2.105.3"
+  },
+  "devDependencies": {
+    "@ankhorage/devtools": "^1.0.6",
+    "@ankhorage/paradox": "^0.1.16",
+    "@changesets/cli": "^2.31.0",
+    "@types/bun": "^1.3.13",
+    "@types/node": "^25.6.0",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "bun@1.3.13",
+  "publishConfig": {
+    "access": "public"
+  }
+}
