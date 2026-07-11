@@ -26,7 +26,7 @@ export interface SupabaseVaultSqlClient extends SupabaseVaultSqlExecutor {
 }
 
 export interface SupabaseVaultAdapterOptions {
-  readonly client: SupabaseVaultSqlClient;
+  readonly client?: SupabaseVaultSqlClient;
 }
 
 export type SupabaseVaultAdapter = SecretStoreAdapter;
