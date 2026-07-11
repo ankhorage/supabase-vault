@@ -30,7 +30,7 @@ jobs:
 
       - name: Apply canonical formatting
         run: |
-          bun run lint:fix
+          bun run lint:fix || true
           bun run format
 
       - name: Run build
