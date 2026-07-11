@@ -20,7 +20,7 @@ class RecordingClient implements SupabaseVaultSqlClient {
     return Promise.resolve({ rows: rows as readonly TRow[] });
   }
 
-  async transaction<TResult>(
+  transaction<TResult>(
     operation: (executor: SupabaseVaultSqlExecutor) => Promise<TResult>,
   ): Promise<TResult> {
     return operation(this);
