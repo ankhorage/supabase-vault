@@ -1,5 +1,3 @@
-import { createClient } from "@supabase/supabase-js";
-
 import type {
   SecretCreateInput,
   SecretGetMetadataInput,
@@ -17,6 +15,7 @@ import {
   normalizeSecretScope,
   validateSecretPayload,
 } from "@ankhorage/contracts/secrets";
+import { createClient } from "@supabase/supabase-js";
 
 import {
   createSecretStoreError,
@@ -233,16 +232,30 @@ function resolveClient(
       functionName: string,
       parameters?: Record<string, unknown>,
     ): Promise<SupabaseVaultRpcResponse> {
-      const { data, error } = await supabase.rpc(functionName, parameters);
+      const rawResponse: unknown = await supabase.rpc(functionName, parameters);
+      if (!isRecord(rawResponse)) {
+        return {
+          data: null,
+          error: { message: "Supabase Vault returned an invalid RPC response." },
+        };
+      }
+
+      const { data, error } = rawResponse;
+      if (error === null) return { data, error: null };
+
+      if (!isRecord(error) || typeof error.message !== "string") {
+        return {
+          data: null,
+          error: { message: "Supabase Vault returned an invalid RPC error response." },
+        };
+      }
+
       return {
         data,
-        error:
-          error === null
-            ? null
-            : {
-                code: error.code,
-                message: error.message,
-              },
+        error: {
+          ...(typeof error.code === "string" ? { code: error.code } : {}),
+          message: error.message,
+        },
       };
     },
   };
@@ -268,13 +281,13 @@ function parseMetadata(value: unknown): SecretStoreResult<SecretMetadata> {
     return invalidProviderResponse("read secret metadata");
   }
 
-  const configuredFields = value.configuredFields;
-  const provider = value.provider;
+  const { configuredFields, provider, scope } = value;
+  const { environment, projectId } = scope;
 
   if (
     typeof value.ref !== "string" ||
-    typeof value.scope.projectId !== "string" ||
-    typeof value.scope.environment !== "string" ||
+    typeof projectId !== "string" ||
+    typeof environment !== "string" ||
     typeof value.kind !== "string" ||
     !Array.isArray(configuredFields) ||
     !configuredFields.every((field) => typeof field === "string") ||
@@ -291,10 +304,7 @@ function parseMetadata(value: unknown): SecretStoreResult<SecretMetadata> {
     ok: true,
     data: {
       ref: value.ref,
-      scope: {
-        projectId: value.scope.projectId,
-        environment: value.scope.environment,
-      },
+      scope: { projectId, environment },
       kind: value.kind,
       ...(typeof provider === "string" ? { provider } : {}),
       configuredFields,
