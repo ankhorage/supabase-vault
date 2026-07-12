@@ -49,7 +49,7 @@
   },
   "ankh": {
     "category": "secret-store",
-    "provider": "supabase-vault",
+    "provider": null,
     "capabilities": [
       "secret-store.metadata",
       "secret-store.resolve",
