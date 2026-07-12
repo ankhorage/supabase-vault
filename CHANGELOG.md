@@ -1,5 +1,11 @@
 # @ankhorage/supabase-vault
 
+## 0.2.2
+
+### Patch Changes
+
+- 821fb81: Mark the package as a non-CLI Ankh provider so its metadata satisfies current package discovery and Doctor validation.
+
 ## 0.2.1
 
 ### Patch Changes
