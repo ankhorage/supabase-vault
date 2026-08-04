@@ -69,9 +69,7 @@ describe('createSupabaseVaultAdapter', () => {
     expect(JSON.stringify(result)).not.toContain('vault-id');
 
     const [, , insertCall] = client.calls;
-    expect(insertCall?.sql).toContain(
-      'array(select jsonb_array_elements_text($7::jsonb))',
-    );
+    expect(insertCall?.sql).toContain('array(select jsonb_array_elements_text($7::jsonb))');
     expect(insertCall?.parameters[6]).toBe('["clientId","clientSecret"]');
     expect(Array.isArray(insertCall?.parameters[6])).toBe(false);
   });
