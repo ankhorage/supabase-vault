@@ -120,7 +120,10 @@ export function createSupabaseVaultAdapter(
           const inserted = await executor.query<MetadataRow>(
             `insert into ${metadataTable}
               (project_id, environment, secret_ref, vault_secret_id, kind, provider, configured_fields)
-             values ($1, $2, $3, $4::uuid, $5, $6, $7::text[])
+             values (
+               $1, $2, $3, $4::uuid, $5, $6,
+               array(select jsonb_array_elements_text($7::jsonb))
+             )
              returning project_id, environment, secret_ref, kind, provider, configured_fields,
                        created_at::text, updated_at::text`,
             [
@@ -130,7 +133,7 @@ export function createSupabaseVaultAdapter(
               vaultId,
               input.kind,
               input.provider ?? null,
-              Object.keys(normalized.data.payload).sort(),
+              serializeConfiguredFields(normalized.data.payload),
             ],
           );
 
@@ -164,7 +167,10 @@ export function createSupabaseVaultAdapter(
 
           const updated = await executor.query<MetadataRow>(
             `update ${metadataTable}
-                set configured_fields = $4::text[], updated_at = now()
+                set configured_fields = array(
+                      select jsonb_array_elements_text($4::jsonb)
+                    ),
+                    updated_at = now()
               where project_id = $1 and environment = $2 and secret_ref = $3
               returning project_id, environment, secret_ref, kind, provider, configured_fields,
                         created_at::text, updated_at::text`,
@@ -172,7 +178,7 @@ export function createSupabaseVaultAdapter(
               normalized.data.scope.projectId,
               normalized.data.scope.environment,
               normalized.data.ref,
-              Object.keys(normalized.data.payload).sort(),
+              serializeConfiguredFields(normalized.data.payload),
             ],
           );
 
@@ -300,6 +306,10 @@ function toMetadata(row: MetadataRow): SecretMetadata {
     createdAt: row.created_at,
     updatedAt: row.updated_at,
   };
+}
+
+function serializeConfiguredFields(payload: SecretPayload): string {
+  return JSON.stringify(Object.keys(payload).sort());
 }
 
 function buildInternalName(projectId: string, environment: string, ref: string): string {
