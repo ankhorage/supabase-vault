@@ -12,7 +12,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.2.0",
+      "value": "v0.2.2",
       "color": "cb3837"
     },
     {
@@ -361,7 +361,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 247,
+        "line": 253,
         "column": 1
       }
     },
@@ -370,7 +370,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 255,
+        "line": 261,
         "column": 1
       }
     },
@@ -379,7 +379,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 263,
+        "line": 269,
         "column": 1
       }
     },
@@ -388,7 +388,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 278,
+        "line": 284,
         "column": 1
       }
     },
@@ -397,7 +397,16 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 293,
+        "line": 299,
+        "column": 1
+      }
+    },
+    {
+      "name": "serializeConfiguredFields",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/adapter.ts",
+        "line": 311,
         "column": 1
       }
     },
@@ -406,7 +415,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 305,
+        "line": 315,
         "column": 1
       }
     },
@@ -415,7 +424,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 309,
+        "line": 319,
         "column": 1
       }
     },
@@ -424,7 +433,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 321,
+        "line": 331,
         "column": 1
       }
     },
@@ -433,7 +442,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 328,
+        "line": 338,
         "column": 1
       }
     },
@@ -442,7 +451,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 335,
+        "line": 345,
         "column": 1
       }
     }
@@ -574,6 +583,12 @@
         "fromSymbol": "src/adapter.ts",
         "toSymbol": "providerFailure",
         "callExpression": "providerFailure",
+        "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "src/adapter.ts",
+        "toSymbol": "serializeConfiguredFields",
+        "callExpression": "serializeConfiguredFields",
         "sourcePath": "src/adapter.ts"
       },
       {
