@@ -1,5 +1,11 @@
 # @ankhorage/supabase-vault
 
+## 0.2.3
+
+### Patch Changes
+
+- c39c870: Serialize configured secret field names through JSON before reconstructing PostgreSQL text arrays, avoiding Bun malformed-array binding failures during secret creation and replacement.
+
 ## 0.2.2
 
 ### Patch Changes
