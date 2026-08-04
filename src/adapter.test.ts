@@ -50,7 +50,7 @@ describe('createSupabaseVaultAdapter', () => {
       ref: 'auth/oauth/google',
       kind: 'oauth',
       provider: 'google',
-      payload: { clientId: 'public-id', clientSecret: 'SENTINEL_SECRET' },
+      payload: { clientSecret: 'SENTINEL_SECRET', clientId: 'public-id' },
     });
 
     expect(result).toEqual({
@@ -67,6 +67,13 @@ describe('createSupabaseVaultAdapter', () => {
     });
     expect(JSON.stringify(result)).not.toContain('SENTINEL_SECRET');
     expect(JSON.stringify(result)).not.toContain('vault-id');
+
+    const insertCall = client.calls[2];
+    expect(insertCall?.sql).toContain(
+      'array(select jsonb_array_elements_text($7::jsonb))',
+    );
+    expect(insertCall?.parameters[6]).toBe('["clientId","clientSecret"]');
+    expect(Array.isArray(insertCall?.parameters[6])).toBe(false);
   });
 
   test('scopes every lookup by project and environment', async () => {
@@ -97,6 +104,11 @@ describe('createSupabaseVaultAdapter', () => {
     expect(result.ok).toBe(true);
     expect(client.calls.some((call) => call.sql.includes('decrypted_secrets'))).toBe(false);
     expect(JSON.stringify(result)).not.toContain('ROTATED_SECRET');
+
+    const updateCall = client.calls[2];
+    expect(updateCall?.sql).toContain('select jsonb_array_elements_text($4::jsonb)');
+    expect(updateCall?.parameters[3]).toBe('["clientSecret"]');
+    expect(Array.isArray(updateCall?.parameters[3])).toBe(false);
   });
 
   test('resolves payload only through the trusted resolve operation', async () => {
