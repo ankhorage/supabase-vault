@@ -68,7 +68,7 @@ describe('createSupabaseVaultAdapter', () => {
     expect(JSON.stringify(result)).not.toContain('SENTINEL_SECRET');
     expect(JSON.stringify(result)).not.toContain('vault-id');
 
-    const insertCall = client.calls[2];
+    const [, , insertCall] = client.calls;
     expect(insertCall?.sql).toContain(
       'array(select jsonb_array_elements_text($7::jsonb))',
     );
@@ -105,7 +105,7 @@ describe('createSupabaseVaultAdapter', () => {
     expect(client.calls.some((call) => call.sql.includes('decrypted_secrets'))).toBe(false);
     expect(JSON.stringify(result)).not.toContain('ROTATED_SECRET');
 
-    const updateCall = client.calls[2];
+    const [, , updateCall] = client.calls;
     expect(updateCall?.sql).toContain('select jsonb_array_elements_text($4::jsonb)');
     expect(updateCall?.parameters[3]).toBe('["clientSecret"]');
     expect(Array.isArray(updateCall?.parameters[3])).toBe(false);
