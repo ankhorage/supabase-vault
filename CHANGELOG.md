@@ -1,5 +1,11 @@
 # @ankhorage/supabase-vault
 
+## 0.2.4
+
+### Patch Changes
+
+- e741bf8: Parse serialized configured-field arrays through PostgreSQL text before converting them to JSONB so Bun SQL does not expose them as JSON scalar strings during secret creation or replacement.
+
 ## 0.2.3
 
 ### Patch Changes
