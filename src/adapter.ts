@@ -122,7 +122,7 @@ export function createSupabaseVaultAdapter(
               (project_id, environment, secret_ref, vault_secret_id, kind, provider, configured_fields)
              values (
                $1, $2, $3, $4::uuid, $5, $6,
-               array(select jsonb_array_elements_text($7::jsonb))
+               array(select jsonb_array_elements_text($7::text::jsonb))
              )
              returning project_id, environment, secret_ref, kind, provider, configured_fields,
                        created_at::text, updated_at::text`,
@@ -168,7 +168,7 @@ export function createSupabaseVaultAdapter(
           const updated = await executor.query<MetadataRow>(
             `update ${metadataTable}
                 set configured_fields = array(
-                      select jsonb_array_elements_text($4::jsonb)
+                      select jsonb_array_elements_text($4::text::jsonb)
                     ),
                     updated_at = now()
               where project_id = $1 and environment = $2 and secret_ref = $3
