@@ -72,7 +72,7 @@
     "prepack": "bun run build"
   },
   "dependencies": {
-    "@ankhorage/contracts": "^8.0.0"
+    "@ankhorage/contracts": "^8.0.1"
   },
   "devDependencies": {
     "@ankhorage/devtools": "^1.0.6",
