@@ -64,23 +64,22 @@
     "lint:fix": "ankhorage-eslint . --fix --max-warnings=0",
     "format": "ankhorage-prettier --write .",
     "format:check": "ankhorage-prettier --check .",
-    "knip": "ankhorage-knip",
     "docs": "paradox",
-    "changeset": "changeset",
-    "changeset:status": "changeset status --since=origin/main",
-    "version-packages": "changeset version",
-    "prepack": "bun run build"
+    "changeset": "ankhorage-changeset",
+    "changeset:status": "ankhorage-changeset status --since=origin/main",
+    "version-packages": "ankhorage-changeset version",
+    "prepack": "bun run build",
+    "knip:check": "ankhorage-knip"
   },
   "dependencies": {
     "@ankhorage/contracts": "^8.0.1"
   },
   "devDependencies": {
-    "@ankhorage/devtools": "^1.0.6",
+    "@ankhorage/devtools": "^1.8.3",
     "@ankhorage/paradox": "^0.1.24",
-    "@changesets/cli": "^2.31.0",
-    "@types/bun": "^1.3.13",
+    "@types/bun": "^1.4.0",
     "@types/node": "^25.6.0",
     "typescript": "^5.9.3"
   },
-  "packageManager": "bun@1.3.13"
+  "packageManager": "bun@1.4.0"
 }
