@@ -5,7 +5,7 @@
     "": {
       "name": "@ankhorage/supabase-vault",
       "dependencies": {
-        "@ankhorage/contracts": "^10.0.0",
+        "@ankhorage/contracts": "^10.1.0",
       },
       "devDependencies": {
         "@ankhorage/devtools": "^1.10.16",
