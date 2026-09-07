@@ -47,15 +47,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "ankh": {
-    "category": "secret-store",
-    "provider": null,
-    "capabilities": [
-      "secret-store.metadata",
-      "secret-store.resolve",
-      "secret-store.rotate"
-    ]
-  },
   "scripts": {
     "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json",
     "typecheck": "bun x tsc --noEmit -p tsconfig.json",
@@ -75,7 +66,7 @@
     "@ankhorage/contracts": "^11.1.0"
   },
   "devDependencies": {
-    "@ankhorage/devtools": "^1.12.0",
+    "@ankhorage/devtools": "^1.12.1",
     "@ankhorage/paradox": "^0.1.24",
     "@types/bun": "^1.4.1",
     "@types/node": "^25.6.0",
