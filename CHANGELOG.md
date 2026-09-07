@@ -1,5 +1,11 @@
 # @ankhorage/supabase-vault
 
+## 0.2.10
+
+### Patch Changes
+
+- 00c9221: Update Ankhorage dependencies: `@ankhorage/contracts`.
+
 ## 0.2.9
 
 ### Patch Changes
