@@ -47,15 +47,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "ankh": {
-    "category": "secret-store",
-    "provider": null,
-    "capabilities": [
-      "secret-store.metadata",
-      "secret-store.resolve",
-      "secret-store.rotate"
-    ]
-  },
   "scripts": {
     "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json",
     "typecheck": "bun x tsc --noEmit -p tsconfig.json",

@@ -1,4 +1,5 @@
 ---
+'@ankhorage/supabase-vault': patch
 ---
 
-Update Ankhorage dependencies: `@ankhorage/devtools`.
+Update Devtools and remove obsolete non-provider Ankh metadata.
