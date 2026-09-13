@@ -1,5 +1,11 @@
 # @ankhorage/supabase-vault
 
+## 0.3.0
+
+### Minor Changes
+
+- 79e7a9c: Add the canonical Infra SecretStore lifecycle while preserving the server-only application adapter.
+
 ## 0.2.12
 
 ### Patch Changes
