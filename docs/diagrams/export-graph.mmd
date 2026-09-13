@@ -1,11 +1,25 @@
 graph LR
   module_src_adapter_ts["src/adapter.ts"]
+  module_src_constants_infra_ts["src/constants/infra.ts"]
+  module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts["src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts"]
+  module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts["src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts"]
+  module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts["src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"]
+  module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts["src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts"]
+  module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts["src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts"]
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts["src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"]
   module_src_index_ts["src/index.ts"]
   module_src_migrations_ts["src/migrations.ts"]
   module_src_types_ts["src/types.ts"]
+  module_src_vaultMetadata_ts["src/vaultMetadata.ts"]
+  module_src_vaultOperations_ts["src/vaultOperations.ts"]
+  export_createInfraAdapter["createInfraAdapter"]
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --> export_createInfraAdapter
+  export_createInfraAdapter -.-> export_SupabaseVaultAdapterOptions
   export_createSupabaseVaultAdapter["createSupabaseVaultAdapter"]
   module_src_adapter_ts --> export_createSupabaseVaultAdapter
   export_createSupabaseVaultAdapter -.-> export_SupabaseVaultAdapterOptions
+  export_infraAdapterDescriptor["infraAdapterDescriptor"]
+  module_src_constants_infra_ts --> export_infraAdapterDescriptor
   export_SUPABASE_VAULT_METADATA_TABLE["SUPABASE_VAULT_METADATA_TABLE"]
   module_src_migrations_ts --> export_SUPABASE_VAULT_METADATA_TABLE
   export_SUPABASE_VAULT_MIGRATION_SQL["SUPABASE_VAULT_MIGRATION_SQL"]

@@ -3,7 +3,7 @@
 
 # SUPABASE-VAULT
 
-![license: MIT](././docs/badges/license.svg) ![npm: v0.2.2](././docs/badges/npm.svg) ![runtime: bun](././docs/badges/runtime.svg) ![typescript: strict](././docs/badges/typescript.svg) ![eslint: checked](././docs/badges/eslint.svg) ![prettier: checked](././docs/badges/prettier.svg) ![build: checked](././docs/badges/build.svg) ![tests: checked](././docs/badges/tests.svg) ![docs: paradox](././docs/badges/docs.svg)
+![license: MIT](././docs/badges/license.svg) ![npm: v0.2.12](././docs/badges/npm.svg) ![runtime: bun](././docs/badges/runtime.svg) ![typescript: strict](././docs/badges/typescript.svg) ![eslint: checked](././docs/badges/eslint.svg) ![prettier: checked](././docs/badges/prettier.svg) ![build: checked](././docs/badges/build.svg) ![tests: checked](././docs/badges/tests.svg) ![docs: paradox](././docs/badges/docs.svg)
 
 Server-only Supabase Vault secret-store adapter for Ankhorage.
 
@@ -15,3 +15,26 @@ Server-only Supabase Vault secret-store adapter for Ankhorage.
 - [Architecture overview](././docs/diagrams/architecture-overview.mmd)
 - [Module relationships](././docs/diagrams/module-relationships.mmd)
 - [Export graph](././docs/diagrams/export-graph.mmd)
+- [createSupabaseVaultAdapter sequence](././docs/diagrams/sequences/create-supabase-vault-adapter.mmd)
+
+## Public API
+
+### Utilities
+
+<details>
+<summary>createInfraAdapter</summary>
+
+```ts
+createInfraAdapter(options: SupabaseVaultAdapterOptions) => InfraServiceAdapter
+```
+
+Create the canonical Supabase Vault Infra service adapter.
+
+It owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access
+remains an injected trusted SQL port and never depends on the managed secret store itself.
+
+Module: `src/features/secret-store-infrastructure/composition/createInfraAdapter.ts`
+Source: `src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:18:1`
+Related symbols: `SupabaseVaultAdapterOptions`
+
+</details>

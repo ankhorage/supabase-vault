@@ -1,4 +1,6 @@
 export { createSupabaseVaultAdapter } from './adapter.js';
+export { infraAdapterDescriptor } from './constants/infra.js';
+export { createInfraAdapter } from './features/secret-store-infrastructure/composition/createInfraAdapter.js';
 export {
   SUPABASE_VAULT_METADATA_TABLE,
   SUPABASE_VAULT_MIGRATION_SQL,

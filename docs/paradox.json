@@ -2,6 +2,8 @@
   "packageName": "SUPABASE-VAULT",
   "packageId": "@ankhorage/supabase-vault",
   "description": "Server-only Supabase Vault secret-store adapter for Ankhorage.",
+  "collaborators": null,
+  "donation": null,
   "badges": [
     {
       "id": "license",
@@ -12,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.2.2",
+      "value": "v0.2.12",
       "color": "cb3837"
     },
     {
@@ -59,22 +61,86 @@
     }
   ],
   "usage": null,
+  "readmeUsageDescription": null,
   "readmeUsage": [],
+  "readmeCli": null,
+  "readmeConfig": null,
   "config": null,
   "entrypoints": ["src/index.ts"],
   "modules": [
     {
       "path": "src/adapter.ts",
       "isEntrypoint": false,
-      "dependencies": ["src/migrations.ts", "src/types.ts"],
+      "dependencies": ["src/types.ts", "src/vaultOperations.ts"],
       "exports": ["createSupabaseVaultAdapter"]
+    },
+    {
+      "path": "src/constants/infra.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["infraAdapterDescriptor"]
+    },
+    {
+      "path": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/migrations.ts", "src/types.ts"],
+      "exports": ["destroySupabaseVaultAsync"]
+    },
+    {
+      "path": "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+        "src/types.ts"
+      ],
+      "exports": ["getSupabaseVaultStatusAsync"]
+    },
+    {
+      "path": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/migrations.ts", "src/types.ts"],
+      "exports": ["inspectSupabaseVaultAsync", "SupabaseVaultInfrastructureObservation"]
+    },
+    {
+      "path": "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+        "src/types.ts"
+      ],
+      "exports": ["planSupabaseVaultAsync"]
+    },
+    {
+      "path": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+        "src/migrations.ts",
+        "src/types.ts"
+      ],
+      "exports": ["reconcileSupabaseVaultAsync"]
+    },
+    {
+      "path": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/constants/infra.ts",
+        "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
+        "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts",
+        "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts",
+        "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts",
+        "src/types.ts"
+      ],
+      "exports": ["createInfraAdapter"]
     },
     {
       "path": "src/index.ts",
       "isEntrypoint": true,
       "dependencies": [],
       "exports": [
+        "createInfraAdapter",
         "createSupabaseVaultAdapter",
+        "infraAdapterDescriptor",
         "SUPABASE_VAULT_METADATA_TABLE",
         "SUPABASE_VAULT_MIGRATION_SQL",
         "SUPABASE_VAULT_SCHEMA",
@@ -108,9 +174,61 @@
         "SupabaseVaultSqlClient",
         "SupabaseVaultSqlExecutor"
       ]
+    },
+    {
+      "path": "src/vaultMetadata.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/migrations.ts", "src/types.ts"],
+      "exports": [
+        "InternalVaultMetadataRow",
+        "selectInternalVaultMetadata",
+        "selectVaultMetadata",
+        "serializeConfiguredFields",
+        "toSecretMetadata",
+        "VAULT_METADATA_TABLE",
+        "VaultMetadataRow"
+      ]
+    },
+    {
+      "path": "src/vaultOperations.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/types.ts", "src/vaultMetadata.ts"],
+      "exports": ["createVaultOperations"]
     }
   ],
   "exports": [
+    {
+      "name": "createInfraAdapter",
+      "description": "Create the canonical Supabase Vault Infra service adapter.\n\nIt owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access\nremains an injected trusted SQL port and never depends on the managed secret store itself.",
+      "isReadme": true,
+      "examples": [],
+      "kind": "function",
+      "modulePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+      "sourceLocation": {
+        "filePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+        "line": 18,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["SupabaseVaultAdapterOptions"],
+      "signatures": [
+        {
+          "label": "(options: SupabaseVaultAdapterOptions) => InfraServiceAdapter",
+          "parameters": [
+            {
+              "name": "options",
+              "type": "SupabaseVaultAdapterOptions",
+              "required": true,
+              "description": null
+            }
+          ],
+          "returnType": "InfraServiceAdapter",
+          "returnDescription": null
+        }
+      ],
+      "members": [],
+      "structuredRows": []
+    },
     {
       "name": "createSupabaseVaultAdapter",
       "description": null,
@@ -120,7 +238,7 @@
       "modulePath": "src/adapter.ts",
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 45,
+        "line": 6,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -140,6 +258,24 @@
           "returnDescription": null
         }
       ],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "infraAdapterDescriptor",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/constants/infra.ts",
+      "sourceLocation": {
+        "filePath": "src/constants/infra.ts",
+        "line": 5,
+        "column": 14
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
       "members": [],
       "structuredRows": []
     },
@@ -352,52 +488,160 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/adapter.ts",
-        "line": 45,
+        "line": 6,
         "column": 1
       }
     },
     {
-      "name": "normalizeLookup",
-      "description": null,
+      "name": "destroySupabaseVaultAsync",
+      "description": "Delete only the confirmed project and environment namespace from the shared Vault schema.",
       "sourceLocation": {
-        "filePath": "src/adapter.ts",
-        "line": 253,
+        "filePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
+        "line": 13,
         "column": 1
       }
     },
     {
-      "name": "normalizeWrite",
-      "description": null,
+      "name": "isOwnedByContext",
+      "description": "Match only resources whose complete identity belongs to this adapter execution.",
       "sourceLocation": {
-        "filePath": "src/adapter.ts",
-        "line": 261,
+        "filePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
+        "line": 52,
         "column": 1
       }
     },
     {
-      "name": "selectMetadata",
-      "description": null,
+      "name": "isConfirmed",
+      "description": "Verify exact project and environment confirmation before destructive work.",
       "sourceLocation": {
-        "filePath": "src/adapter.ts",
-        "line": 269,
+        "filePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
+        "line": 61,
         "column": 1
       }
     },
     {
-      "name": "selectInternalMetadata",
-      "description": null,
+      "name": "resourceKey",
+      "description": "Serialize the complete identity used for destructive authorization.",
       "sourceLocation": {
-        "filePath": "src/adapter.ts",
-        "line": 284,
+        "filePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
+        "line": 71,
         "column": 1
       }
     },
     {
-      "name": "toMetadata",
+      "name": "unconfirmed",
+      "description": "Reject an unconfirmed destructive request.",
+      "sourceLocation": {
+        "filePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
+        "line": 76,
+        "column": 1
+      }
+    },
+    {
+      "name": "destroyFailure",
+      "description": "Translate destructive SQL failures without exposing query data.",
+      "sourceLocation": {
+        "filePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
+        "line": 90,
+        "column": 1
+      }
+    },
+    {
+      "name": "getSupabaseVaultStatusAsync",
+      "description": "Report canonical readiness for the Supabase Vault extension and metadata schema.",
+      "sourceLocation": {
+        "filePath": "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts",
+        "line": 11,
+        "column": 1
+      }
+    },
+    {
+      "name": "inspectSupabaseVaultAsync",
+      "description": "Inspect the Supabase Vault extension and Ankhorage metadata schema without mutation.",
+      "sourceLocation": {
+        "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+        "line": 17,
+        "column": 1
+      }
+    },
+    {
+      "name": "createOwner",
+      "description": "Create stable ownership for one persistent project and environment secret namespace.",
+      "sourceLocation": {
+        "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+        "line": 51,
+        "column": 1
+      }
+    },
+    {
+      "name": "invalidSelection",
+      "description": "Reject lifecycle calls when the canonical SecretStore provider is not selected.",
+      "sourceLocation": {
+        "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+        "line": 74,
+        "column": 1
+      }
+    },
+    {
+      "name": "invalidObservation",
+      "description": "Reject an unexpected SQL inspection result.",
+      "sourceLocation": {
+        "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+        "line": 88,
+        "column": 1
+      }
+    },
+    {
+      "name": "providerFailure",
+      "description": "Translate SQL boundary failures without exposing query parameters or secrets.",
+      "sourceLocation": {
+        "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+        "line": 93,
+        "column": 1
+      }
+    },
+    {
+      "name": "planSupabaseVaultAsync",
+      "description": "Plan creation, repair or no-op convergence for Supabase Vault infrastructure.",
+      "sourceLocation": {
+        "filePath": "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts",
+        "line": 11,
+        "column": 1
+      }
+    },
+    {
+      "name": "reconcileSupabaseVaultAsync",
+      "description": "Idempotently apply the canonical Supabase Vault migration and return its ownership.",
+      "sourceLocation": {
+        "filePath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts",
+        "line": 12,
+        "column": 1
+      }
+    },
+    {
+      "name": "createInfraAdapter",
+      "description": "Create the canonical Supabase Vault Infra service adapter.\n\nIt owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access\nremains an injected trusted SQL port and never depends on the managed secret store itself.",
+      "sourceLocation": {
+        "filePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+        "line": 18,
+        "column": 1
+      }
+    },
+    {
+      "name": "selectInternalVaultMetadata",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/adapter.ts",
-        "line": 299,
+        "filePath": "src/vaultMetadata.ts",
+        "line": 23,
+        "column": 1
+      }
+    },
+    {
+      "name": "selectVaultMetadata",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultMetadata.ts",
+        "line": 38,
         "column": 1
       }
     },
@@ -405,8 +649,134 @@
       "name": "serializeConfiguredFields",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/adapter.ts",
-        "line": 311,
+        "filePath": "src/vaultMetadata.ts",
+        "line": 53,
+        "column": 1
+      }
+    },
+    {
+      "name": "toSecretMetadata",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultMetadata.ts",
+        "line": 57,
+        "column": 1
+      }
+    },
+    {
+      "name": "createVaultOperations",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultOperations.ts",
+        "line": 36,
+        "column": 1
+      }
+    },
+    {
+      "name": "createSecret",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultOperations.ts",
+        "line": 47,
+        "column": 1
+      }
+    },
+    {
+      "name": "createSecretInTransaction",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultOperations.ts",
+        "line": 59,
+        "column": 1
+      }
+    },
+    {
+      "name": "getSecretMetadata",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultOperations.ts",
+        "line": 80,
+        "column": 1
+      }
+    },
+    {
+      "name": "insertMetadata",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultOperations.ts",
+        "line": 91,
+        "column": 1
+      }
+    },
+    {
+      "name": "listSecrets",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultOperations.ts",
+        "line": 120,
+        "column": 1
+      }
+    },
+    {
+      "name": "removeSecret",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultOperations.ts",
+        "line": 140,
+        "column": 1
+      }
+    },
+    {
+      "name": "removeSecretInTransaction",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultOperations.ts",
+        "line": 152,
+        "column": 1
+      }
+    },
+    {
+      "name": "replaceSecret",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultOperations.ts",
+        "line": 170,
+        "column": 1
+      }
+    },
+    {
+      "name": "replaceSecretInTransaction",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultOperations.ts",
+        "line": 182,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveSecret",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultOperations.ts",
+        "line": 212,
+        "column": 1
+      }
+    },
+    {
+      "name": "normalizeLookup",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultOperations.ts",
+        "line": 236,
+        "column": 1
+      }
+    },
+    {
+      "name": "normalizeWrite",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultOperations.ts",
+        "line": 243,
         "column": 1
       }
     },
@@ -414,26 +784,8 @@
       "name": "buildInternalName",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/adapter.ts",
-        "line": 315,
-        "column": 1
-      }
-    },
-    {
-      "name": "parsePayload",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/adapter.ts",
-        "line": 319,
-        "column": 1
-      }
-    },
-    {
-      "name": "notFound",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/adapter.ts",
-        "line": 331,
+        "filePath": "src/vaultOperations.ts",
+        "line": 252,
         "column": 1
       }
     },
@@ -441,8 +793,26 @@
       "name": "conflict",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/adapter.ts",
-        "line": 338,
+        "filePath": "src/vaultOperations.ts",
+        "line": 256,
+        "column": 1
+      }
+    },
+    {
+      "name": "notFound",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultOperations.ts",
+        "line": 260,
+        "column": 1
+      }
+    },
+    {
+      "name": "parsePayload",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/vaultOperations.ts",
+        "line": 264,
         "column": 1
       }
     },
@@ -450,13 +820,21 @@
       "name": "providerFailure",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/adapter.ts",
-        "line": 345,
+        "filePath": "src/vaultOperations.ts",
+        "line": 276,
         "column": 1
       }
     }
   ],
   "sequenceScenarios": [
+    {
+      "kind": "export",
+      "name": "createInfraAdapter",
+      "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+      "symbolName": "createInfraAdapter",
+      "description": "Create the canonical Supabase Vault Infra service adapter.\n\nIt owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access\nremains an injected trusted SQL port and never depends on the managed secret store itself.",
+      "isReadme": true
+    },
     {
       "kind": "export",
       "name": "createSupabaseVaultAdapter",
@@ -470,12 +848,12 @@
     "imports": [
       {
         "fromPath": "src/adapter.ts",
-        "toPath": "src/migrations.ts",
+        "toPath": "src/types.ts",
         "sourcePath": "src/adapter.ts"
       },
       {
         "fromPath": "src/adapter.ts",
-        "toPath": "src/types.ts",
+        "toPath": "src/vaultOperations.ts",
         "sourcePath": "src/adapter.ts"
       },
       {
@@ -485,6 +863,16 @@
       },
       {
         "fromPath": "src/index.ts",
+        "toPath": "src/constants/infra.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
         "toPath": "src/migrations.ts",
         "sourcePath": "src/index.ts"
       },
@@ -492,230 +880,581 @@
         "fromPath": "src/index.ts",
         "toPath": "src/types.ts",
         "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/vaultMetadata.ts",
+        "toPath": "src/migrations.ts",
+        "sourcePath": "src/vaultMetadata.ts"
+      },
+      {
+        "fromPath": "src/vaultMetadata.ts",
+        "toPath": "src/types.ts",
+        "sourcePath": "src/vaultMetadata.ts"
+      },
+      {
+        "fromPath": "src/vaultOperations.ts",
+        "toPath": "src/types.ts",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromPath": "src/vaultOperations.ts",
+        "toPath": "src/vaultMetadata.ts",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
+        "toPath": "src/migrations.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
+        "toPath": "src/types.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts",
+        "toPath": "src/types.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts",
+        "toPath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+        "toPath": "src/migrations.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+        "toPath": "src/types.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts",
+        "toPath": "src/types.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts",
+        "toPath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts",
+        "toPath": "src/migrations.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts",
+        "toPath": "src/types.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts",
+        "toPath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+        "toPath": "src/constants/infra.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+        "toPath": "src/types.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+        "toPath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+        "toPath": "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+        "toPath": "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
+      },
+      {
+        "fromPath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+        "toPath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts",
+        "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
       }
     ],
     "calls": [
       {
-        "fromSymbol": "list",
-        "toSymbol": "normalizeSecretScope",
-        "callExpression": "normalizeSecretScope",
+        "fromSymbol": "createSupabaseVaultAdapter",
+        "toSymbol": "createVaultOperations",
+        "callExpression": "createVaultOperations",
         "sourcePath": "src/adapter.ts"
       },
       {
-        "fromSymbol": "list",
-        "toSymbol": "query",
-        "callExpression": "client.query",
-        "sourcePath": "src/adapter.ts"
-      },
-      {
-        "fromSymbol": "list",
-        "toSymbol": "providerFailure",
-        "callExpression": "providerFailure",
-        "sourcePath": "src/adapter.ts"
-      },
-      {
-        "fromSymbol": "getMetadata",
-        "toSymbol": "normalizeLookup",
-        "callExpression": "normalizeLookup",
-        "sourcePath": "src/adapter.ts"
-      },
-      {
-        "fromSymbol": "getMetadata",
-        "toSymbol": "selectMetadata",
-        "callExpression": "selectMetadata",
-        "sourcePath": "src/adapter.ts"
-      },
-      {
-        "fromSymbol": "getMetadata",
-        "toSymbol": "toMetadata",
-        "callExpression": "toMetadata",
-        "sourcePath": "src/adapter.ts"
-      },
-      {
-        "fromSymbol": "getMetadata",
-        "toSymbol": "notFound",
-        "callExpression": "notFound",
-        "sourcePath": "src/adapter.ts"
-      },
-      {
-        "fromSymbol": "getMetadata",
-        "toSymbol": "providerFailure",
-        "callExpression": "providerFailure",
-        "sourcePath": "src/adapter.ts"
-      },
-      {
-        "fromSymbol": "create",
-        "toSymbol": "normalizeWrite",
-        "callExpression": "normalizeWrite",
-        "sourcePath": "src/adapter.ts"
-      },
-      {
-        "fromSymbol": "create",
-        "toSymbol": "transaction",
-        "callExpression": "client.transaction",
-        "sourcePath": "src/adapter.ts"
-      },
-      {
-        "fromSymbol": "src/adapter.ts",
-        "toSymbol": "selectMetadata",
-        "callExpression": "selectMetadata",
-        "sourcePath": "src/adapter.ts"
-      },
-      {
-        "fromSymbol": "src/adapter.ts",
-        "toSymbol": "conflict",
-        "callExpression": "conflict",
-        "sourcePath": "src/adapter.ts"
-      },
-      {
-        "fromSymbol": "src/adapter.ts",
-        "toSymbol": "buildInternalName",
-        "callExpression": "buildInternalName",
-        "sourcePath": "src/adapter.ts"
-      },
-      {
-        "fromSymbol": "src/adapter.ts",
+        "fromSymbol": "selectInternalVaultMetadata",
         "toSymbol": "query",
         "callExpression": "executor.query",
-        "sourcePath": "src/adapter.ts"
+        "sourcePath": "src/vaultMetadata.ts"
       },
       {
-        "fromSymbol": "src/adapter.ts",
-        "toSymbol": "providerFailure",
-        "callExpression": "providerFailure",
-        "sourcePath": "src/adapter.ts"
+        "fromSymbol": "selectVaultMetadata",
+        "toSymbol": "query",
+        "callExpression": "executor.query",
+        "sourcePath": "src/vaultMetadata.ts"
       },
       {
-        "fromSymbol": "src/adapter.ts",
-        "toSymbol": "serializeConfiguredFields",
-        "callExpression": "serializeConfiguredFields",
-        "sourcePath": "src/adapter.ts"
+        "fromSymbol": "list",
+        "toSymbol": "listSecrets",
+        "callExpression": "listSecrets",
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
-        "fromSymbol": "src/adapter.ts",
-        "toSymbol": "toMetadata",
-        "callExpression": "toMetadata",
-        "sourcePath": "src/adapter.ts"
+        "fromSymbol": "getMetadata",
+        "toSymbol": "getSecretMetadata",
+        "callExpression": "getSecretMetadata",
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
         "fromSymbol": "create",
-        "toSymbol": "providerFailure",
-        "callExpression": "providerFailure",
-        "sourcePath": "src/adapter.ts"
+        "toSymbol": "createSecret",
+        "callExpression": "createSecret",
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
         "fromSymbol": "replace",
+        "toSymbol": "replaceSecret",
+        "callExpression": "replaceSecret",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "remove",
+        "toSymbol": "removeSecret",
+        "callExpression": "removeSecret",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "resolve",
+        "toSymbol": "resolveSecret",
+        "callExpression": "resolveSecret",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "createSecret",
         "toSymbol": "normalizeWrite",
         "callExpression": "normalizeWrite",
-        "sourcePath": "src/adapter.ts"
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
-        "fromSymbol": "replace",
+        "fromSymbol": "createSecret",
         "toSymbol": "transaction",
         "callExpression": "client.transaction",
-        "sourcePath": "src/adapter.ts"
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
-        "fromSymbol": "src/adapter.ts",
-        "toSymbol": "selectInternalMetadata",
-        "callExpression": "selectInternalMetadata",
-        "sourcePath": "src/adapter.ts"
+        "fromSymbol": "src/vaultOperations.ts",
+        "toSymbol": "createSecretInTransaction",
+        "callExpression": "createSecretInTransaction",
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
-        "fromSymbol": "src/adapter.ts",
+        "fromSymbol": "createSecret",
+        "toSymbol": "providerFailure",
+        "callExpression": "providerFailure",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "createSecretInTransaction",
+        "toSymbol": "selectVaultMetadata",
+        "callExpression": "selectVaultMetadata",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "createSecretInTransaction",
+        "toSymbol": "conflict",
+        "callExpression": "conflict",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "createSecretInTransaction",
+        "toSymbol": "buildInternalName",
+        "callExpression": "buildInternalName",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "createSecretInTransaction",
+        "toSymbol": "query",
+        "callExpression": "executor.query",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "createSecretInTransaction",
+        "toSymbol": "providerFailure",
+        "callExpression": "providerFailure",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "createSecretInTransaction",
+        "toSymbol": "insertMetadata",
+        "callExpression": "insertMetadata",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "getSecretMetadata",
+        "toSymbol": "normalizeLookup",
+        "callExpression": "normalizeLookup",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "getSecretMetadata",
+        "toSymbol": "selectVaultMetadata",
+        "callExpression": "selectVaultMetadata",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "getSecretMetadata",
+        "toSymbol": "toSecretMetadata",
+        "callExpression": "toSecretMetadata",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "getSecretMetadata",
         "toSymbol": "notFound",
         "callExpression": "notFound",
-        "sourcePath": "src/adapter.ts"
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
-        "fromSymbol": "replace",
+        "fromSymbol": "getSecretMetadata",
         "toSymbol": "providerFailure",
         "callExpression": "providerFailure",
-        "sourcePath": "src/adapter.ts"
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
-        "fromSymbol": "remove",
-        "toSymbol": "normalizeLookup",
-        "callExpression": "normalizeLookup",
-        "sourcePath": "src/adapter.ts"
+        "fromSymbol": "insertMetadata",
+        "toSymbol": "query",
+        "callExpression": "executor.query",
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
-        "fromSymbol": "remove",
-        "toSymbol": "transaction",
-        "callExpression": "client.transaction",
-        "sourcePath": "src/adapter.ts"
+        "fromSymbol": "insertMetadata",
+        "toSymbol": "serializeConfiguredFields",
+        "callExpression": "serializeConfiguredFields",
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
-        "fromSymbol": "remove",
+        "fromSymbol": "insertMetadata",
+        "toSymbol": "toSecretMetadata",
+        "callExpression": "toSecretMetadata",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "insertMetadata",
         "toSymbol": "providerFailure",
         "callExpression": "providerFailure",
-        "sourcePath": "src/adapter.ts"
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
-        "fromSymbol": "resolve",
-        "toSymbol": "normalizeLookup",
-        "callExpression": "normalizeLookup",
-        "sourcePath": "src/adapter.ts"
+        "fromSymbol": "listSecrets",
+        "toSymbol": "normalizeSecretScope",
+        "callExpression": "normalizeSecretScope",
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
-        "fromSymbol": "resolve",
+        "fromSymbol": "listSecrets",
         "toSymbol": "query",
         "callExpression": "client.query",
-        "sourcePath": "src/adapter.ts"
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
-        "fromSymbol": "resolve",
-        "toSymbol": "notFound",
-        "callExpression": "notFound",
-        "sourcePath": "src/adapter.ts"
-      },
-      {
-        "fromSymbol": "resolve",
-        "toSymbol": "parsePayload",
-        "callExpression": "parsePayload",
-        "sourcePath": "src/adapter.ts"
-      },
-      {
-        "fromSymbol": "resolve",
+        "fromSymbol": "listSecrets",
         "toSymbol": "providerFailure",
         "callExpression": "providerFailure",
-        "sourcePath": "src/adapter.ts"
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "removeSecret",
+        "toSymbol": "normalizeLookup",
+        "callExpression": "normalizeLookup",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "removeSecret",
+        "toSymbol": "transaction",
+        "callExpression": "client.transaction",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "src/vaultOperations.ts",
+        "toSymbol": "removeSecretInTransaction",
+        "callExpression": "removeSecretInTransaction",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "removeSecret",
+        "toSymbol": "providerFailure",
+        "callExpression": "providerFailure",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "removeSecretInTransaction",
+        "toSymbol": "query",
+        "callExpression": "executor.query",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "removeSecretInTransaction",
+        "toSymbol": "notFound",
+        "callExpression": "notFound",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "replaceSecret",
+        "toSymbol": "normalizeWrite",
+        "callExpression": "normalizeWrite",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "replaceSecret",
+        "toSymbol": "transaction",
+        "callExpression": "client.transaction",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "src/vaultOperations.ts",
+        "toSymbol": "replaceSecretInTransaction",
+        "callExpression": "replaceSecretInTransaction",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "replaceSecret",
+        "toSymbol": "providerFailure",
+        "callExpression": "providerFailure",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "replaceSecretInTransaction",
+        "toSymbol": "selectInternalVaultMetadata",
+        "callExpression": "selectInternalVaultMetadata",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "replaceSecretInTransaction",
+        "toSymbol": "notFound",
+        "callExpression": "notFound",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "replaceSecretInTransaction",
+        "toSymbol": "query",
+        "callExpression": "executor.query",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "replaceSecretInTransaction",
+        "toSymbol": "serializeConfiguredFields",
+        "callExpression": "serializeConfiguredFields",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "replaceSecretInTransaction",
+        "toSymbol": "toSecretMetadata",
+        "callExpression": "toSecretMetadata",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "replaceSecretInTransaction",
+        "toSymbol": "providerFailure",
+        "callExpression": "providerFailure",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "resolveSecret",
+        "toSymbol": "normalizeLookup",
+        "callExpression": "normalizeLookup",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "resolveSecret",
+        "toSymbol": "query",
+        "callExpression": "client.query",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "resolveSecret",
+        "toSymbol": "notFound",
+        "callExpression": "notFound",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "resolveSecret",
+        "toSymbol": "parsePayload",
+        "callExpression": "parsePayload",
+        "sourcePath": "src/vaultOperations.ts"
+      },
+      {
+        "fromSymbol": "resolveSecret",
+        "toSymbol": "providerFailure",
+        "callExpression": "providerFailure",
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
         "fromSymbol": "normalizeLookup",
         "toSymbol": "normalizeSecretScope",
         "callExpression": "normalizeSecretScope",
-        "sourcePath": "src/adapter.ts"
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
         "fromSymbol": "normalizeLookup",
         "toSymbol": "normalizeSecretRef",
         "callExpression": "normalizeSecretRef",
-        "sourcePath": "src/adapter.ts"
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
         "fromSymbol": "normalizeWrite",
         "toSymbol": "normalizeLookup",
         "callExpression": "normalizeLookup",
-        "sourcePath": "src/adapter.ts"
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
         "fromSymbol": "normalizeWrite",
         "toSymbol": "validateSecretPayload",
         "callExpression": "validateSecretPayload",
-        "sourcePath": "src/adapter.ts"
+        "sourcePath": "src/vaultOperations.ts"
       },
       {
-        "fromSymbol": "selectMetadata",
-        "toSymbol": "query",
-        "callExpression": "executor.query",
-        "sourcePath": "src/adapter.ts"
+        "fromSymbol": "destroySupabaseVaultAsync",
+        "toSymbol": "isConfirmed",
+        "callExpression": "isConfirmed",
+        "sourcePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts"
       },
       {
-        "fromSymbol": "selectInternalMetadata",
+        "fromSymbol": "destroySupabaseVaultAsync",
+        "toSymbol": "unconfirmed",
+        "callExpression": "unconfirmed",
+        "sourcePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "destroySupabaseVaultAsync",
+        "toSymbol": "isOwnedByContext",
+        "callExpression": "isOwnedByContext",
+        "sourcePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
+        "toSymbol": "resourceKey",
+        "callExpression": "resourceKey",
+        "sourcePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "destroySupabaseVaultAsync",
+        "toSymbol": "transaction",
+        "callExpression": "client.transaction",
+        "sourcePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
         "toSymbol": "query",
         "callExpression": "executor.query",
-        "sourcePath": "src/adapter.ts"
+        "sourcePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "destroySupabaseVaultAsync",
+        "toSymbol": "destroyFailure",
+        "callExpression": "destroyFailure",
+        "sourcePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "getSupabaseVaultStatusAsync",
+        "toSymbol": "inspectSupabaseVaultAsync",
+        "callExpression": "inspectSupabaseVaultAsync",
+        "sourcePath": "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectSupabaseVaultAsync",
+        "toSymbol": "invalidSelection",
+        "callExpression": "invalidSelection",
+        "sourcePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectSupabaseVaultAsync",
+        "toSymbol": "query",
+        "callExpression": "client.query",
+        "sourcePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectSupabaseVaultAsync",
+        "toSymbol": "invalidObservation",
+        "callExpression": "invalidObservation",
+        "sourcePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectSupabaseVaultAsync",
+        "toSymbol": "createOwner",
+        "callExpression": "createOwner",
+        "sourcePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectSupabaseVaultAsync",
+        "toSymbol": "providerFailure",
+        "callExpression": "providerFailure",
+        "sourcePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "invalidObservation",
+        "toSymbol": "providerFailure",
+        "callExpression": "providerFailure",
+        "sourcePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "planSupabaseVaultAsync",
+        "toSymbol": "inspectSupabaseVaultAsync",
+        "callExpression": "inspectSupabaseVaultAsync",
+        "sourcePath": "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "reconcileSupabaseVaultAsync",
+        "toSymbol": "inspectSupabaseVaultAsync",
+        "callExpression": "inspectSupabaseVaultAsync",
+        "sourcePath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "reconcileSupabaseVaultAsync",
+        "toSymbol": "query",
+        "callExpression": "client.query",
+        "sourcePath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "validateAsync",
+        "toSymbol": "planSupabaseVaultAsync",
+        "callExpression": "planSupabaseVaultAsync",
+        "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
+      },
+      {
+        "fromSymbol": "planAsync",
+        "toSymbol": "planSupabaseVaultAsync",
+        "callExpression": "planSupabaseVaultAsync",
+        "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
+      },
+      {
+        "fromSymbol": "reconcileAsync",
+        "toSymbol": "reconcileSupabaseVaultAsync",
+        "callExpression": "reconcileSupabaseVaultAsync",
+        "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
+      },
+      {
+        "fromSymbol": "statusAsync",
+        "toSymbol": "getSupabaseVaultStatusAsync",
+        "callExpression": "getSupabaseVaultStatusAsync",
+        "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
+      },
+      {
+        "fromSymbol": "destroyAsync",
+        "toSymbol": "destroySupabaseVaultAsync",
+        "callExpression": "destroySupabaseVaultAsync",
+        "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
       }
     ],
     "typeReferences": [
@@ -728,6 +1467,16 @@
         "fromSymbol": "createSupabaseVaultAdapter",
         "toType": "SupabaseVaultAdapterOptions",
         "sourcePath": "src/adapter.ts"
+      },
+      {
+        "fromSymbol": "createInfraAdapter",
+        "toType": "InfraServiceAdapter",
+        "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
+      },
+      {
+        "fromSymbol": "createInfraAdapter",
+        "toType": "SupabaseVaultAdapterOptions",
+        "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
       },
       {
         "fromSymbol": "SupabaseVaultAdapterOptions",

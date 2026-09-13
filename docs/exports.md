@@ -1,16 +1,39 @@
 # Public API
 
+## createInfraAdapter
+
+Kind: `function`
+Module: `src/features/secret-store-infrastructure/composition/createInfraAdapter.ts`
+Source: `src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:18:1`
+
+Create the canonical Supabase Vault Infra service adapter.
+
+It owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access
+remains an injected trusted SQL port and never depends on the managed secret store itself.
+
+### Signatures
+
+- `(options: SupabaseVaultAdapterOptions) => InfraServiceAdapter`
+  - options: `SupabaseVaultAdapterOptions`
+  - returns: `InfraServiceAdapter`
+
 ## createSupabaseVaultAdapter
 
 Kind: `function`
 Module: `src/adapter.ts`
-Source: `src/adapter.ts:45:1`
+Source: `src/adapter.ts:6:1`
 
 ### Signatures
 
 - `(options: SupabaseVaultAdapterOptions) => SecretStoreAdapter`
   - options: `SupabaseVaultAdapterOptions`
   - returns: `SecretStoreAdapter`
+
+## infraAdapterDescriptor
+
+Kind: `value`
+Module: `src/constants/infra.ts`
+Source: `src/constants/infra.ts:5:14`
 
 ## SUPABASE_VAULT_METADATA_TABLE
 

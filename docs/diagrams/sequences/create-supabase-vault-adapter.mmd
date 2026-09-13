@@ -1,0 +1,5 @@
+sequenceDiagram
+  participant participant_createSupabaseVaultAdapter as createSupabaseVaultAdapter
+  participant participant_createVaultOperations as createVaultOperations
+  participant_createSupabaseVaultAdapter->>participant_createVaultOperations: createVaultOperations()
+  participant_createVaultOperations-->>participant_createSupabaseVaultAdapter: return

@@ -1,5 +1,37 @@
 [
   {
+    "name": "createInfraAdapter",
+    "description": "Create the canonical Supabase Vault Infra service adapter.\n\nIt owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access\nremains an injected trusted SQL port and never depends on the managed secret store itself.",
+    "isReadme": true,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+    "sourceLocation": {
+      "filePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+      "line": 18,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["SupabaseVaultAdapterOptions"],
+    "signatures": [
+      {
+        "label": "(options: SupabaseVaultAdapterOptions) => InfraServiceAdapter",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "SupabaseVaultAdapterOptions",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "InfraServiceAdapter",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "createSupabaseVaultAdapter",
     "description": null,
     "isReadme": false,
@@ -8,7 +40,7 @@
     "modulePath": "src/adapter.ts",
     "sourceLocation": {
       "filePath": "src/adapter.ts",
-      "line": 45,
+      "line": 6,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -28,6 +60,24 @@
         "returnDescription": null
       }
     ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "infraAdapterDescriptor",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/constants/infra.ts",
+    "sourceLocation": {
+      "filePath": "src/constants/infra.ts",
+      "line": 5,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
     "members": [],
     "structuredRows": []
   },
