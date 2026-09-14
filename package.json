@@ -50,6 +50,7 @@
   "scripts": {
     "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json",
     "typecheck": "bun x tsc --noEmit -p tsconfig.json",
+    "check-types": "bun run typecheck",
     "test": "bun test src",
     "lint": "ankhorage-eslint . --max-warnings=0",
     "lint:fix": "ankhorage-eslint . --fix --max-warnings=0",
@@ -60,7 +61,8 @@
     "changeset:status": "ankhorage-changeset status --since=origin/main",
     "version-packages": "ankhorage-changeset version",
     "prepack": "bun run build",
-    "knip:check": "ankhorage-knip"
+    "knip:check": "ankhorage-knip",
+    "knip:test": "bun run knip:check"
   },
   "dependencies": {
     "@ankhorage/contracts": "^16.0.0"

@@ -22,6 +22,15 @@ test('exports the exact canonical Infra descriptor', () => {
   expect(isInfraAdapterDescriptor(infraAdapterDescriptor)).toBe(true);
 });
 
+test('supports side-effect-free package discovery without a prewired SQL client', async () => {
+  const adapter = createInfraAdapter();
+  expect(adapter.descriptor).toEqual(infraAdapterDescriptor);
+  const result = await adapter.validateAsync(createContext());
+  expect(result.ok).toBe(false);
+  expect(result.diagnostics[0]?.code).toBe('supabase-vault-provider-failed');
+  expect(JSON.stringify(result)).not.toContain('trusted Supabase Vault SQL client');
+});
+
 test('plans, reconciles and reports the persistent Vault schema lifecycle', async () => {
   const client = new RecordingClient();
   const adapter = createInfraAdapter({ client });

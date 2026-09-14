@@ -15,12 +15,12 @@
     "relatedSymbols": ["SupabaseVaultAdapterOptions"],
     "signatures": [
       {
-        "label": "(options: SupabaseVaultAdapterOptions) => InfraServiceAdapter",
+        "label": "(options?: SupabaseVaultAdapterOptions) => InfraServiceAdapter",
         "parameters": [
           {
             "name": "options",
             "type": "SupabaseVaultAdapterOptions",
-            "required": true,
+            "required": false,
             "description": null
           }
         ],

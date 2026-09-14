@@ -13,8 +13,8 @@ remains an injected trusted SQL port and never depends on the managed secret sto
 
 ### Signatures
 
-- `(options: SupabaseVaultAdapterOptions) => InfraServiceAdapter`
-  - options: `SupabaseVaultAdapterOptions`
+- `(options?: SupabaseVaultAdapterOptions) => InfraServiceAdapter`
+  - options: `SupabaseVaultAdapterOptions` (optional)
   - returns: `InfraServiceAdapter`
 
 ## createSupabaseVaultAdapter
