@@ -258,7 +258,7 @@
                 data-target="src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
               >
                 src/features/secret-store-infrastructure/composition/createInfraAdapter.ts
-                <small>1 function</small>
+                <small>3 functions</small>
               </button>
             </li>
             <li>
@@ -552,7 +552,7 @@
               <article
                 class="item"
                 id="symbol-createinfraadapter"
-                data-search="createInfraAdapter function src/features/secret-store-infrastructure/composition/createInfraAdapter.ts Create the canonical Supabase Vault Infra service adapter.&#10;&#10;It owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access&#10;remains an injected trusted SQL port and never depends on the managed secret store itself. SupabaseVaultAdapterOptions (options: SupabaseVaultAdapterOptions) =&gt; InfraServiceAdapter"
+                data-search="createInfraAdapter function src/features/secret-store-infrastructure/composition/createInfraAdapter.ts Create the canonical Supabase Vault Infra service adapter.&#10;&#10;It owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access&#10;remains an injected trusted SQL port and never depends on the managed secret store itself. SupabaseVaultAdapterOptions (options?: SupabaseVaultAdapterOptions) =&gt; InfraServiceAdapter"
               >
                 <h4>createInfraAdapter</h4>
                 <p class="muted">
@@ -576,7 +576,7 @@
                 </div>
                 <div>
                   <h5>Signature</h5>
-                  <pre>(options: SupabaseVaultAdapterOptions) =&gt; InfraServiceAdapter</pre>
+                  <pre>(options?: SupabaseVaultAdapterOptions) =&gt; InfraServiceAdapter</pre>
                   <table>
                     <thead>
                       <tr>
@@ -590,7 +590,7 @@
                       <tr>
                         <td><code>options</code></td>
                         <td><code>SupabaseVaultAdapterOptions</code></td>
-                        <td>yes</td>
+                        <td>no</td>
                         <td></td>
                       </tr>
                     </tbody>
@@ -1191,6 +1191,31 @@ graph LR
             </article>
             <article
               class="item"
+              data-search="createInfraAdapter sequence diagrams/sequences/create-infra-adapter.mmd"
+            >
+              <h3>createInfraAdapter sequence</h3>
+              <p class="muted"><code>diagrams/sequences/create-infra-adapter.mmd</code></p>
+              <div class="mermaid">
+                sequenceDiagram participant participant_createInfraAdapter as createInfraAdapter
+                participant participant_createUnavailableSqlClient as createUnavailableSqlClient
+                participant_createInfraAdapter-&gt;&gt;participant_createUnavailableSqlClient:
+                createUnavailableSqlClient()
+                participant_createUnavailableSqlClient--&gt;&gt;participant_createInfraAdapter:
+                return
+              </div>
+              <details>
+                <summary>View Mermaid source</summary>
+                <pre>
+sequenceDiagram
+  participant participant_createInfraAdapter as createInfraAdapter
+  participant participant_createUnavailableSqlClient as createUnavailableSqlClient
+  participant_createInfraAdapter-&gt;&gt;participant_createUnavailableSqlClient: createUnavailableSqlClient()
+  participant_createUnavailableSqlClient--&gt;&gt;participant_createInfraAdapter: return
+</pre>
+              </details>
+            </article>
+            <article
+              class="item"
               data-search="createSupabaseVaultAdapter sequence diagrams/sequences/create-supabase-vault-adapter.mmd"
             >
               <h3>createSupabaseVaultAdapter sequence</h3>
@@ -1488,6 +1513,33 @@ sequenceDiagram
                 remains an injected trusted SQL port and never depends on the managed secret store
                 itself.
               </p>
+            </article>
+            <article
+              class="item"
+              data-search="createUnavailableSqlClient src/features/secret-store-infrastructure/composition/createInfraAdapter.ts Keep package discovery side-effect free while failing lifecycle validation without SQL access."
+            >
+              <h3>createUnavailableSqlClient</h3>
+              <p class="muted">
+                <code
+                  >src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:35:1</code
+                >
+              </p>
+              <p>
+                Keep package discovery side-effect free while failing lifecycle validation without
+                SQL access.
+              </p>
+            </article>
+            <article
+              class="item"
+              data-search="unavailable src/features/secret-store-infrastructure/composition/createInfraAdapter.ts "
+            >
+              <h3>unavailable</h3>
+              <p class="muted">
+                <code
+                  >src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:36:9</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
             </article>
           </section>
         </section>

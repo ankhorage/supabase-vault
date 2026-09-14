@@ -1,0 +1,5 @@
+sequenceDiagram
+  participant participant_createInfraAdapter as createInfraAdapter
+  participant participant_createUnavailableSqlClient as createUnavailableSqlClient
+  participant_createInfraAdapter->>participant_createUnavailableSqlClient: createUnavailableSqlClient()
+  participant_createUnavailableSqlClient-->>participant_createInfraAdapter: return

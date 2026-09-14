@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.2.12",
+      "value": "v0.3.0",
       "color": "cb3837"
     },
     {
@@ -213,12 +213,12 @@
       "relatedSymbols": ["SupabaseVaultAdapterOptions"],
       "signatures": [
         {
-          "label": "(options: SupabaseVaultAdapterOptions) => InfraServiceAdapter",
+          "label": "(options?: SupabaseVaultAdapterOptions) => InfraServiceAdapter",
           "parameters": [
             {
               "name": "options",
               "type": "SupabaseVaultAdapterOptions",
-              "required": true,
+              "required": false,
               "description": null
             }
           ],
@@ -625,6 +625,24 @@
         "filePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
         "line": 18,
         "column": 1
+      }
+    },
+    {
+      "name": "createUnavailableSqlClient",
+      "description": "Keep package discovery side-effect free while failing lifecycle validation without SQL access.",
+      "sourceLocation": {
+        "filePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+        "line": 35,
+        "column": 1
+      }
+    },
+    {
+      "name": "unavailable",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
+        "line": 36,
+        "column": 9
       }
     },
     {
@@ -1425,6 +1443,12 @@
         "toSymbol": "query",
         "callExpression": "client.query",
         "sourcePath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts"
+      },
+      {
+        "fromSymbol": "createInfraAdapter",
+        "toSymbol": "createUnavailableSqlClient",
+        "callExpression": "createUnavailableSqlClient",
+        "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
       },
       {
         "fromSymbol": "validateAsync",

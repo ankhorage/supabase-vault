@@ -1,7 +1,7 @@
 import type { InfraServiceAdapter } from '@ankhorage/contracts/infra';
 
 import { infraAdapterDescriptor } from '../../../constants/infra.js';
-import type { SupabaseVaultAdapterOptions } from '../../../types.js';
+import type { SupabaseVaultAdapterOptions, SupabaseVaultSqlClient } from '../../../types.js';
 import { destroySupabaseVaultAsync } from '../application/destroySupabaseVaultAsync.js';
 import { getSupabaseVaultStatusAsync } from '../application/getSupabaseVaultStatusAsync.js';
 import { planSupabaseVaultAsync } from '../application/planSupabaseVaultAsync.js';
@@ -15,11 +15,8 @@ import { reconcileSupabaseVaultAsync } from '../application/reconcileSupabaseVau
  *
  * @readme
  */
-export function createInfraAdapter(options: SupabaseVaultAdapterOptions): InfraServiceAdapter {
-  if (!options.client || typeof options.client.query !== 'function') {
-    throw new TypeError('Supabase Vault Infra adapter requires a trusted SQL client.');
-  }
-  const { client } = options;
+export function createInfraAdapter(options: SupabaseVaultAdapterOptions = {}): InfraServiceAdapter {
+  const client = options.client ?? createUnavailableSqlClient();
   return {
     descriptor: infraAdapterDescriptor,
     validateAsync: async (context) => {
@@ -31,5 +28,15 @@ export function createInfraAdapter(options: SupabaseVaultAdapterOptions): InfraS
     reconcileAsync: (context) => reconcileSupabaseVaultAsync(client, context),
     statusAsync: (context) => getSupabaseVaultStatusAsync(client, context),
     destroyAsync: (context, request) => destroySupabaseVaultAsync(client, context, request),
+  };
+}
+
+/*** Keep package discovery side-effect free while failing lifecycle validation without SQL access. */
+function createUnavailableSqlClient(): SupabaseVaultSqlClient {
+  const unavailable = (): Promise<never> =>
+    Promise.reject(new Error('A trusted Supabase Vault SQL client is required.'));
+  return {
+    query: unavailable,
+    transaction: unavailable,
   };
 }
