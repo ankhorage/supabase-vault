@@ -1,5 +1,11 @@
 # @ankhorage/supabase-vault
 
+## 0.3.1
+
+### Patch Changes
+
+- 3377b26: Allow canonical Infra package discovery without a prewired SQL client.
+
 ## 0.3.0
 
 ### Minor Changes
