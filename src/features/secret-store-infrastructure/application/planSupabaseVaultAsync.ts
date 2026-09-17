@@ -4,30 +4,24 @@ import type {
   InfraResult,
 } from '@ankhorage/contracts/infra';
 
-import type { SupabaseVaultSqlClient } from '../../../types.js';
 import { inspectSupabaseVaultAsync } from './inspectSupabaseVaultAsync.js';
 
-/*** Plan creation, repair or no-op convergence for Supabase Vault infrastructure. */
+/*** Plan the portable Vault ownership lifecycle without requiring live database access. */
 export async function planSupabaseVaultAsync(
-  client: SupabaseVaultSqlClient,
   context: InfraExecutionContext,
 ): Promise<InfraResult<readonly InfraPlanAction[]>> {
-  const inspected = await inspectSupabaseVaultAsync(client, context);
+  const inspected = await inspectSupabaseVaultAsync(context);
   if (!inspected.ok) return inspected;
-  const ready = inspected.value.extensionReady && inspected.value.metadataReady;
-  const absent = !inspected.value.extensionReady && !inspected.value.metadataReady;
   return {
     ok: true,
     value: [
       {
         owner: inspected.value.owner.identity,
-        operation: ready ? 'noop' : absent ? 'create' : 'update',
+        operation: inspected.value.recorded ? 'noop' : 'create',
         impact: 'none',
-        detail: ready
-          ? 'Keep the ready Supabase Vault schema.'
-          : absent
-            ? 'Create the Supabase Vault extension and metadata schema.'
-            : 'Repair the incomplete Supabase Vault metadata schema.',
+        detail: inspected.value.recorded
+          ? 'Keep the recorded Supabase Vault secret-store namespace.'
+          : 'Bootstrap the Supabase Vault schema through the selected Supabase database lifecycle.',
         dependsOn: inspected.value.owner.dependsOn,
       },
     ],
