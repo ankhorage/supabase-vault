@@ -6,7 +6,11 @@ import type {
 import { INFRA_ADAPTER_CATALOG, isInfraAdapterDescriptor } from '@ankhorage/contracts/infra';
 import { expect, test } from 'bun:test';
 
-import { createInfraAdapter, infraAdapterDescriptor } from './index.js';
+import {
+  createInfraAdapter,
+  infraAdapterDescriptor,
+  SUPABASE_VAULT_MIGRATION_SQL,
+} from './index.js';
 import type {
   SupabaseVaultQueryResult,
   SupabaseVaultSqlClient,
@@ -16,6 +20,16 @@ import type {
 test('exports the exact canonical Infra descriptor', () => {
   expect(infraAdapterDescriptor).toEqual(INFRA_ADAPTER_CATALOG['supabase-vault']);
   expect(isInfraAdapterDescriptor(infraAdapterDescriptor)).toBe(true);
+});
+
+test('bootstraps the Supabase Vault extension in its canonical vault schema', () => {
+  expect(SUPABASE_VAULT_MIGRATION_SQL).toContain('create schema if not exists vault;');
+  expect(SUPABASE_VAULT_MIGRATION_SQL).toContain(
+    'create extension if not exists supabase_vault with schema vault;',
+  );
+  expect(SUPABASE_VAULT_MIGRATION_SQL).not.toContain(
+    'create extension if not exists supabase_vault with schema extensions;',
+  );
 });
 
 test('supports fresh Infra bootstrap without a prewired SQL client', async () => {
