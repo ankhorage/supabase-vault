@@ -1,5 +1,11 @@
 # @ankhorage/supabase-vault
 
+## 0.3.2
+
+### Patch Changes
+
+- e4c40be: Restore fresh Infra bootstrap by keeping Vault planning and ownership lifecycle independent from host PostgreSQL access while retaining trusted SQL for destructive namespace deletion.
+
 ## 0.3.1
 
 ### Patch Changes
