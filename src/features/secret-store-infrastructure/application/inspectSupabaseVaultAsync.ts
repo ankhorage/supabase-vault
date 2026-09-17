@@ -12,13 +12,17 @@ export interface SupabaseVaultInfrastructureObservation {
 }
 
 /*** Inspect the portable Vault lifecycle state without requiring the managed database to exist. */
-export async function inspectSupabaseVaultAsync(
+export function inspectSupabaseVaultAsync(
   context: InfraExecutionContext,
 ): Promise<InfraResult<SupabaseVaultInfrastructureObservation>> {
-  if (context.desired.secretStore?.provider !== 'supabase-vault') return invalidSelection();
-  if (context.desired.database?.provider !== 'supabase') return invalidDatabase();
+  if (context.desired.secretStore?.provider !== 'supabase-vault') {
+    return Promise.resolve(invalidSelection());
+  }
+  if (context.desired.database?.provider !== 'supabase') {
+    return Promise.resolve(invalidDatabase());
+  }
   const owner = createOwner(context);
-  return {
+  return Promise.resolve({
     ok: true,
     value: {
       owner,
@@ -27,7 +31,7 @@ export async function inspectSupabaseVaultAsync(
       ),
     },
     diagnostics: [],
-  };
+  });
 }
 
 /*** Create stable ownership for one persistent project and environment secret namespace. */
