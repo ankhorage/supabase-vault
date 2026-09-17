@@ -6,7 +6,8 @@ export const SUPABASE_VAULT_METADATA_TABLE = 'secret_metadata';
  * canonical Supabase migration lifecycle; consumers must not copy SQL manually.
  */
 export const SUPABASE_VAULT_MIGRATION_SQL = `
-create extension if not exists supabase_vault with schema extensions;
+create schema if not exists vault;
+create extension if not exists supabase_vault with schema vault;
 
 create schema if not exists ${SUPABASE_VAULT_SCHEMA};
 
