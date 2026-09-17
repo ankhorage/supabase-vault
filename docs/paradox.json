@@ -565,7 +565,7 @@
       "description": "Create stable ownership for one persistent project and environment secret namespace.",
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
-        "line": 34,
+        "line": 38,
         "column": 1
       }
     },
@@ -574,7 +574,7 @@
       "description": "Compare the complete persisted ownership identity without reading provider state.",
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
-        "line": 57,
+        "line": 61,
         "column": 1
       }
     },
@@ -583,7 +583,7 @@
       "description": "Reject lifecycle calls when the canonical SecretStore provider is not selected.",
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
-        "line": 70,
+        "line": 74,
         "column": 1
       }
     },
@@ -592,7 +592,7 @@
       "description": "Reject Vault lifecycle composition without the Supabase database capability it extends.",
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
-        "line": 84,
+        "line": 88,
         "column": 1
       }
     },
