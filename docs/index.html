@@ -328,7 +328,7 @@
             </article>
             <article
               class="item"
-              data-search="src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts src/types.ts getSupabaseVaultStatusAsync"
+              data-search="src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts getSupabaseVaultStatusAsync"
             >
               <h3>
                 src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts
@@ -338,22 +338,19 @@
                 <strong>Dependencies:</strong>
                 <code
                   >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts</code
-                >, <code>src/types.ts</code>
+                >
               </p>
               <p><strong>Exports:</strong> <code>getSupabaseVaultStatusAsync</code></p>
             </article>
             <article
               class="item"
-              data-search="src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts src/migrations.ts src/types.ts inspectSupabaseVaultAsync SupabaseVaultInfrastructureObservation"
+              data-search="src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts src/migrations.ts inspectSupabaseVaultAsync SupabaseVaultInfrastructureObservation"
             >
               <h3>
                 src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts
               </h3>
               <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong> <code>src/migrations.ts</code>,
-                <code>src/types.ts</code>
-              </p>
+              <p><strong>Dependencies:</strong> <code>src/migrations.ts</code></p>
               <p>
                 <strong>Exports:</strong> <code>inspectSupabaseVaultAsync</code>,
                 <code>SupabaseVaultInfrastructureObservation</code>
@@ -361,7 +358,7 @@
             </article>
             <article
               class="item"
-              data-search="src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts src/types.ts planSupabaseVaultAsync"
+              data-search="src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts planSupabaseVaultAsync"
             >
               <h3>
                 src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts
@@ -371,13 +368,13 @@
                 <strong>Dependencies:</strong>
                 <code
                   >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts</code
-                >, <code>src/types.ts</code>
+                >
               </p>
               <p><strong>Exports:</strong> <code>planSupabaseVaultAsync</code></p>
             </article>
             <article
               class="item"
-              data-search="src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts src/migrations.ts src/types.ts reconcileSupabaseVaultAsync"
+              data-search="src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts reconcileSupabaseVaultAsync"
             >
               <h3>
                 src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts
@@ -387,7 +384,7 @@
                 <strong>Dependencies:</strong>
                 <code
                   >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts</code
-                >, <code>src/migrations.ts</code>, <code>src/types.ts</code>
+                >
               </p>
               <p><strong>Exports:</strong> <code>reconcileSupabaseVaultAsync</code></p>
             </article>
@@ -552,20 +549,21 @@
               <article
                 class="item"
                 id="symbol-createinfraadapter"
-                data-search="createInfraAdapter function src/features/secret-store-infrastructure/composition/createInfraAdapter.ts Create the canonical Supabase Vault Infra service adapter.&#10;&#10;It owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access&#10;remains an injected trusted SQL port and never depends on the managed secret store itself. SupabaseVaultAdapterOptions (options?: SupabaseVaultAdapterOptions) =&gt; InfraServiceAdapter"
+                data-search="createInfraAdapter function src/features/secret-store-infrastructure/composition/createInfraAdapter.ts Create the canonical Supabase Vault Infra service adapter.&#10;&#10;The selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.&#10;Infra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL&#10;client remains necessary only for explicitly confirmed destructive namespace deletion. SupabaseVaultAdapterOptions (options?: SupabaseVaultAdapterOptions) =&gt; InfraServiceAdapter"
               >
                 <h4>createInfraAdapter</h4>
                 <p class="muted">
                   function •
                   <code
-                    >src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:18:1</code
+                    >src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:19:1</code
                   >
                 </p>
                 <p>
-                  Create the canonical Supabase Vault Infra service adapter. It owns only the
-                  extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access
-                  remains an injected trusted SQL port and never depends on the managed secret store
-                  itself.
+                  Create the canonical Supabase Vault Infra service adapter. The selected Supabase
+                  database lifecycle owns schema bootstrap from the public Vault migration. Infra
+                  discovery, planning and `up` therefore require no host PostgreSQL connection. A
+                  trusted SQL client remains necessary only for explicitly confirmed destructive
+                  namespace deletion.
                 </p>
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
@@ -863,33 +861,23 @@
                 module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts
                 --&gt;
                 module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts
-                --&gt; module_src_types_ts
                 module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts&quot;]
                 package__ankhorage_supabase_vault -.-&gt;
                 module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
                 module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
                 --&gt; module_src_migrations_ts
-                module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                --&gt; module_src_types_ts
                 module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts&quot;]
                 package__ankhorage_supabase_vault -.-&gt;
                 module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts
                 module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts
                 --&gt;
                 module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts
-                --&gt; module_src_types_ts
                 module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts&quot;]
                 package__ankhorage_supabase_vault -.-&gt;
                 module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
                 module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
                 --&gt;
                 module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
-                --&gt; module_src_migrations_ts
-                module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
-                --&gt; module_src_types_ts
                 module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts[&quot;src/features/secret-store-infrastructure/composition/createInfraAdapter.ts&quot;]
                 package__ankhorage_supabase_vault -.-&gt;
                 module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
@@ -942,20 +930,15 @@ graph TD
   module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts[&quot;src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts&quot;]
   package__ankhorage_supabase_vault -.-&gt; module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts
   module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts --&gt; module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-  module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts --&gt; module_src_types_ts
   module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts&quot;]
   package__ankhorage_supabase_vault -.-&gt; module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
   module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts --&gt; module_src_migrations_ts
-  module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts --&gt; module_src_types_ts
   module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts&quot;]
   package__ankhorage_supabase_vault -.-&gt; module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts
   module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts --&gt; module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-  module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts --&gt; module_src_types_ts
   module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts&quot;]
   package__ankhorage_supabase_vault -.-&gt; module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
   module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts --&gt; module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-  module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts --&gt; module_src_migrations_ts
-  module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts --&gt; module_src_types_ts
   module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts[&quot;src/features/secret-store-infrastructure/composition/createInfraAdapter.ts&quot;]
   package__ankhorage_supabase_vault -.-&gt; module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
   module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_constants_infra_ts
@@ -1009,24 +992,14 @@ graph TD
                 module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts
                 --&gt;
                 module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts
-                --&gt; module_src_types_ts
                 module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
                 --&gt; module_src_migrations_ts
-                module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                --&gt; module_src_types_ts
                 module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts
                 --&gt;
                 module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts
-                --&gt; module_src_types_ts
                 module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
                 --&gt;
                 module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
-                --&gt; module_src_migrations_ts
-                module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
-                --&gt; module_src_types_ts
                 module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
                 --&gt; module_src_constants_infra_ts
                 module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
@@ -1069,14 +1042,9 @@ graph LR
   module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts --&gt; module_src_migrations_ts
   module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts --&gt; module_src_types_ts
   module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts --&gt; module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-  module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts --&gt; module_src_types_ts
   module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts --&gt; module_src_migrations_ts
-  module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts --&gt; module_src_types_ts
   module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts --&gt; module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-  module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts --&gt; module_src_types_ts
   module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts --&gt; module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-  module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts --&gt; module_src_migrations_ts
-  module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts --&gt; module_src_types_ts
   module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_constants_infra_ts
   module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts
   module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts
@@ -1351,16 +1319,17 @@ sequenceDiagram
             </h2>
             <article
               class="item"
-              data-search="getSupabaseVaultStatusAsync src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts Report canonical readiness for the Supabase Vault extension and metadata schema."
+              data-search="getSupabaseVaultStatusAsync src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts Report the persisted Vault ownership state without requiring host access to managed PostgreSQL."
             >
               <h3>getSupabaseVaultStatusAsync</h3>
               <p class="muted">
                 <code
-                  >src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts:11:1</code
+                  >src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts:10:1</code
                 >
               </p>
               <p>
-                Report canonical readiness for the Supabase Vault extension and metadata schema.
+                Report the persisted Vault ownership state without requiring host access to managed
+                PostgreSQL.
               </p>
             </article>
           </section>
@@ -1377,16 +1346,17 @@ sequenceDiagram
             </h2>
             <article
               class="item"
-              data-search="inspectSupabaseVaultAsync src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Inspect the Supabase Vault extension and Ankhorage metadata schema without mutation."
+              data-search="inspectSupabaseVaultAsync src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Inspect the portable Vault lifecycle state without requiring the managed database to exist."
             >
               <h3>inspectSupabaseVaultAsync</h3>
               <p class="muted">
                 <code
-                  >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:17:1</code
+                  >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:15:1</code
                 >
               </p>
               <p>
-                Inspect the Supabase Vault extension and Ankhorage metadata schema without mutation.
+                Inspect the portable Vault lifecycle state without requiring the managed database to
+                exist.
               </p>
             </article>
             <article
@@ -1396,11 +1366,25 @@ sequenceDiagram
               <h3>createOwner</h3>
               <p class="muted">
                 <code
-                  >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:51:1</code
+                  >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:38:1</code
                 >
               </p>
               <p>
                 Create stable ownership for one persistent project and environment secret namespace.
+              </p>
+            </article>
+            <article
+              class="item"
+              data-search="hasSameIdentity src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Compare the complete persisted ownership identity without reading provider state."
+            >
+              <h3>hasSameIdentity</h3>
+              <p class="muted">
+                <code
+                  >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:61:1</code
+                >
+              </p>
+              <p>
+                Compare the complete persisted ownership identity without reading provider state.
               </p>
             </article>
             <article
@@ -1417,27 +1401,18 @@ sequenceDiagram
             </article>
             <article
               class="item"
-              data-search="invalidObservation src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Reject an unexpected SQL inspection result."
+              data-search="invalidDatabase src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Reject Vault lifecycle composition without the Supabase database capability it extends."
             >
-              <h3>invalidObservation</h3>
+              <h3>invalidDatabase</h3>
               <p class="muted">
                 <code
                   >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:88:1</code
                 >
               </p>
-              <p>Reject an unexpected SQL inspection result.</p>
-            </article>
-            <article
-              class="item"
-              data-search="providerFailure src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Translate SQL boundary failures without exposing query parameters or secrets."
-            >
-              <h3>providerFailure</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:93:1</code
-                >
+              <p>
+                Reject Vault lifecycle composition without the Supabase database capability it
+                extends.
               </p>
-              <p>Translate SQL boundary failures without exposing query parameters or secrets.</p>
             </article>
           </section>
         </section>
@@ -1451,15 +1426,17 @@ sequenceDiagram
             <h2>src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts</h2>
             <article
               class="item"
-              data-search="planSupabaseVaultAsync src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts Plan creation, repair or no-op convergence for Supabase Vault infrastructure."
+              data-search="planSupabaseVaultAsync src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts Plan the portable Vault ownership lifecycle without requiring live database access."
             >
               <h3>planSupabaseVaultAsync</h3>
               <p class="muted">
                 <code
-                  >src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts:11:1</code
+                  >src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts:10:1</code
                 >
               </p>
-              <p>Plan creation, repair or no-op convergence for Supabase Vault infrastructure.</p>
+              <p>
+                Plan the portable Vault ownership lifecycle without requiring live database access.
+              </p>
             </article>
           </section>
         </section>
@@ -1475,16 +1452,17 @@ sequenceDiagram
             </h2>
             <article
               class="item"
-              data-search="reconcileSupabaseVaultAsync src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts Idempotently apply the canonical Supabase Vault migration and return its ownership."
+              data-search="reconcileSupabaseVaultAsync src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts Record Vault ownership after the selected Supabase database lifecycle applied its migration."
             >
               <h3>reconcileSupabaseVaultAsync</h3>
               <p class="muted">
                 <code
-                  >src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts:12:1</code
+                  >src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts:10:1</code
                 >
               </p>
               <p>
-                Idempotently apply the canonical Supabase Vault migration and return its ownership.
+                Record Vault ownership after the selected Supabase database lifecycle applied its
+                migration.
               </p>
             </article>
           </section>
@@ -1499,34 +1477,35 @@ sequenceDiagram
             <h2>src/features/secret-store-infrastructure/composition/createInfraAdapter.ts</h2>
             <article
               class="item"
-              data-search="createInfraAdapter src/features/secret-store-infrastructure/composition/createInfraAdapter.ts Create the canonical Supabase Vault Infra service adapter.&#10;&#10;It owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access&#10;remains an injected trusted SQL port and never depends on the managed secret store itself."
+              data-search="createInfraAdapter src/features/secret-store-infrastructure/composition/createInfraAdapter.ts Create the canonical Supabase Vault Infra service adapter.&#10;&#10;The selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.&#10;Infra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL&#10;client remains necessary only for explicitly confirmed destructive namespace deletion."
             >
               <h3>createInfraAdapter</h3>
               <p class="muted">
                 <code
-                  >src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:18:1</code
+                  >src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:19:1</code
                 >
               </p>
               <p>
-                Create the canonical Supabase Vault Infra service adapter. It owns only the
-                extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access
-                remains an injected trusted SQL port and never depends on the managed secret store
-                itself.
+                Create the canonical Supabase Vault Infra service adapter. The selected Supabase
+                database lifecycle owns schema bootstrap from the public Vault migration. Infra
+                discovery, planning and `up` therefore require no host PostgreSQL connection. A
+                trusted SQL client remains necessary only for explicitly confirmed destructive
+                namespace deletion.
               </p>
             </article>
             <article
               class="item"
-              data-search="createUnavailableSqlClient src/features/secret-store-infrastructure/composition/createInfraAdapter.ts Keep package discovery side-effect free while failing lifecycle validation without SQL access."
+              data-search="createUnavailableSqlClient src/features/secret-store-infrastructure/composition/createInfraAdapter.ts Fail closed when destructive namespace deletion is requested without trusted SQL access."
             >
               <h3>createUnavailableSqlClient</h3>
               <p class="muted">
                 <code
-                  >src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:35:1</code
+                  >src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:37:1</code
                 >
               </p>
               <p>
-                Keep package discovery side-effect free while failing lifecycle validation without
-                SQL access.
+                Fail closed when destructive namespace deletion is requested without trusted SQL
+                access.
               </p>
             </article>
             <article
@@ -1536,7 +1515,7 @@ sequenceDiagram
               <h3>unavailable</h3>
               <p class="muted">
                 <code
-                  >src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:36:9</code
+                  >src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:38:9</code
                 >
               </p>
               <p class="empty">No description available.</p>

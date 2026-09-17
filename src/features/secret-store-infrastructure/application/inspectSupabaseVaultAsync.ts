@@ -4,47 +4,34 @@ import type {
   InfraResult,
 } from '@ankhorage/contracts/infra';
 
-import { SUPABASE_VAULT_METADATA_TABLE, SUPABASE_VAULT_SCHEMA } from '../../../migrations.js';
-import type { SupabaseVaultSqlClient } from '../../../types.js';
+import { SUPABASE_VAULT_SCHEMA } from '../../../migrations.js';
 
 export interface SupabaseVaultInfrastructureObservation {
   readonly owner: InfraOwnedResource;
-  readonly extensionReady: boolean;
-  readonly metadataReady: boolean;
+  readonly recorded: boolean;
 }
 
-/*** Inspect the Supabase Vault extension and Ankhorage metadata schema without mutation. */
-export async function inspectSupabaseVaultAsync(
-  client: SupabaseVaultSqlClient,
+/*** Inspect the portable Vault lifecycle state without requiring the managed database to exist. */
+export function inspectSupabaseVaultAsync(
   context: InfraExecutionContext,
 ): Promise<InfraResult<SupabaseVaultInfrastructureObservation>> {
-  if (context.desired.secretStore?.provider !== 'supabase-vault') return invalidSelection();
-  try {
-    const result = await client.query<InspectionRow>(
-      `select
-         exists(select 1 from pg_extension where extname = 'supabase_vault') as extension_ready,
-         to_regclass($1)::text is not null as metadata_ready`,
-      [`${SUPABASE_VAULT_SCHEMA}.${SUPABASE_VAULT_METADATA_TABLE}`],
-    );
-    const [row] = result.rows;
-    if (row === undefined) return invalidObservation();
-    return {
-      ok: true,
-      value: {
-        owner: createOwner(context),
-        extensionReady: row.extension_ready,
-        metadataReady: row.metadata_ready,
-      },
-      diagnostics: [],
-    };
-  } catch {
-    return providerFailure('Could not inspect Supabase Vault infrastructure.');
+  if (context.desired.secretStore?.provider !== 'supabase-vault') {
+    return Promise.resolve(invalidSelection());
   }
-}
-
-interface InspectionRow extends Record<string, unknown> {
-  readonly extension_ready: boolean;
-  readonly metadata_ready: boolean;
+  if (context.desired.database?.provider !== 'supabase') {
+    return Promise.resolve(invalidDatabase());
+  }
+  const owner = createOwner(context);
+  return Promise.resolve({
+    ok: true,
+    value: {
+      owner,
+      recorded: (context.previous?.resources ?? []).some(({ identity }) =>
+        hasSameIdentity(identity, owner.identity),
+      ),
+    },
+    diagnostics: [],
+  });
 }
 
 /*** Create stable ownership for one persistent project and environment secret namespace. */
@@ -70,6 +57,19 @@ function createOwner(context: InfraExecutionContext): InfraOwnedResource {
   };
 }
 
+/*** Compare the complete persisted ownership identity without reading provider state. */
+function hasSameIdentity(
+  left: InfraOwnedResource['identity'],
+  right: InfraOwnedResource['identity'],
+): boolean {
+  return (
+    left.projectId === right.projectId &&
+    left.environment === right.environment &&
+    left.adapter === right.adapter &&
+    left.resourceId === right.resourceId
+  );
+}
+
 /*** Reject lifecycle calls when the canonical SecretStore provider is not selected. */
 function invalidSelection(): InfraResult<never> {
   return {
@@ -84,15 +84,16 @@ function invalidSelection(): InfraResult<never> {
   };
 }
 
-/*** Reject an unexpected SQL inspection result. */
-function invalidObservation(): InfraResult<never> {
-  return providerFailure('Supabase Vault inspection returned no status row.');
-}
-
-/*** Translate SQL boundary failures without exposing query parameters or secrets. */
-function providerFailure(message: string): InfraResult<never> {
+/*** Reject Vault lifecycle composition without the Supabase database capability it extends. */
+function invalidDatabase(): InfraResult<never> {
   return {
     ok: false,
-    diagnostics: [{ severity: 'error', code: 'supabase-vault-provider-failed', message }],
+    diagnostics: [
+      {
+        severity: 'error',
+        code: 'supabase-vault-database-invalid',
+        message: 'Supabase Vault infrastructure requires the Supabase database provider.',
+      },
+    ],
   };
 }

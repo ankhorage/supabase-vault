@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.3.0",
+      "value": "v0.3.1",
       "color": "cb3837"
     },
     {
@@ -90,23 +90,21 @@
       "path": "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
-        "src/types.ts"
+        "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
       ],
       "exports": ["getSupabaseVaultStatusAsync"]
     },
     {
       "path": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
       "isEntrypoint": false,
-      "dependencies": ["src/migrations.ts", "src/types.ts"],
+      "dependencies": ["src/migrations.ts"],
       "exports": ["inspectSupabaseVaultAsync", "SupabaseVaultInfrastructureObservation"]
     },
     {
       "path": "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
-        "src/types.ts"
+        "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
       ],
       "exports": ["planSupabaseVaultAsync"]
     },
@@ -114,9 +112,7 @@
       "path": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
-        "src/migrations.ts",
-        "src/types.ts"
+        "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
       ],
       "exports": ["reconcileSupabaseVaultAsync"]
     },
@@ -199,14 +195,14 @@
   "exports": [
     {
       "name": "createInfraAdapter",
-      "description": "Create the canonical Supabase Vault Infra service adapter.\n\nIt owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access\nremains an injected trusted SQL port and never depends on the managed secret store itself.",
+      "description": "Create the canonical Supabase Vault Infra service adapter.\n\nThe selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.\nInfra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL\nclient remains necessary only for explicitly confirmed destructive namespace deletion.",
       "isReadme": true,
       "examples": [],
       "kind": "function",
       "modulePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
-        "line": 18,
+        "line": 19,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -548,19 +544,19 @@
     },
     {
       "name": "getSupabaseVaultStatusAsync",
-      "description": "Report canonical readiness for the Supabase Vault extension and metadata schema.",
+      "description": "Report the persisted Vault ownership state without requiring host access to managed PostgreSQL.",
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts",
-        "line": 11,
+        "line": 10,
         "column": 1
       }
     },
     {
       "name": "inspectSupabaseVaultAsync",
-      "description": "Inspect the Supabase Vault extension and Ankhorage metadata schema without mutation.",
+      "description": "Inspect the portable Vault lifecycle state without requiring the managed database to exist.",
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
-        "line": 17,
+        "line": 15,
         "column": 1
       }
     },
@@ -569,7 +565,16 @@
       "description": "Create stable ownership for one persistent project and environment secret namespace.",
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
-        "line": 51,
+        "line": 38,
+        "column": 1
+      }
+    },
+    {
+      "name": "hasSameIdentity",
+      "description": "Compare the complete persisted ownership identity without reading provider state.",
+      "sourceLocation": {
+        "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+        "line": 61,
         "column": 1
       }
     },
@@ -583,8 +588,8 @@
       }
     },
     {
-      "name": "invalidObservation",
-      "description": "Reject an unexpected SQL inspection result.",
+      "name": "invalidDatabase",
+      "description": "Reject Vault lifecycle composition without the Supabase database capability it extends.",
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
         "line": 88,
@@ -592,47 +597,38 @@
       }
     },
     {
-      "name": "providerFailure",
-      "description": "Translate SQL boundary failures without exposing query parameters or secrets.",
-      "sourceLocation": {
-        "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
-        "line": 93,
-        "column": 1
-      }
-    },
-    {
       "name": "planSupabaseVaultAsync",
-      "description": "Plan creation, repair or no-op convergence for Supabase Vault infrastructure.",
+      "description": "Plan the portable Vault ownership lifecycle without requiring live database access.",
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts",
-        "line": 11,
+        "line": 10,
         "column": 1
       }
     },
     {
       "name": "reconcileSupabaseVaultAsync",
-      "description": "Idempotently apply the canonical Supabase Vault migration and return its ownership.",
+      "description": "Record Vault ownership after the selected Supabase database lifecycle applied its migration.",
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts",
-        "line": 12,
+        "line": 10,
         "column": 1
       }
     },
     {
       "name": "createInfraAdapter",
-      "description": "Create the canonical Supabase Vault Infra service adapter.\n\nIt owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access\nremains an injected trusted SQL port and never depends on the managed secret store itself.",
+      "description": "Create the canonical Supabase Vault Infra service adapter.\n\nThe selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.\nInfra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL\nclient remains necessary only for explicitly confirmed destructive namespace deletion.",
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
-        "line": 18,
+        "line": 19,
         "column": 1
       }
     },
     {
       "name": "createUnavailableSqlClient",
-      "description": "Keep package discovery side-effect free while failing lifecycle validation without SQL access.",
+      "description": "Fail closed when destructive namespace deletion is requested without trusted SQL access.",
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
-        "line": 35,
+        "line": 37,
         "column": 1
       }
     },
@@ -641,7 +637,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
-        "line": 36,
+        "line": 38,
         "column": 9
       }
     },
@@ -850,7 +846,7 @@
       "name": "createInfraAdapter",
       "sourcePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
       "symbolName": "createInfraAdapter",
-      "description": "Create the canonical Supabase Vault Infra service adapter.\n\nIt owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access\nremains an injected trusted SQL port and never depends on the managed secret store itself.",
+      "description": "Create the canonical Supabase Vault Infra service adapter.\n\nThe selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.\nInfra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL\nclient remains necessary only for explicitly confirmed destructive namespace deletion.",
       "isReadme": true
     },
     {
@@ -931,11 +927,6 @@
       },
       {
         "fromPath": "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts",
-        "toPath": "src/types.ts",
-        "sourcePath": "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts"
-      },
-      {
-        "fromPath": "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts",
         "toPath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
         "sourcePath": "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts"
       },
@@ -945,29 +936,9 @@
         "sourcePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
       },
       {
-        "fromPath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
-        "toPath": "src/types.ts",
-        "sourcePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
-      },
-      {
-        "fromPath": "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts",
-        "toPath": "src/types.ts",
-        "sourcePath": "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts"
-      },
-      {
         "fromPath": "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts",
         "toPath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
         "sourcePath": "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts"
-      },
-      {
-        "fromPath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts",
-        "toPath": "src/migrations.ts",
-        "sourcePath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts"
-      },
-      {
-        "fromPath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts",
-        "toPath": "src/types.ts",
-        "sourcePath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts"
       },
       {
         "fromPath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts",
@@ -1398,14 +1369,8 @@
       },
       {
         "fromSymbol": "inspectSupabaseVaultAsync",
-        "toSymbol": "query",
-        "callExpression": "client.query",
-        "sourcePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
-      },
-      {
-        "fromSymbol": "inspectSupabaseVaultAsync",
-        "toSymbol": "invalidObservation",
-        "callExpression": "invalidObservation",
+        "toSymbol": "invalidDatabase",
+        "callExpression": "invalidDatabase",
         "sourcePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
       },
       {
@@ -1415,15 +1380,9 @@
         "sourcePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
       },
       {
-        "fromSymbol": "inspectSupabaseVaultAsync",
-        "toSymbol": "providerFailure",
-        "callExpression": "providerFailure",
-        "sourcePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
-      },
-      {
-        "fromSymbol": "invalidObservation",
-        "toSymbol": "providerFailure",
-        "callExpression": "providerFailure",
+        "fromSymbol": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
+        "toSymbol": "hasSameIdentity",
+        "callExpression": "hasSameIdentity",
         "sourcePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
       },
       {
@@ -1436,12 +1395,6 @@
         "fromSymbol": "reconcileSupabaseVaultAsync",
         "toSymbol": "inspectSupabaseVaultAsync",
         "callExpression": "inspectSupabaseVaultAsync",
-        "sourcePath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts"
-      },
-      {
-        "fromSymbol": "reconcileSupabaseVaultAsync",
-        "toSymbol": "query",
-        "callExpression": "client.query",
         "sourcePath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts"
       },
       {

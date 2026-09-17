@@ -10,28 +10,30 @@ import { reconcileSupabaseVaultAsync } from '../application/reconcileSupabaseVau
 /***
  * Create the canonical Supabase Vault Infra service adapter.
  *
- * It owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access
- * remains an injected trusted SQL port and never depends on the managed secret store itself.
+ * The selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.
+ * Infra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL
+ * client remains necessary only for explicitly confirmed destructive namespace deletion.
  *
  * @readme
  */
 export function createInfraAdapter(options: SupabaseVaultAdapterOptions = {}): InfraServiceAdapter {
-  const client = options.client ?? createUnavailableSqlClient();
+  const destructiveClient = options.client ?? createUnavailableSqlClient();
   return {
     descriptor: infraAdapterDescriptor,
     validateAsync: async (context) => {
-      const planned = await planSupabaseVaultAsync(client, context);
+      const planned = await planSupabaseVaultAsync(context);
       return planned.ok ? { ok: true, value: null, diagnostics: [] } : planned;
     },
-    planAsync: (context) => planSupabaseVaultAsync(client, context),
+    planAsync: (context) => planSupabaseVaultAsync(context),
     desiredWorkloadsAsync: () => Promise.resolve({ ok: true, value: [], diagnostics: [] }),
-    reconcileAsync: (context) => reconcileSupabaseVaultAsync(client, context),
-    statusAsync: (context) => getSupabaseVaultStatusAsync(client, context),
-    destroyAsync: (context, request) => destroySupabaseVaultAsync(client, context, request),
+    reconcileAsync: (context) => reconcileSupabaseVaultAsync(context),
+    statusAsync: (context) => getSupabaseVaultStatusAsync(context),
+    destroyAsync: (context, request) =>
+      destroySupabaseVaultAsync(destructiveClient, context, request),
   };
 }
 
-/*** Keep package discovery side-effect free while failing lifecycle validation without SQL access. */
+/*** Fail closed when destructive namespace deletion is requested without trusted SQL access. */
 function createUnavailableSqlClient(): SupabaseVaultSqlClient {
   const unavailable = (): Promise<never> =>
     Promise.reject(new Error('A trusted Supabase Vault SQL client is required.'));
