@@ -6,11 +6,7 @@ import type {
 import { INFRA_ADAPTER_CATALOG, isInfraAdapterDescriptor } from '@ankhorage/contracts/infra';
 import { expect, test } from 'bun:test';
 
-import {
-  createInfraAdapter,
-  infraAdapterDescriptor,
-  SUPABASE_VAULT_MIGRATION_SQL,
-} from './index.js';
+import { createInfraAdapter, infraAdapterDescriptor } from './index.js';
 import type {
   SupabaseVaultQueryResult,
   SupabaseVaultSqlClient,
@@ -22,29 +18,31 @@ test('exports the exact canonical Infra descriptor', () => {
   expect(isInfraAdapterDescriptor(infraAdapterDescriptor)).toBe(true);
 });
 
-test('supports side-effect-free package discovery without a prewired SQL client', async () => {
+test('supports fresh Infra bootstrap without a prewired SQL client', async () => {
   const adapter = createInfraAdapter();
   expect(adapter.descriptor).toEqual(infraAdapterDescriptor);
-  const result = await adapter.validateAsync(createContext());
-  expect(result.ok).toBe(false);
-  expect(result.diagnostics[0]?.code).toBe('supabase-vault-provider-failed');
-  expect(JSON.stringify(result)).not.toContain('trusted Supabase Vault SQL client');
-});
+  const validation = await adapter.validateAsync(createContext());
+  expect(validation.ok).toBe(true);
 
-test('plans, reconciles and reports the persistent Vault schema lifecycle', async () => {
-  const client = new RecordingClient();
-  const adapter = createInfraAdapter({ client });
-  client.queue.push([{ extension_ready: false, metadata_ready: false }]);
   const plan = await adapter.planAsync(createContext());
   expect(plan.ok && plan.value[0]?.operation).toBe('create');
 
-  client.queue.push([{ extension_ready: false, metadata_ready: false }], []);
   const reconciled = await adapter.reconcileAsync(createContext(), []);
   expect(reconciled.ok && reconciled.value.resources[0]).toEqual(createOwner());
-  expect(client.calls.some(({ sql }) => sql === SUPABASE_VAULT_MIGRATION_SQL)).toBe(true);
 
-  client.queue.push([{ extension_ready: true, metadata_ready: true }]);
   const status = await adapter.statusAsync(createContext());
+  expect(status.ok && status.value[0]?.state).toBe('absent');
+});
+
+test('plans and reports the recorded persistent Vault namespace without live SQL', async () => {
+  const owner = createOwner();
+  const adapter = createInfraAdapter();
+  const context = createContext(createLedger([owner]));
+
+  const plan = await adapter.planAsync(context);
+  expect(plan.ok && plan.value[0]?.operation).toBe('noop');
+
+  const status = await adapter.statusAsync(context);
   expect(status.ok && status.value[0]?.state).toBe('ready');
   expect(JSON.stringify(status)).not.toContain('secret-value');
 });
@@ -78,30 +76,47 @@ test('retains managed secrets unless the complete owned identity is confirmed', 
   expect(client.calls.some(({ sql }) => sql.includes('drop schema'))).toBe(false);
 });
 
-test('rejects lifecycle use when Supabase Vault is not selected', async () => {
-  const client = new RecordingClient();
-  const adapter = createInfraAdapter({ client });
-  const context = {
-    ...createContext(),
-    desired: { ...createContext().desired, secretStore: undefined },
-  };
-  const result = await adapter.validateAsync(context);
+test('fails closed for confirmed deletion without trusted SQL access', async () => {
+  const owner = createOwner();
+  const adapter = createInfraAdapter();
+  const result = await adapter.destroyAsync(
+    createContext(createLedger([owner])),
+    createDestroyRequest([owner.identity]),
+  );
   expect(result.ok).toBe(false);
-  expect(result.diagnostics[0]?.code).toBe('supabase-vault-selection-invalid');
-  expect(client.calls).toHaveLength(0);
+  expect(result.diagnostics[0]?.code).toBe('supabase-vault-destroy-failed');
+  expect(JSON.stringify(result)).not.toContain('trusted Supabase Vault SQL client');
+});
+
+test('rejects lifecycle use outside the canonical Supabase Vault composition', async () => {
+  const adapter = createInfraAdapter();
+  const context = createContext();
+  const withoutVault = {
+    ...context,
+    desired: { ...context.desired, secretStore: undefined },
+  };
+  const selection = await adapter.validateAsync(withoutVault);
+  expect(selection.ok).toBe(false);
+  expect(selection.diagnostics[0]?.code).toBe('supabase-vault-selection-invalid');
+
+  const withoutSupabase = {
+    ...context,
+    desired: { ...context.desired, database: undefined },
+  };
+  const database = await adapter.validateAsync(withoutSupabase);
+  expect(database.ok).toBe(false);
+  expect(database.diagnostics[0]?.code).toBe('supabase-vault-database-invalid');
 });
 
 class RecordingClient implements SupabaseVaultSqlClient {
   readonly calls: { readonly sql: string; readonly parameters: readonly unknown[] }[] = [];
-  readonly queue: (readonly Record<string, unknown>[])[] = [];
 
   query<TRow extends Record<string, unknown>>(
     sql: string,
     parameters: readonly unknown[] = [],
   ): Promise<SupabaseVaultQueryResult<TRow>> {
     this.calls.push({ sql, parameters });
-    const rows = this.queue.shift() ?? [];
-    return Promise.resolve({ rows: rows as readonly TRow[] });
+    return Promise.resolve({ rows: [] });
   }
 
   transaction<TResult>(
