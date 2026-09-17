@@ -4,12 +4,13 @@
 
 Kind: `function`
 Module: `src/features/secret-store-infrastructure/composition/createInfraAdapter.ts`
-Source: `src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:18:1`
+Source: `src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:19:1`
 
 Create the canonical Supabase Vault Infra service adapter.
 
-It owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access
-remains an injected trusted SQL port and never depends on the managed secret store itself.
+The selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.
+Infra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL
+client remains necessary only for explicitly confirmed destructive namespace deletion.
 
 ### Signatures
 

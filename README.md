@@ -3,7 +3,7 @@
 
 # SUPABASE-VAULT
 
-![license: MIT](././docs/badges/license.svg) ![npm: v0.3.0](././docs/badges/npm.svg) ![runtime: bun](././docs/badges/runtime.svg) ![typescript: strict](././docs/badges/typescript.svg) ![eslint: checked](././docs/badges/eslint.svg) ![prettier: checked](././docs/badges/prettier.svg) ![build: checked](././docs/badges/build.svg) ![tests: checked](././docs/badges/tests.svg) ![docs: paradox](././docs/badges/docs.svg)
+![license: MIT](././docs/badges/license.svg) ![npm: v0.3.1](././docs/badges/npm.svg) ![runtime: bun](././docs/badges/runtime.svg) ![typescript: strict](././docs/badges/typescript.svg) ![eslint: checked](././docs/badges/eslint.svg) ![prettier: checked](././docs/badges/prettier.svg) ![build: checked](././docs/badges/build.svg) ![tests: checked](././docs/badges/tests.svg) ![docs: paradox](././docs/badges/docs.svg)
 
 Server-only Supabase Vault secret-store adapter for Ankhorage.
 
@@ -31,11 +31,12 @@ createInfraAdapter(options?: SupabaseVaultAdapterOptions) => InfraServiceAdapter
 
 Create the canonical Supabase Vault Infra service adapter.
 
-It owns only the extension-backed Ankhorage secret metadata lifecycle. Bootstrap database access
-remains an injected trusted SQL port and never depends on the managed secret store itself.
+The selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.
+Infra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL
+client remains necessary only for explicitly confirmed destructive namespace deletion.
 
 Module: `src/features/secret-store-infrastructure/composition/createInfraAdapter.ts`
-Source: `src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:18:1`
+Source: `src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:19:1`
 Related symbols: `SupabaseVaultAdapterOptions`
 
 </details>
