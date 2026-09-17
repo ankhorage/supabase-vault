@@ -1,5 +1,11 @@
 # @ankhorage/supabase-vault
 
+## 0.3.3
+
+### Patch Changes
+
+- 7fe02da: Install the Supabase Vault extension in its canonical `vault` schema so fresh Supabase database bootstrap succeeds.
+
 ## 0.3.2
 
 ### Patch Changes
