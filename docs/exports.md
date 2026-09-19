@@ -74,9 +74,9 @@ Source: `src/types.ts:26:1`
 
 ### Members
 
-| Name   | Kind     | Type                                  | Required | Description |
-| ------ | -------- | ------------------------------------- | -------- | ----------- |
-| client | property | `SupabaseVaultSqlClient \| undefined` | no       |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| client | property | `SupabaseVaultSqlClient \| undefined` | no |  |
 
 ## SupabaseVaultQueryResult
 
@@ -86,9 +86,9 @@ Source: `src/types.ts:5:1`
 
 ### Members
 
-| Name | Kind     | Type              | Required | Description |
-| ---- | -------- | ----------------- | -------- | ----------- |
-| rows | property | `readonly TRow[]` | yes      |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| rows | property | `readonly TRow[]` | yes |  |
 
 ## SupabaseVaultSqlClient
 
@@ -98,10 +98,10 @@ Source: `src/types.ts:20:1`
 
 ### Members
 
-| Name        | Kind   | Type                                                                                                                              | Required | Description |
-| ----------- | ------ | --------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| query       | method | `<TRow extends Record<string, unknown>>(sql: string, parameters?: readonly unknown[]) => Promise<SupabaseVaultQueryResult<TRow>>` | yes      |             |
-| transaction | method | `<TResult>(operation: (executor: SupabaseVaultSqlExecutor) => Promise<TResult>) => Promise<TResult>`                              | yes      |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| query | method | `<TRow extends Record<string, unknown>>(sql: string, parameters?: readonly unknown[]) => Promise<SupabaseVaultQueryResult<TRow>>` | yes |  |
+| transaction | method | `<TResult>(operation: (executor: SupabaseVaultSqlExecutor) => Promise<TResult>) => Promise<TResult>` | yes |  |
 
 ## SupabaseVaultSqlExecutor
 
@@ -111,6 +111,6 @@ Source: `src/types.ts:9:1`
 
 ### Members
 
-| Name  | Kind   | Type                                                                                                                              | Required | Description |
-| ----- | ------ | --------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| query | method | `<TRow extends Record<string, unknown>>(sql: string, parameters?: readonly unknown[]) => Promise<SupabaseVaultQueryResult<TRow>>` | yes      |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| query | method | `<TRow extends Record<string, unknown>>(sql: string, parameters?: readonly unknown[]) => Promise<SupabaseVaultQueryResult<TRow>>` | yes |  |
