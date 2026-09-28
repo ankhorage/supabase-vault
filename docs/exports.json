@@ -11,12 +11,8 @@
       "line": 19,
       "column": 1
     },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [
-      "SupabaseVaultAdapterOptions"
-    ],
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["SupabaseVaultAdapterOptions"],
     "signatures": [
       {
         "label": "(options?: SupabaseVaultAdapterOptions) => InfraServiceAdapter",
@@ -47,12 +43,8 @@
       "line": 6,
       "column": 1
     },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [
-      "SupabaseVaultAdapterOptions"
-    ],
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["SupabaseVaultAdapterOptions"],
     "signatures": [
       {
         "label": "(options: SupabaseVaultAdapterOptions) => SecretStoreAdapter",
@@ -83,9 +75,7 @@
       "line": 5,
       "column": 14
     },
-    "exportPaths": [
-      "src/index.ts"
-    ],
+    "exportPaths": ["src/index.ts"],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -103,9 +93,7 @@
       "line": 2,
       "column": 14
     },
-    "exportPaths": [
-      "src/index.ts"
-    ],
+    "exportPaths": ["src/index.ts"],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -123,9 +111,7 @@
       "line": 8,
       "column": 14
     },
-    "exportPaths": [
-      "src/index.ts"
-    ],
+    "exportPaths": ["src/index.ts"],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -143,9 +129,7 @@
       "line": 1,
       "column": 14
     },
-    "exportPaths": [
-      "src/index.ts"
-    ],
+    "exportPaths": ["src/index.ts"],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -163,9 +147,7 @@
       "line": 3,
       "column": 14
     },
-    "exportPaths": [
-      "src/index.ts"
-    ],
+    "exportPaths": ["src/index.ts"],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -183,9 +165,7 @@
       "line": 30,
       "column": 1
     },
-    "exportPaths": [
-      "src/index.ts"
-    ],
+    "exportPaths": ["src/index.ts"],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
@@ -203,12 +183,8 @@
       "line": 26,
       "column": 1
     },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [
-      "SupabaseVaultSqlClient"
-    ],
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["SupabaseVaultSqlClient"],
     "signatures": [],
     "members": [
       {
@@ -233,9 +209,7 @@
       "line": 5,
       "column": 1
     },
-    "exportPaths": [
-      "src/index.ts"
-    ],
+    "exportPaths": ["src/index.ts"],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
@@ -261,13 +235,8 @@
       "line": 20,
       "column": 1
     },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [
-      "SupabaseVaultQueryResult",
-      "SupabaseVaultSqlExecutor"
-    ],
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["SupabaseVaultQueryResult", "SupabaseVaultSqlExecutor"],
     "signatures": [],
     "members": [
       {
@@ -299,12 +268,8 @@
       "line": 9,
       "column": 1
     },
-    "exportPaths": [
-      "src/index.ts"
-    ],
-    "relatedSymbols": [
-      "SupabaseVaultQueryResult"
-    ],
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["SupabaseVaultQueryResult"],
     "signatures": [],
     "members": [
       {
