@@ -7,37 +7,16 @@
     <style>
       :root {
         color-scheme: light;
-        font-family:
-          Inter,
-          ui-sans-serif,
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          'Segoe UI',
-          sans-serif;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         background: #f5f7fb;
         color: #11203b;
       }
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-      }
-      a {
-        color: #2459d3;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      button {
-        font: inherit;
-      }
-      code,
-      pre {
-        font-family: 'SFMono-Regular', ui-monospace, SFMono-Regular, Menlo, monospace;
-      }
+      * { box-sizing: border-box; }
+      body { margin: 0; }
+      a { color: #2459d3; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      button { font: inherit; }
+      code, pre { font-family: "SFMono-Regular", ui-monospace, SFMono-Regular, Menlo, monospace; }
       .layout {
         display: grid;
         grid-template-columns: minmax(16rem, 22rem) minmax(0, 1fr);
@@ -52,11 +31,8 @@
         max-height: 100vh;
         overflow: auto;
       }
-      .content {
-        padding: 2rem;
-      }
-      .panel,
-      .item {
+      .content { padding: 2rem; }
+      .panel, .item {
         background: #ffffff;
         border: 1px solid #d8dfec;
         border-radius: 0.9rem;
@@ -80,15 +56,12 @@
         border: 1px solid #c7d2e5;
         margin: 1rem 0 1.5rem;
       }
-      .nav-list,
-      .meta-list {
+      .nav-list, .meta-list {
         list-style: none;
         padding: 0;
         margin: 0;
       }
-      .nav-list li + li {
-        margin-top: 0.5rem;
-      }
+      .nav-list li + li { margin-top: 0.5rem; }
       .nav-button {
         width: 100%;
         display: block;
@@ -100,8 +73,7 @@
         padding: 0.55rem 0.7rem;
         text-align: left;
       }
-      .nav-button:hover,
-      .nav-button[aria-current='page'] {
+      .nav-button:hover, .nav-button[aria-current="page"] {
         background: #e8eefb;
         text-decoration: none;
       }
@@ -110,19 +82,9 @@
         color: #5e6d8c;
         margin-top: 0.15rem;
       }
-      .view[hidden] {
-        display: none;
-      }
-      .muted {
-        color: #5e6d8c;
-      }
-      .chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        padding: 0;
-        list-style: none;
-      }
+      .view[hidden] { display: none; }
+      .muted { color: #5e6d8c; }
+      .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; list-style: none; }
       .chip {
         border-radius: 999px;
         background: #e8eefb;
@@ -130,18 +92,8 @@
         padding: 0.25rem 0.65rem;
         font-size: 0.85rem;
       }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 0.8rem;
-      }
-      th,
-      td {
-        padding: 0.6rem;
-        border-bottom: 1px solid #e2e7f2;
-        text-align: left;
-        vertical-align: top;
-      }
+      table { width: 100%; border-collapse: collapse; margin-top: 0.8rem; }
+      th, td { padding: 0.6rem; border-bottom: 1px solid #e2e7f2; text-align: left; vertical-align: top; }
       pre {
         overflow: auto;
         border-radius: 0.75rem;
@@ -149,34 +101,13 @@
         color: #e7edf7;
         padding: 1rem;
       }
-      .empty {
-        font-style: italic;
-        color: #6f7f9c;
-      }
-      .mermaid {
-        margin: 1rem 0;
-        overflow: auto;
-      }
-      details > summary {
-        cursor: pointer;
-        color: #5e6d8c;
-        font-size: 0.9rem;
-        margin-top: 0.5rem;
-        user-select: none;
-      }
+      .empty { font-style: italic; color: #6f7f9c; }
+      .mermaid { margin: 1rem 0; overflow: auto; }
+      details > summary { cursor: pointer; color: #5e6d8c; font-size: 0.9rem; margin-top: 0.5rem; user-select: none; }
       @media (max-width: 900px) {
-        .layout {
-          grid-template-columns: 1fr;
-        }
-        .sidebar {
-          position: static;
-          max-height: none;
-          border-right: 0;
-          border-bottom: 1px solid #d8dfec;
-        }
-        .content {
-          padding: 1rem;
-        }
+        .layout { grid-template-columns: 1fr; }
+        .sidebar { position: static; max-height: none; border-right: 0; border-bottom: 1px solid #d8dfec; }
+        .content { padding: 1rem; }
       }
     </style>
   </head>
@@ -196,724 +127,404 @@
               </button>
             </li>
             <li>
-              <button class="nav-button" type="button" data-target="src/adapter.ts">
-                src/adapter.ts
-                <small>1 function</small>
-              </button>
-            </li>
-            <li>
-              <button
-                class="nav-button"
-                type="button"
-                data-target="src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts"
-              >
-                src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts
-                <small>6 functions</small>
-              </button>
-            </li>
-            <li>
-              <button
-                class="nav-button"
-                type="button"
-                data-target="src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts"
-              >
-                src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts
-                <small>1 function</small>
-              </button>
-            </li>
-            <li>
-              <button
-                class="nav-button"
-                type="button"
-                data-target="src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
-              >
-                src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts
-                <small>5 functions</small>
-              </button>
-            </li>
-            <li>
-              <button
-                class="nav-button"
-                type="button"
-                data-target="src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts"
-              >
-                src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts
-                <small>1 function</small>
-              </button>
-            </li>
-            <li>
-              <button
-                class="nav-button"
-                type="button"
-                data-target="src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts"
-              >
-                src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts
-                <small>1 function</small>
-              </button>
-            </li>
-            <li>
-              <button
-                class="nav-button"
-                type="button"
-                data-target="src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
-              >
-                src/features/secret-store-infrastructure/composition/createInfraAdapter.ts
-                <small>3 functions</small>
-              </button>
-            </li>
-            <li>
-              <button class="nav-button" type="button" data-target="src/vaultMetadata.ts">
-                src/vaultMetadata.ts
-                <small>4 functions</small>
-              </button>
-            </li>
-            <li>
-              <button class="nav-button" type="button" data-target="src/vaultOperations.ts">
-                src/vaultOperations.ts
-                <small>18 functions</small>
-              </button>
-            </li>
+    <button class="nav-button" type="button" data-target="src/adapter.ts">
+      src/adapter.ts
+      <small>1 function</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts">
+      src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts
+      <small>6 functions</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts">
+      src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts
+      <small>1 function</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts">
+      src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts
+      <small>5 functions</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts">
+      src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts
+      <small>1 function</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts">
+      src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts
+      <small>1 function</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/secret-store-infrastructure/composition/createInfraAdapter.ts">
+      src/features/secret-store-infrastructure/composition/createInfraAdapter.ts
+      <small>3 functions</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/vaultMetadata.ts">
+      src/vaultMetadata.ts
+      <small>4 functions</small>
+    </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/vaultOperations.ts">
+      src/vaultOperations.ts
+      <small>18 functions</small>
+    </button>
+  </li>
           </ul>
         </nav>
       </aside>
       <main class="content">
         <section id="view-home" class="view" data-view="home">
-          <section class="panel">
-            <h2>Package overview</h2>
-            <div class="summary">
-              <div><strong>12</strong><span class="muted">public exports</span></div>
-              <div><strong>0</strong><span class="muted">components</span></div>
-              <div><strong>13</strong><span class="muted">modules</span></div>
-              <div><strong>1</strong><span class="muted">entrypoints</span></div>
-            </div>
-            <h3>Entrypoints</h3>
-            <ul class="meta-list">
-              <li><code>src/index.ts</code></li>
-            </ul>
-          </section>
-
-          <section class="panel">
-            <h2>Modules</h2>
-            <article
-              class="item"
-              data-search="src/adapter.ts src/types.ts src/vaultOperations.ts createSupabaseVaultAdapter"
-            >
-              <h3>src/adapter.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong> <code>src/types.ts</code>,
-                <code>src/vaultOperations.ts</code>
-              </p>
-              <p><strong>Exports:</strong> <code>createSupabaseVaultAdapter</code></p>
-            </article>
-            <article class="item" data-search="src/constants/infra.ts infraAdapterDescriptor">
-              <h3>src/constants/infra.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-              <p><strong>Exports:</strong> <code>infraAdapterDescriptor</code></p>
-            </article>
-            <article
-              class="item"
-              data-search="src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts src/migrations.ts src/types.ts destroySupabaseVaultAsync"
-            >
-              <h3>
-                src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts
-              </h3>
-              <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong> <code>src/migrations.ts</code>,
-                <code>src/types.ts</code>
-              </p>
-              <p><strong>Exports:</strong> <code>destroySupabaseVaultAsync</code></p>
-            </article>
-            <article
-              class="item"
-              data-search="src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts getSupabaseVaultStatusAsync"
-            >
-              <h3>
-                src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts
-              </h3>
-              <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong>
-                <code
-                  >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts</code
-                >
-              </p>
-              <p><strong>Exports:</strong> <code>getSupabaseVaultStatusAsync</code></p>
-            </article>
-            <article
-              class="item"
-              data-search="src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts src/migrations.ts inspectSupabaseVaultAsync SupabaseVaultInfrastructureObservation"
-            >
-              <h3>
-                src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts
-              </h3>
-              <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <code>src/migrations.ts</code></p>
-              <p>
-                <strong>Exports:</strong> <code>inspectSupabaseVaultAsync</code>,
-                <code>SupabaseVaultInfrastructureObservation</code>
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts planSupabaseVaultAsync"
-            >
-              <h3>
-                src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts
-              </h3>
-              <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong>
-                <code
-                  >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts</code
-                >
-              </p>
-              <p><strong>Exports:</strong> <code>planSupabaseVaultAsync</code></p>
-            </article>
-            <article
-              class="item"
-              data-search="src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts reconcileSupabaseVaultAsync"
-            >
-              <h3>
-                src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts
-              </h3>
-              <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong>
-                <code
-                  >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts</code
-                >
-              </p>
-              <p><strong>Exports:</strong> <code>reconcileSupabaseVaultAsync</code></p>
-            </article>
-            <article
-              class="item"
-              data-search="src/features/secret-store-infrastructure/composition/createInfraAdapter.ts src/constants/infra.ts src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts src/types.ts createInfraAdapter"
-            >
-              <h3>src/features/secret-store-infrastructure/composition/createInfraAdapter.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong> <code>src/constants/infra.ts</code>,
-                <code
-                  >src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts</code
-                >,
-                <code
-                  >src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts</code
-                >,
-                <code
-                  >src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts</code
-                >,
-                <code
-                  >src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts</code
-                >, <code>src/types.ts</code>
-              </p>
-              <p><strong>Exports:</strong> <code>createInfraAdapter</code></p>
-            </article>
-            <article
-              class="item"
-              data-search="src/index.ts createInfraAdapter createSupabaseVaultAdapter infraAdapterDescriptor SUPABASE_VAULT_METADATA_TABLE SUPABASE_VAULT_MIGRATION_SQL SUPABASE_VAULT_SCHEMA SUPABASE_VAULT_SECRET_STORE_PROVIDER SupabaseVaultAdapter SupabaseVaultAdapterOptions SupabaseVaultQueryResult SupabaseVaultSqlClient SupabaseVaultSqlExecutor"
-            >
-              <h3>src/index.ts</h3>
-              <p class="muted">Configured entrypoint</p>
-              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-              <p>
-                <strong>Exports:</strong> <code>createInfraAdapter</code>,
-                <code>createSupabaseVaultAdapter</code>, <code>infraAdapterDescriptor</code>,
-                <code>SUPABASE_VAULT_METADATA_TABLE</code>,
-                <code>SUPABASE_VAULT_MIGRATION_SQL</code>, <code>SUPABASE_VAULT_SCHEMA</code>,
-                <code>SUPABASE_VAULT_SECRET_STORE_PROVIDER</code>,
-                <code>SupabaseVaultAdapter</code>, <code>SupabaseVaultAdapterOptions</code>,
-                <code>SupabaseVaultQueryResult</code>, <code>SupabaseVaultSqlClient</code>,
-                <code>SupabaseVaultSqlExecutor</code>
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="src/migrations.ts SUPABASE_VAULT_METADATA_TABLE SUPABASE_VAULT_MIGRATION_SQL SUPABASE_VAULT_SCHEMA"
-            >
-              <h3>src/migrations.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-              <p>
-                <strong>Exports:</strong> <code>SUPABASE_VAULT_METADATA_TABLE</code>,
-                <code>SUPABASE_VAULT_MIGRATION_SQL</code>, <code>SUPABASE_VAULT_SCHEMA</code>
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="src/types.ts SUPABASE_VAULT_SECRET_STORE_PROVIDER SupabaseVaultAdapter SupabaseVaultAdapterOptions SupabaseVaultQueryResult SupabaseVaultSqlClient SupabaseVaultSqlExecutor"
-            >
-              <h3>src/types.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-              <p>
-                <strong>Exports:</strong> <code>SUPABASE_VAULT_SECRET_STORE_PROVIDER</code>,
-                <code>SupabaseVaultAdapter</code>, <code>SupabaseVaultAdapterOptions</code>,
-                <code>SupabaseVaultQueryResult</code>, <code>SupabaseVaultSqlClient</code>,
-                <code>SupabaseVaultSqlExecutor</code>
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="src/vaultMetadata.ts src/migrations.ts src/types.ts InternalVaultMetadataRow selectInternalVaultMetadata selectVaultMetadata serializeConfiguredFields toSecretMetadata VAULT_METADATA_TABLE VaultMetadataRow"
-            >
-              <h3>src/vaultMetadata.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong> <code>src/migrations.ts</code>,
-                <code>src/types.ts</code>
-              </p>
-              <p>
-                <strong>Exports:</strong> <code>InternalVaultMetadataRow</code>,
-                <code>selectInternalVaultMetadata</code>, <code>selectVaultMetadata</code>,
-                <code>serializeConfiguredFields</code>, <code>toSecretMetadata</code>,
-                <code>VAULT_METADATA_TABLE</code>, <code>VaultMetadataRow</code>
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="src/vaultOperations.ts src/types.ts src/vaultMetadata.ts createVaultOperations"
-            >
-              <h3>src/vaultOperations.ts</h3>
-              <p class="muted">Referenced module</p>
-              <p>
-                <strong>Dependencies:</strong> <code>src/types.ts</code>,
-                <code>src/vaultMetadata.ts</code>
-              </p>
-              <p><strong>Exports:</strong> <code>createVaultOperations</code></p>
-            </article>
-          </section>
-          <section class="panel">
-            <h2>Public API</h2>
-
+          
+    <section class="panel">
+      <h2>Package overview</h2>
+      <div class="summary">
+        <div><strong>12</strong><span class="muted">public exports</span></div>
+        <div><strong>0</strong><span class="muted">components</span></div>
+        <div><strong>13</strong><span class="muted">modules</span></div>
+        <div><strong>1</strong><span class="muted">entrypoints</span></div>
+      </div>
+      <h3>Entrypoints</h3>
+      <ul class="meta-list">
+        <li><code>src/index.ts</code></li>
+      </ul>
+    </section>
+    
+    <section class="panel">
+      <h2>Modules</h2>
+      <article class="item" data-search="src/adapter.ts src/types.ts src/vaultOperations.ts createSupabaseVaultAdapter">
+    <h3>src/adapter.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/types.ts</code>, <code>src/vaultOperations.ts</code></p>
+    <p><strong>Exports:</strong> <code>createSupabaseVaultAdapter</code></p>
+  </article><article class="item" data-search="src/constants/infra.ts infraAdapterDescriptor">
+    <h3>src/constants/infra.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>infraAdapterDescriptor</code></p>
+  </article><article class="item" data-search="src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts src/migrations.ts src/types.ts destroySupabaseVaultAsync">
+    <h3>src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/migrations.ts</code>, <code>src/types.ts</code></p>
+    <p><strong>Exports:</strong> <code>destroySupabaseVaultAsync</code></p>
+  </article><article class="item" data-search="src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts getSupabaseVaultStatusAsync">
+    <h3>src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts</code></p>
+    <p><strong>Exports:</strong> <code>getSupabaseVaultStatusAsync</code></p>
+  </article><article class="item" data-search="src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts src/migrations.ts inspectSupabaseVaultAsync SupabaseVaultInfrastructureObservation">
+    <h3>src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/migrations.ts</code></p>
+    <p><strong>Exports:</strong> <code>inspectSupabaseVaultAsync</code>, <code>SupabaseVaultInfrastructureObservation</code></p>
+  </article><article class="item" data-search="src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts planSupabaseVaultAsync">
+    <h3>src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts</code></p>
+    <p><strong>Exports:</strong> <code>planSupabaseVaultAsync</code></p>
+  </article><article class="item" data-search="src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts reconcileSupabaseVaultAsync">
+    <h3>src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts</code></p>
+    <p><strong>Exports:</strong> <code>reconcileSupabaseVaultAsync</code></p>
+  </article><article class="item" data-search="src/features/secret-store-infrastructure/composition/createInfraAdapter.ts src/constants/infra.ts src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts src/types.ts createInfraAdapter">
+    <h3>src/features/secret-store-infrastructure/composition/createInfraAdapter.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/constants/infra.ts</code>, <code>src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts</code>, <code>src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts</code>, <code>src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts</code>, <code>src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts</code>, <code>src/types.ts</code></p>
+    <p><strong>Exports:</strong> <code>createInfraAdapter</code></p>
+  </article><article class="item" data-search="src/index.ts createInfraAdapter createSupabaseVaultAdapter infraAdapterDescriptor SUPABASE_VAULT_METADATA_TABLE SUPABASE_VAULT_MIGRATION_SQL SUPABASE_VAULT_SCHEMA SUPABASE_VAULT_SECRET_STORE_PROVIDER SupabaseVaultAdapter SupabaseVaultAdapterOptions SupabaseVaultQueryResult SupabaseVaultSqlClient SupabaseVaultSqlExecutor">
+    <h3>src/index.ts</h3>
+    <p class="muted">Configured entrypoint</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>createInfraAdapter</code>, <code>createSupabaseVaultAdapter</code>, <code>infraAdapterDescriptor</code>, <code>SUPABASE_VAULT_METADATA_TABLE</code>, <code>SUPABASE_VAULT_MIGRATION_SQL</code>, <code>SUPABASE_VAULT_SCHEMA</code>, <code>SUPABASE_VAULT_SECRET_STORE_PROVIDER</code>, <code>SupabaseVaultAdapter</code>, <code>SupabaseVaultAdapterOptions</code>, <code>SupabaseVaultQueryResult</code>, <code>SupabaseVaultSqlClient</code>, <code>SupabaseVaultSqlExecutor</code></p>
+  </article><article class="item" data-search="src/migrations.ts SUPABASE_VAULT_METADATA_TABLE SUPABASE_VAULT_MIGRATION_SQL SUPABASE_VAULT_SCHEMA">
+    <h3>src/migrations.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>SUPABASE_VAULT_METADATA_TABLE</code>, <code>SUPABASE_VAULT_MIGRATION_SQL</code>, <code>SUPABASE_VAULT_SCHEMA</code></p>
+  </article><article class="item" data-search="src/types.ts SUPABASE_VAULT_SECRET_STORE_PROVIDER SupabaseVaultAdapter SupabaseVaultAdapterOptions SupabaseVaultQueryResult SupabaseVaultSqlClient SupabaseVaultSqlExecutor">
+    <h3>src/types.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>SUPABASE_VAULT_SECRET_STORE_PROVIDER</code>, <code>SupabaseVaultAdapter</code>, <code>SupabaseVaultAdapterOptions</code>, <code>SupabaseVaultQueryResult</code>, <code>SupabaseVaultSqlClient</code>, <code>SupabaseVaultSqlExecutor</code></p>
+  </article><article class="item" data-search="src/vaultMetadata.ts src/migrations.ts src/types.ts InternalVaultMetadataRow selectInternalVaultMetadata selectVaultMetadata serializeConfiguredFields toSecretMetadata VAULT_METADATA_TABLE VaultMetadataRow">
+    <h3>src/vaultMetadata.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/migrations.ts</code>, <code>src/types.ts</code></p>
+    <p><strong>Exports:</strong> <code>InternalVaultMetadataRow</code>, <code>selectInternalVaultMetadata</code>, <code>selectVaultMetadata</code>, <code>serializeConfiguredFields</code>, <code>toSecretMetadata</code>, <code>VAULT_METADATA_TABLE</code>, <code>VaultMetadataRow</code></p>
+  </article><article class="item" data-search="src/vaultOperations.ts src/types.ts src/vaultMetadata.ts createVaultOperations">
+    <h3>src/vaultOperations.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/types.ts</code>, <code>src/vaultMetadata.ts</code></p>
+    <p><strong>Exports:</strong> <code>createVaultOperations</code></p>
+  </article>
+    </section>
+    <section class="panel">
+      <h2>Public API</h2>
+      
             <section>
               <h3>src/adapter.ts</h3>
-              <article
-                class="item"
-                id="symbol-createsupabasevaultadapter"
-                data-search="createSupabaseVaultAdapter function src/adapter.ts  SupabaseVaultAdapterOptions (options: SupabaseVaultAdapterOptions) =&gt; SecretStoreAdapter"
-              >
-                <h4>createSupabaseVaultAdapter</h4>
-                <p class="muted">function • <code>src/adapter.ts:6:1</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div>
-                  <strong>Related symbols:</strong>
-                  <ul class="chips">
-                    <li class="chip">SupabaseVaultAdapterOptions</li>
-                  </ul>
-                </div>
-                <div>
-                  <h5>Signature</h5>
-                  <pre>(options: SupabaseVaultAdapterOptions) =&gt; SecretStoreAdapter</pre>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Required</th>
-                        <th>Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
+              <article class="item" id="symbol-createsupabasevaultadapter" data-search="createSupabaseVaultAdapter function src/adapter.ts  SupabaseVaultAdapterOptions (options: SupabaseVaultAdapterOptions) =&gt; SecretStoreAdapter">
+    <h4>createSupabaseVaultAdapter</h4>
+    <p class="muted">function • <code>src/adapter.ts:6:1</code></p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">SupabaseVaultAdapterOptions</li></ul></div>
+    <div>
+        <h5>Signature</h5>
+        <pre>(options: SupabaseVaultAdapterOptions) =&gt; SecretStoreAdapter</pre>
+        <table>
+                <thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+                <tbody>
+                  <tr>
                         <td><code>options</code></td>
                         <td><code>SupabaseVaultAdapterOptions</code></td>
                         <td>yes</td>
                         <td></td>
                       </tr>
-                    </tbody>
-                  </table>
-                  <p><strong>Returns:</strong> <code>SecretStoreAdapter</code></p>
-                </div>
-              </article>
+                </tbody>
+              </table>
+        <p><strong>Returns:</strong> <code>SecretStoreAdapter</code></p>
+      </div>
+    
+  </article>
             </section>
             <section>
               <h3>src/constants/infra.ts</h3>
-              <article
-                class="item"
-                id="symbol-infraadapterdescriptor"
-                data-search="infraAdapterDescriptor value src/constants/infra.ts "
-              >
-                <h4>infraAdapterDescriptor</h4>
-                <p class="muted">value • <code>src/constants/infra.ts:5:14</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-              </article>
+              <article class="item" id="symbol-infraadapterdescriptor" data-search="infraAdapterDescriptor value src/constants/infra.ts ">
+    <h4>infraAdapterDescriptor</h4>
+    <p class="muted">value • <code>src/constants/infra.ts:5:14</code></p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    
+  </article>
             </section>
             <section>
               <h3>src/features/secret-store-infrastructure/composition/createInfraAdapter.ts</h3>
-              <article
-                class="item"
-                id="symbol-createinfraadapter"
-                data-search="createInfraAdapter function src/features/secret-store-infrastructure/composition/createInfraAdapter.ts Create the canonical Supabase Vault Infra service adapter.&#10;&#10;The selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.&#10;Infra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL&#10;client remains necessary only for explicitly confirmed destructive namespace deletion. SupabaseVaultAdapterOptions (options?: SupabaseVaultAdapterOptions) =&gt; InfraServiceAdapter"
-              >
-                <h4>createInfraAdapter</h4>
-                <p class="muted">
-                  function •
-                  <code
-                    >src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:19:1</code
-                  >
-                </p>
-                <p>
-                  Create the canonical Supabase Vault Infra service adapter. The selected Supabase
-                  database lifecycle owns schema bootstrap from the public Vault migration. Infra
-                  discovery, planning and `up` therefore require no host PostgreSQL connection. A
-                  trusted SQL client remains necessary only for explicitly confirmed destructive
-                  namespace deletion.
-                </p>
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div>
-                  <strong>Related symbols:</strong>
-                  <ul class="chips">
-                    <li class="chip">SupabaseVaultAdapterOptions</li>
-                  </ul>
-                </div>
-                <div>
-                  <h5>Signature</h5>
-                  <pre>(options?: SupabaseVaultAdapterOptions) =&gt; InfraServiceAdapter</pre>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Required</th>
-                        <th>Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
+              <article class="item" id="symbol-createinfraadapter" data-search="createInfraAdapter function src/features/secret-store-infrastructure/composition/createInfraAdapter.ts Create the canonical Supabase Vault Infra service adapter.&#10;&#10;The selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.&#10;Infra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL&#10;client remains necessary only for explicitly confirmed destructive namespace deletion. SupabaseVaultAdapterOptions (options?: SupabaseVaultAdapterOptions) =&gt; InfraServiceAdapter">
+    <h4>createInfraAdapter</h4>
+    <p class="muted">function • <code>src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:19:1</code></p>
+    <p>Create the canonical Supabase Vault Infra service adapter.
+
+The selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.
+Infra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL
+client remains necessary only for explicitly confirmed destructive namespace deletion.</p>
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">SupabaseVaultAdapterOptions</li></ul></div>
+    <div>
+        <h5>Signature</h5>
+        <pre>(options?: SupabaseVaultAdapterOptions) =&gt; InfraServiceAdapter</pre>
+        <table>
+                <thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+                <tbody>
+                  <tr>
                         <td><code>options</code></td>
                         <td><code>SupabaseVaultAdapterOptions</code></td>
                         <td>no</td>
                         <td></td>
                       </tr>
-                    </tbody>
-                  </table>
-                  <p><strong>Returns:</strong> <code>InfraServiceAdapter</code></p>
-                </div>
-              </article>
+                </tbody>
+              </table>
+        <p><strong>Returns:</strong> <code>InfraServiceAdapter</code></p>
+      </div>
+    
+  </article>
             </section>
             <section>
               <h3>src/migrations.ts</h3>
-              <article
-                class="item"
-                id="symbol-supabase-vault-metadata-table"
-                data-search="SUPABASE_VAULT_METADATA_TABLE value src/migrations.ts "
-              >
-                <h4>SUPABASE_VAULT_METADATA_TABLE</h4>
-                <p class="muted">value • <code>src/migrations.ts:2:14</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-              </article>
-              <article
-                class="item"
-                id="symbol-supabase-vault-migration-sql"
-                data-search="SUPABASE_VAULT_MIGRATION_SQL value src/migrations.ts "
-              >
-                <h4>SUPABASE_VAULT_MIGRATION_SQL</h4>
-                <p class="muted">value • <code>src/migrations.ts:8:14</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-              </article>
-              <article
-                class="item"
-                id="symbol-supabase-vault-schema"
-                data-search="SUPABASE_VAULT_SCHEMA value src/migrations.ts "
-              >
-                <h4>SUPABASE_VAULT_SCHEMA</h4>
-                <p class="muted">value • <code>src/migrations.ts:1:14</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-              </article>
+              <article class="item" id="symbol-supabase-vault-metadata-table" data-search="SUPABASE_VAULT_METADATA_TABLE value src/migrations.ts ">
+    <h4>SUPABASE_VAULT_METADATA_TABLE</h4>
+    <p class="muted">value • <code>src/migrations.ts:2:14</code></p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    
+  </article><article class="item" id="symbol-supabase-vault-migration-sql" data-search="SUPABASE_VAULT_MIGRATION_SQL value src/migrations.ts ">
+    <h4>SUPABASE_VAULT_MIGRATION_SQL</h4>
+    <p class="muted">value • <code>src/migrations.ts:8:14</code></p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    
+  </article><article class="item" id="symbol-supabase-vault-schema" data-search="SUPABASE_VAULT_SCHEMA value src/migrations.ts ">
+    <h4>SUPABASE_VAULT_SCHEMA</h4>
+    <p class="muted">value • <code>src/migrations.ts:1:14</code></p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    
+  </article>
             </section>
             <section>
               <h3>src/types.ts</h3>
-              <article
-                class="item"
-                id="symbol-supabase-vault-secret-store-provider"
-                data-search="SUPABASE_VAULT_SECRET_STORE_PROVIDER value src/types.ts "
-              >
-                <h4>SUPABASE_VAULT_SECRET_STORE_PROVIDER</h4>
-                <p class="muted">value • <code>src/types.ts:3:14</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-              </article>
-              <article
-                class="item"
-                id="symbol-supabasevaultadapter"
-                data-search="SupabaseVaultAdapter unknown src/types.ts "
-              >
-                <h4>SupabaseVaultAdapter</h4>
-                <p class="muted">unknown • <code>src/types.ts:30:1</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-              </article>
-              <article
-                class="item"
-                id="symbol-supabasevaultadapteroptions"
-                data-search="SupabaseVaultAdapterOptions type src/types.ts  SupabaseVaultSqlClient"
-              >
-                <h4>SupabaseVaultAdapterOptions</h4>
-                <p class="muted">type • <code>src/types.ts:26:1</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div>
-                  <strong>Related symbols:</strong>
-                  <ul class="chips">
-                    <li class="chip">SupabaseVaultSqlClient</li>
-                  </ul>
-                </div>
-
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Member</th>
-                      <th>Kind</th>
-                      <th>Type</th>
-                      <th>Required</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>client</code></td>
-                      <td>property</td>
-                      <td><code>SupabaseVaultSqlClient | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </article>
-              <article
-                class="item"
-                id="symbol-supabasevaultqueryresult"
-                data-search="SupabaseVaultQueryResult type src/types.ts "
-              >
-                <h4>SupabaseVaultQueryResult</h4>
-                <p class="muted">type • <code>src/types.ts:5:1</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Member</th>
-                      <th>Kind</th>
-                      <th>Type</th>
-                      <th>Required</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>rows</code></td>
-                      <td>property</td>
-                      <td><code>readonly TRow[]</code></td>
-                      <td>yes</td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </article>
-              <article
-                class="item"
-                id="symbol-supabasevaultsqlclient"
-                data-search="SupabaseVaultSqlClient type src/types.ts  SupabaseVaultQueryResult SupabaseVaultSqlExecutor"
-              >
-                <h4>SupabaseVaultSqlClient</h4>
-                <p class="muted">type • <code>src/types.ts:20:1</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div>
-                  <strong>Related symbols:</strong>
-                  <ul class="chips">
-                    <li class="chip">SupabaseVaultQueryResult</li>
-                    <li class="chip">SupabaseVaultSqlExecutor</li>
-                  </ul>
-                </div>
-
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Member</th>
-                      <th>Kind</th>
-                      <th>Type</th>
-                      <th>Required</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>query</code></td>
-                      <td>method</td>
-                      <td>
-                        <code
-                          >&lt;TRow extends Record&lt;string, unknown&gt;&gt;(sql: string,
-                          parameters?: readonly unknown[]) =&gt;
-                          Promise&lt;SupabaseVaultQueryResult&lt;TRow&gt;&gt;</code
-                        >
-                      </td>
-                      <td>yes</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td><code>transaction</code></td>
-                      <td>method</td>
-                      <td>
-                        <code
-                          >&lt;TResult&gt;(operation: (executor: SupabaseVaultSqlExecutor) =&gt;
-                          Promise&lt;TResult&gt;) =&gt; Promise&lt;TResult&gt;</code
-                        >
-                      </td>
-                      <td>yes</td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </article>
-              <article
-                class="item"
-                id="symbol-supabasevaultsqlexecutor"
-                data-search="SupabaseVaultSqlExecutor type src/types.ts  SupabaseVaultQueryResult"
-              >
-                <h4>SupabaseVaultSqlExecutor</h4>
-                <p class="muted">type • <code>src/types.ts:9:1</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div>
-                  <strong>Related symbols:</strong>
-                  <ul class="chips">
-                    <li class="chip">SupabaseVaultQueryResult</li>
-                  </ul>
-                </div>
-
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Member</th>
-                      <th>Kind</th>
-                      <th>Type</th>
-                      <th>Required</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>query</code></td>
-                      <td>method</td>
-                      <td>
-                        <code
-                          >&lt;TRow extends Record&lt;string, unknown&gt;&gt;(sql: string,
-                          parameters?: readonly unknown[]) =&gt;
-                          Promise&lt;SupabaseVaultQueryResult&lt;TRow&gt;&gt;</code
-                        >
-                      </td>
-                      <td>yes</td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </article>
+              <article class="item" id="symbol-supabase-vault-secret-store-provider" data-search="SUPABASE_VAULT_SECRET_STORE_PROVIDER value src/types.ts ">
+    <h4>SUPABASE_VAULT_SECRET_STORE_PROVIDER</h4>
+    <p class="muted">value • <code>src/types.ts:3:14</code></p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    
+  </article><article class="item" id="symbol-supabasevaultadapter" data-search="SupabaseVaultAdapter unknown src/types.ts ">
+    <h4>SupabaseVaultAdapter</h4>
+    <p class="muted">unknown • <code>src/types.ts:30:1</code></p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    
+  </article><article class="item" id="symbol-supabasevaultadapteroptions" data-search="SupabaseVaultAdapterOptions type src/types.ts  SupabaseVaultSqlClient">
+    <h4>SupabaseVaultAdapterOptions</h4>
+    <p class="muted">type • <code>src/types.ts:26:1</code></p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">SupabaseVaultSqlClient</li></ul></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>client</code></td>
+            <td>property</td>
+            <td><code>SupabaseVaultSqlClient | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article><article class="item" id="symbol-supabasevaultqueryresult" data-search="SupabaseVaultQueryResult type src/types.ts ">
+    <h4>SupabaseVaultQueryResult</h4>
+    <p class="muted">type • <code>src/types.ts:5:1</code></p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>rows</code></td>
+            <td>property</td>
+            <td><code>readonly TRow[]</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article><article class="item" id="symbol-supabasevaultsqlclient" data-search="SupabaseVaultSqlClient type src/types.ts  SupabaseVaultQueryResult SupabaseVaultSqlExecutor">
+    <h4>SupabaseVaultSqlClient</h4>
+    <p class="muted">type • <code>src/types.ts:20:1</code></p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">SupabaseVaultQueryResult</li><li class="chip">SupabaseVaultSqlExecutor</li></ul></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>query</code></td>
+            <td>method</td>
+            <td><code>&lt;TRow extends Record&lt;string, unknown&gt;&gt;(sql: string, parameters?: readonly unknown[]) =&gt; Promise&lt;SupabaseVaultQueryResult&lt;TRow&gt;&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>transaction</code></td>
+            <td>method</td>
+            <td><code>&lt;TResult&gt;(operation: (executor: SupabaseVaultSqlExecutor) =&gt; Promise&lt;TResult&gt;) =&gt; Promise&lt;TResult&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article><article class="item" id="symbol-supabasevaultsqlexecutor" data-search="SupabaseVaultSqlExecutor type src/types.ts  SupabaseVaultQueryResult">
+    <h4>SupabaseVaultSqlExecutor</h4>
+    <p class="muted">type • <code>src/types.ts:9:1</code></p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">SupabaseVaultQueryResult</li></ul></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>query</code></td>
+            <td>method</td>
+            <td><code>&lt;TRow extends Record&lt;string, unknown&gt;&gt;(sql: string, parameters?: readonly unknown[]) =&gt; Promise&lt;SupabaseVaultQueryResult&lt;TRow&gt;&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article>
             </section>
-          </section>
-          <section class="panel">
-            <h2>Component registry</h2>
-            <p class="empty">No components were detected.</p>
-          </section>
-          <section class="panel">
-            <h2>Diagrams</h2>
-            <article
-              class="item"
-              data-search="Architecture overview diagrams/architecture-overview.mmd"
-            >
-              <h3>Architecture overview</h3>
-              <p class="muted"><code>diagrams/architecture-overview.mmd</code></p>
-              <div class="mermaid">
-                graph TD package__ankhorage_supabase_vault[&quot;SUPABASE-VAULT&quot;]
-                entrypoint_src_index_ts[&quot;src/index.ts&quot;] package__ankhorage_supabase_vault
-                --&gt; entrypoint_src_index_ts module_src_adapter_ts[&quot;src/adapter.ts&quot;]
-                package__ankhorage_supabase_vault -.-&gt; module_src_adapter_ts
-                module_src_adapter_ts --&gt; module_src_types_ts module_src_adapter_ts --&gt;
-                module_src_vaultOperations_ts
-                module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
-                package__ankhorage_supabase_vault -.-&gt; module_src_constants_infra_ts
-                module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts&quot;]
-                package__ankhorage_supabase_vault -.-&gt;
-                module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts
-                --&gt; module_src_migrations_ts
-                module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts
-                --&gt; module_src_types_ts
-                module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts[&quot;src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts&quot;]
-                package__ankhorage_supabase_vault -.-&gt;
-                module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts
-                module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts
-                --&gt;
-                module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts&quot;]
-                package__ankhorage_supabase_vault -.-&gt;
-                module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                --&gt; module_src_migrations_ts
-                module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts&quot;]
-                package__ankhorage_supabase_vault -.-&gt;
-                module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts
-                --&gt;
-                module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts&quot;]
-                package__ankhorage_supabase_vault -.-&gt;
-                module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
-                --&gt;
-                module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts[&quot;src/features/secret-store-infrastructure/composition/createInfraAdapter.ts&quot;]
-                package__ankhorage_supabase_vault -.-&gt;
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
-                --&gt; module_src_constants_infra_ts
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
-                --&gt;
-                module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
-                --&gt;
-                module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
-                --&gt;
-                module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
-                --&gt;
-                module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
-                --&gt; module_src_types_ts module_src_index_ts[&quot;src/index.ts&quot;]
-                module_src_migrations_ts[&quot;src/migrations.ts&quot;]
-                package__ankhorage_supabase_vault -.-&gt; module_src_migrations_ts
-                module_src_types_ts[&quot;src/types.ts&quot;] package__ankhorage_supabase_vault
-                -.-&gt; module_src_types_ts
-                module_src_vaultMetadata_ts[&quot;src/vaultMetadata.ts&quot;]
-                package__ankhorage_supabase_vault -.-&gt; module_src_vaultMetadata_ts
-                module_src_vaultMetadata_ts --&gt; module_src_migrations_ts
-                module_src_vaultMetadata_ts --&gt; module_src_types_ts
-                module_src_vaultOperations_ts[&quot;src/vaultOperations.ts&quot;]
-                package__ankhorage_supabase_vault -.-&gt; module_src_vaultOperations_ts
-                module_src_vaultOperations_ts --&gt; module_src_types_ts
-                module_src_vaultOperations_ts --&gt; module_src_vaultMetadata_ts
-              </div>
-              <details>
-                <summary>View Mermaid source</summary>
-                <pre>
-graph TD
+    </section>
+    <section class="panel">
+      <h2>Component registry</h2>
+      <p class="empty">No components were detected.</p>
+    </section>
+    <section class="panel">
+      <h2>Diagrams</h2>
+      <article class="item" data-search="Architecture overview diagrams/architecture-overview.mmd">
+    <h3>Architecture overview</h3>
+    <p class="muted"><code>diagrams/architecture-overview.mmd</code></p>
+    <div class="mermaid">graph TD
+  package__ankhorage_supabase_vault[&quot;SUPABASE-VAULT&quot;]
+  entrypoint_src_index_ts[&quot;src/index.ts&quot;]
+  package__ankhorage_supabase_vault --&gt; entrypoint_src_index_ts
+  module_src_adapter_ts[&quot;src/adapter.ts&quot;]
+  package__ankhorage_supabase_vault -.-&gt; module_src_adapter_ts
+  module_src_adapter_ts --&gt; module_src_types_ts
+  module_src_adapter_ts --&gt; module_src_vaultOperations_ts
+  module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
+  package__ankhorage_supabase_vault -.-&gt; module_src_constants_infra_ts
+  module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts&quot;]
+  package__ankhorage_supabase_vault -.-&gt; module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts --&gt; module_src_migrations_ts
+  module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts --&gt; module_src_types_ts
+  module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts[&quot;src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts&quot;]
+  package__ankhorage_supabase_vault -.-&gt; module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts
+  module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts --&gt; module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts&quot;]
+  package__ankhorage_supabase_vault -.-&gt; module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts --&gt; module_src_migrations_ts
+  module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts&quot;]
+  package__ankhorage_supabase_vault -.-&gt; module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts --&gt; module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts&quot;]
+  package__ankhorage_supabase_vault -.-&gt; module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts --&gt; module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts[&quot;src/features/secret-store-infrastructure/composition/createInfraAdapter.ts&quot;]
+  package__ankhorage_supabase_vault -.-&gt; module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_constants_infra_ts
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_types_ts
+  module_src_index_ts[&quot;src/index.ts&quot;]
+  module_src_migrations_ts[&quot;src/migrations.ts&quot;]
+  package__ankhorage_supabase_vault -.-&gt; module_src_migrations_ts
+  module_src_types_ts[&quot;src/types.ts&quot;]
+  package__ankhorage_supabase_vault -.-&gt; module_src_types_ts
+  module_src_vaultMetadata_ts[&quot;src/vaultMetadata.ts&quot;]
+  package__ankhorage_supabase_vault -.-&gt; module_src_vaultMetadata_ts
+  module_src_vaultMetadata_ts --&gt; module_src_migrations_ts
+  module_src_vaultMetadata_ts --&gt; module_src_types_ts
+  module_src_vaultOperations_ts[&quot;src/vaultOperations.ts&quot;]
+  package__ankhorage_supabase_vault -.-&gt; module_src_vaultOperations_ts
+  module_src_vaultOperations_ts --&gt; module_src_types_ts
+  module_src_vaultOperations_ts --&gt; module_src_vaultMetadata_ts
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>graph TD
   package__ankhorage_supabase_vault[&quot;SUPABASE-VAULT&quot;]
   entrypoint_src_index_ts[&quot;src/index.ts&quot;]
   package__ankhorage_supabase_vault --&gt; entrypoint_src_index_ts
@@ -961,69 +572,46 @@ graph TD
   module_src_vaultOperations_ts --&gt; module_src_types_ts
   module_src_vaultOperations_ts --&gt; module_src_vaultMetadata_ts
 </pre>
-              </details>
-            </article>
-            <article
-              class="item"
-              data-search="Module relationships diagrams/module-relationships.mmd"
-            >
-              <h3>Module relationships</h3>
-              <p class="muted"><code>diagrams/module-relationships.mmd</code></p>
-              <div class="mermaid">
-                graph LR module_src_adapter_ts[&quot;src/adapter.ts&quot;]
-                module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
-                module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts&quot;]
-                module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts[&quot;src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts&quot;]
-                module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts&quot;]
-                module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts&quot;]
-                module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts&quot;]
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts[&quot;src/features/secret-store-infrastructure/composition/createInfraAdapter.ts&quot;]
-                module_src_index_ts[&quot;src/index.ts&quot;]
-                module_src_migrations_ts[&quot;src/migrations.ts&quot;]
-                module_src_types_ts[&quot;src/types.ts&quot;]
-                module_src_vaultMetadata_ts[&quot;src/vaultMetadata.ts&quot;]
-                module_src_vaultOperations_ts[&quot;src/vaultOperations.ts&quot;]
-                module_src_adapter_ts --&gt; module_src_types_ts module_src_adapter_ts --&gt;
-                module_src_vaultOperations_ts
-                module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts
-                --&gt; module_src_migrations_ts
-                module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts
-                --&gt; module_src_types_ts
-                module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts
-                --&gt;
-                module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                --&gt; module_src_migrations_ts
-                module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts
-                --&gt;
-                module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
-                --&gt;
-                module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
-                --&gt; module_src_constants_infra_ts
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
-                --&gt;
-                module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
-                --&gt;
-                module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
-                --&gt;
-                module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
-                --&gt;
-                module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
-                --&gt; module_src_types_ts module_src_vaultMetadata_ts --&gt;
-                module_src_migrations_ts module_src_vaultMetadata_ts --&gt; module_src_types_ts
-                module_src_vaultOperations_ts --&gt; module_src_types_ts
-                module_src_vaultOperations_ts --&gt; module_src_vaultMetadata_ts
-              </div>
-              <details>
-                <summary>View Mermaid source</summary>
-                <pre>
-graph LR
+    </details>
+  </article><article class="item" data-search="Module relationships diagrams/module-relationships.mmd">
+    <h3>Module relationships</h3>
+    <p class="muted"><code>diagrams/module-relationships.mmd</code></p>
+    <div class="mermaid">graph LR
+  module_src_adapter_ts[&quot;src/adapter.ts&quot;]
+  module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
+  module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts&quot;]
+  module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts[&quot;src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts&quot;]
+  module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts&quot;]
+  module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts&quot;]
+  module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts&quot;]
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts[&quot;src/features/secret-store-infrastructure/composition/createInfraAdapter.ts&quot;]
+  module_src_index_ts[&quot;src/index.ts&quot;]
+  module_src_migrations_ts[&quot;src/migrations.ts&quot;]
+  module_src_types_ts[&quot;src/types.ts&quot;]
+  module_src_vaultMetadata_ts[&quot;src/vaultMetadata.ts&quot;]
+  module_src_vaultOperations_ts[&quot;src/vaultOperations.ts&quot;]
+  module_src_adapter_ts --&gt; module_src_types_ts
+  module_src_adapter_ts --&gt; module_src_vaultOperations_ts
+  module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts --&gt; module_src_migrations_ts
+  module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts --&gt; module_src_types_ts
+  module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts --&gt; module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts --&gt; module_src_migrations_ts
+  module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts --&gt; module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts --&gt; module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_constants_infra_ts
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; module_src_types_ts
+  module_src_vaultMetadata_ts --&gt; module_src_migrations_ts
+  module_src_vaultMetadata_ts --&gt; module_src_types_ts
+  module_src_vaultOperations_ts --&gt; module_src_types_ts
+  module_src_vaultOperations_ts --&gt; module_src_vaultMetadata_ts
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>graph LR
   module_src_adapter_ts[&quot;src/adapter.ts&quot;]
   module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
   module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts&quot;]
@@ -1056,61 +644,58 @@ graph LR
   module_src_vaultOperations_ts --&gt; module_src_types_ts
   module_src_vaultOperations_ts --&gt; module_src_vaultMetadata_ts
 </pre>
-              </details>
-            </article>
-            <article class="item" data-search="Export graph diagrams/export-graph.mmd">
-              <h3>Export graph</h3>
-              <p class="muted"><code>diagrams/export-graph.mmd</code></p>
-              <div class="mermaid">
-                graph LR module_src_adapter_ts[&quot;src/adapter.ts&quot;]
-                module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
-                module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts&quot;]
-                module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts[&quot;src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts&quot;]
-                module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts&quot;]
-                module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts&quot;]
-                module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts&quot;]
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts[&quot;src/features/secret-store-infrastructure/composition/createInfraAdapter.ts&quot;]
-                module_src_index_ts[&quot;src/index.ts&quot;]
-                module_src_migrations_ts[&quot;src/migrations.ts&quot;]
-                module_src_types_ts[&quot;src/types.ts&quot;]
-                module_src_vaultMetadata_ts[&quot;src/vaultMetadata.ts&quot;]
-                module_src_vaultOperations_ts[&quot;src/vaultOperations.ts&quot;]
-                export_createInfraAdapter[&quot;createInfraAdapter&quot;]
-                module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts
-                --&gt; export_createInfraAdapter export_createInfraAdapter -.-&gt;
-                export_SupabaseVaultAdapterOptions
-                export_createSupabaseVaultAdapter[&quot;createSupabaseVaultAdapter&quot;]
-                module_src_adapter_ts --&gt; export_createSupabaseVaultAdapter
-                export_createSupabaseVaultAdapter -.-&gt; export_SupabaseVaultAdapterOptions
-                export_infraAdapterDescriptor[&quot;infraAdapterDescriptor&quot;]
-                module_src_constants_infra_ts --&gt; export_infraAdapterDescriptor
-                export_SUPABASE_VAULT_METADATA_TABLE[&quot;SUPABASE_VAULT_METADATA_TABLE&quot;]
-                module_src_migrations_ts --&gt; export_SUPABASE_VAULT_METADATA_TABLE
-                export_SUPABASE_VAULT_MIGRATION_SQL[&quot;SUPABASE_VAULT_MIGRATION_SQL&quot;]
-                module_src_migrations_ts --&gt; export_SUPABASE_VAULT_MIGRATION_SQL
-                export_SUPABASE_VAULT_SCHEMA[&quot;SUPABASE_VAULT_SCHEMA&quot;]
-                module_src_migrations_ts --&gt; export_SUPABASE_VAULT_SCHEMA
-                export_SUPABASE_VAULT_SECRET_STORE_PROVIDER[&quot;SUPABASE_VAULT_SECRET_STORE_PROVIDER&quot;]
-                module_src_types_ts --&gt; export_SUPABASE_VAULT_SECRET_STORE_PROVIDER
-                export_SupabaseVaultAdapter[&quot;SupabaseVaultAdapter&quot;] module_src_types_ts
-                --&gt; export_SupabaseVaultAdapter
-                export_SupabaseVaultAdapterOptions[&quot;SupabaseVaultAdapterOptions&quot;]
-                module_src_types_ts --&gt; export_SupabaseVaultAdapterOptions
-                export_SupabaseVaultAdapterOptions -.-&gt; export_SupabaseVaultSqlClient
-                export_SupabaseVaultQueryResult[&quot;SupabaseVaultQueryResult&quot;]
-                module_src_types_ts --&gt; export_SupabaseVaultQueryResult
-                export_SupabaseVaultSqlClient[&quot;SupabaseVaultSqlClient&quot;]
-                module_src_types_ts --&gt; export_SupabaseVaultSqlClient
-                export_SupabaseVaultSqlClient -.-&gt; export_SupabaseVaultQueryResult
-                export_SupabaseVaultSqlClient -.-&gt; export_SupabaseVaultSqlExecutor
-                export_SupabaseVaultSqlExecutor[&quot;SupabaseVaultSqlExecutor&quot;]
-                module_src_types_ts --&gt; export_SupabaseVaultSqlExecutor
-                export_SupabaseVaultSqlExecutor -.-&gt; export_SupabaseVaultQueryResult
-              </div>
-              <details>
-                <summary>View Mermaid source</summary>
-                <pre>
-graph LR
+    </details>
+  </article><article class="item" data-search="Export graph diagrams/export-graph.mmd">
+    <h3>Export graph</h3>
+    <p class="muted"><code>diagrams/export-graph.mmd</code></p>
+    <div class="mermaid">graph LR
+  module_src_adapter_ts[&quot;src/adapter.ts&quot;]
+  module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
+  module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts&quot;]
+  module_src_features_secret_store_infrastructure_application_getSupabaseVaultStatusAsync_ts[&quot;src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts&quot;]
+  module_src_features_secret_store_infrastructure_application_inspectSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts&quot;]
+  module_src_features_secret_store_infrastructure_application_planSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts&quot;]
+  module_src_features_secret_store_infrastructure_application_reconcileSupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts&quot;]
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts[&quot;src/features/secret-store-infrastructure/composition/createInfraAdapter.ts&quot;]
+  module_src_index_ts[&quot;src/index.ts&quot;]
+  module_src_migrations_ts[&quot;src/migrations.ts&quot;]
+  module_src_types_ts[&quot;src/types.ts&quot;]
+  module_src_vaultMetadata_ts[&quot;src/vaultMetadata.ts&quot;]
+  module_src_vaultOperations_ts[&quot;src/vaultOperations.ts&quot;]
+  export_createInfraAdapter[&quot;createInfraAdapter&quot;]
+  module_src_features_secret_store_infrastructure_composition_createInfraAdapter_ts --&gt; export_createInfraAdapter
+  export_createInfraAdapter -.-&gt; export_SupabaseVaultAdapterOptions
+  export_createSupabaseVaultAdapter[&quot;createSupabaseVaultAdapter&quot;]
+  module_src_adapter_ts --&gt; export_createSupabaseVaultAdapter
+  export_createSupabaseVaultAdapter -.-&gt; export_SupabaseVaultAdapterOptions
+  export_infraAdapterDescriptor[&quot;infraAdapterDescriptor&quot;]
+  module_src_constants_infra_ts --&gt; export_infraAdapterDescriptor
+  export_SUPABASE_VAULT_METADATA_TABLE[&quot;SUPABASE_VAULT_METADATA_TABLE&quot;]
+  module_src_migrations_ts --&gt; export_SUPABASE_VAULT_METADATA_TABLE
+  export_SUPABASE_VAULT_MIGRATION_SQL[&quot;SUPABASE_VAULT_MIGRATION_SQL&quot;]
+  module_src_migrations_ts --&gt; export_SUPABASE_VAULT_MIGRATION_SQL
+  export_SUPABASE_VAULT_SCHEMA[&quot;SUPABASE_VAULT_SCHEMA&quot;]
+  module_src_migrations_ts --&gt; export_SUPABASE_VAULT_SCHEMA
+  export_SUPABASE_VAULT_SECRET_STORE_PROVIDER[&quot;SUPABASE_VAULT_SECRET_STORE_PROVIDER&quot;]
+  module_src_types_ts --&gt; export_SUPABASE_VAULT_SECRET_STORE_PROVIDER
+  export_SupabaseVaultAdapter[&quot;SupabaseVaultAdapter&quot;]
+  module_src_types_ts --&gt; export_SupabaseVaultAdapter
+  export_SupabaseVaultAdapterOptions[&quot;SupabaseVaultAdapterOptions&quot;]
+  module_src_types_ts --&gt; export_SupabaseVaultAdapterOptions
+  export_SupabaseVaultAdapterOptions -.-&gt; export_SupabaseVaultSqlClient
+  export_SupabaseVaultQueryResult[&quot;SupabaseVaultQueryResult&quot;]
+  module_src_types_ts --&gt; export_SupabaseVaultQueryResult
+  export_SupabaseVaultSqlClient[&quot;SupabaseVaultSqlClient&quot;]
+  module_src_types_ts --&gt; export_SupabaseVaultSqlClient
+  export_SupabaseVaultSqlClient -.-&gt; export_SupabaseVaultQueryResult
+  export_SupabaseVaultSqlClient -.-&gt; export_SupabaseVaultSqlExecutor
+  export_SupabaseVaultSqlExecutor[&quot;SupabaseVaultSqlExecutor&quot;]
+  module_src_types_ts --&gt; export_SupabaseVaultSqlExecutor
+  export_SupabaseVaultSqlExecutor -.-&gt; export_SupabaseVaultQueryResult
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>graph LR
   module_src_adapter_ts[&quot;src/adapter.ts&quot;]
   module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
   module_src_features_secret_store_infrastructure_application_destroySupabaseVaultAsync_ts[&quot;src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts&quot;]
@@ -1155,503 +740,256 @@ graph LR
   module_src_types_ts --&gt; export_SupabaseVaultSqlExecutor
   export_SupabaseVaultSqlExecutor -.-&gt; export_SupabaseVaultQueryResult
 </pre>
-              </details>
-            </article>
-            <article
-              class="item"
-              data-search="createInfraAdapter sequence diagrams/sequences/create-infra-adapter.mmd"
-            >
-              <h3>createInfraAdapter sequence</h3>
-              <p class="muted"><code>diagrams/sequences/create-infra-adapter.mmd</code></p>
-              <div class="mermaid">
-                sequenceDiagram participant participant_createInfraAdapter as createInfraAdapter
-                participant participant_createUnavailableSqlClient as createUnavailableSqlClient
-                participant_createInfraAdapter-&gt;&gt;participant_createUnavailableSqlClient:
-                createUnavailableSqlClient()
-                participant_createUnavailableSqlClient--&gt;&gt;participant_createInfraAdapter:
-                return
-              </div>
-              <details>
-                <summary>View Mermaid source</summary>
-                <pre>
-sequenceDiagram
+    </details>
+  </article><article class="item" data-search="createInfraAdapter sequence diagrams/sequences/create-infra-adapter.mmd">
+    <h3>createInfraAdapter sequence</h3>
+    <p class="muted"><code>diagrams/sequences/create-infra-adapter.mmd</code></p>
+    <div class="mermaid">sequenceDiagram
+  participant participant_createInfraAdapter as createInfraAdapter
+  participant participant_createUnavailableSqlClient as createUnavailableSqlClient
+  participant_createInfraAdapter-&gt;&gt;participant_createUnavailableSqlClient: createUnavailableSqlClient()
+  participant_createUnavailableSqlClient--&gt;&gt;participant_createInfraAdapter: return
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>sequenceDiagram
   participant participant_createInfraAdapter as createInfraAdapter
   participant participant_createUnavailableSqlClient as createUnavailableSqlClient
   participant_createInfraAdapter-&gt;&gt;participant_createUnavailableSqlClient: createUnavailableSqlClient()
   participant_createUnavailableSqlClient--&gt;&gt;participant_createInfraAdapter: return
 </pre>
-              </details>
-            </article>
-            <article
-              class="item"
-              data-search="createSupabaseVaultAdapter sequence diagrams/sequences/create-supabase-vault-adapter.mmd"
-            >
-              <h3>createSupabaseVaultAdapter sequence</h3>
-              <p class="muted"><code>diagrams/sequences/create-supabase-vault-adapter.mmd</code></p>
-              <div class="mermaid">
-                sequenceDiagram participant participant_createSupabaseVaultAdapter as
-                createSupabaseVaultAdapter participant participant_createVaultOperations as
-                createVaultOperations
-                participant_createSupabaseVaultAdapter-&gt;&gt;participant_createVaultOperations:
-                createVaultOperations()
-                participant_createVaultOperations--&gt;&gt;participant_createSupabaseVaultAdapter:
-                return
-              </div>
-              <details>
-                <summary>View Mermaid source</summary>
-                <pre>
-sequenceDiagram
+    </details>
+  </article><article class="item" data-search="createSupabaseVaultAdapter sequence diagrams/sequences/create-supabase-vault-adapter.mmd">
+    <h3>createSupabaseVaultAdapter sequence</h3>
+    <p class="muted"><code>diagrams/sequences/create-supabase-vault-adapter.mmd</code></p>
+    <div class="mermaid">sequenceDiagram
+  participant participant_createSupabaseVaultAdapter as createSupabaseVaultAdapter
+  participant participant_createVaultOperations as createVaultOperations
+  participant_createSupabaseVaultAdapter-&gt;&gt;participant_createVaultOperations: createVaultOperations()
+  participant_createVaultOperations--&gt;&gt;participant_createSupabaseVaultAdapter: return
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>sequenceDiagram
   participant participant_createSupabaseVaultAdapter as createSupabaseVaultAdapter
   participant participant_createVaultOperations as createVaultOperations
   participant_createSupabaseVaultAdapter-&gt;&gt;participant_createVaultOperations: createVaultOperations()
   participant_createVaultOperations--&gt;&gt;participant_createSupabaseVaultAdapter: return
 </pre>
-              </details>
-            </article>
-          </section>
+    </details>
+  </article>
+    </section>
         </section>
         <section id="view-src-adapter-ts" class="view" data-view="src/adapter.ts" hidden>
-          <section class="panel">
-            <h2>src/adapter.ts</h2>
-            <article class="item" data-search="createSupabaseVaultAdapter src/adapter.ts ">
-              <h3>createSupabaseVaultAdapter</h3>
-              <p class="muted"><code>src/adapter.ts:6:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-          </section>
-        </section>
-        <section
-          id="view-src-features-secret-store-infrastructure-application-destroysupabasevaultasync-ts"
-          class="view"
-          data-view="src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts"
-          hidden
-        >
-          <section class="panel">
-            <h2>
-              src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts
-            </h2>
-            <article
-              class="item"
-              data-search="destroySupabaseVaultAsync src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts Delete only the confirmed project and environment namespace from the shared Vault schema."
-            >
-              <h3>destroySupabaseVaultAsync</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts:13:1</code
-                >
-              </p>
-              <p>
-                Delete only the confirmed project and environment namespace from the shared Vault
-                schema.
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="isOwnedByContext src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts Match only resources whose complete identity belongs to this adapter execution."
-            >
-              <h3>isOwnedByContext</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts:52:1</code
-                >
-              </p>
-              <p>Match only resources whose complete identity belongs to this adapter execution.</p>
-            </article>
-            <article
-              class="item"
-              data-search="isConfirmed src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts Verify exact project and environment confirmation before destructive work."
-            >
-              <h3>isConfirmed</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts:61:1</code
-                >
-              </p>
-              <p>Verify exact project and environment confirmation before destructive work.</p>
-            </article>
-            <article
-              class="item"
-              data-search="resourceKey src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts Serialize the complete identity used for destructive authorization."
-            >
-              <h3>resourceKey</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts:71:1</code
-                >
-              </p>
-              <p>Serialize the complete identity used for destructive authorization.</p>
-            </article>
-            <article
-              class="item"
-              data-search="unconfirmed src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts Reject an unconfirmed destructive request."
-            >
-              <h3>unconfirmed</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts:76:1</code
-                >
-              </p>
-              <p>Reject an unconfirmed destructive request.</p>
-            </article>
-            <article
-              class="item"
-              data-search="destroyFailure src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts Translate destructive SQL failures without exposing query data."
-            >
-              <h3>destroyFailure</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts:90:1</code
-                >
-              </p>
-              <p>Translate destructive SQL failures without exposing query data.</p>
-            </article>
-          </section>
-        </section>
-        <section
-          id="view-src-features-secret-store-infrastructure-application-getsupabasevaultstatusasync-ts"
-          class="view"
-          data-view="src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts"
-          hidden
-        >
-          <section class="panel">
-            <h2>
-              src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts
-            </h2>
-            <article
-              class="item"
-              data-search="getSupabaseVaultStatusAsync src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts Report the persisted Vault ownership state without requiring host access to managed PostgreSQL."
-            >
-              <h3>getSupabaseVaultStatusAsync</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts:10:1</code
-                >
-              </p>
-              <p>
-                Report the persisted Vault ownership state without requiring host access to managed
-                PostgreSQL.
-              </p>
-            </article>
-          </section>
-        </section>
-        <section
-          id="view-src-features-secret-store-infrastructure-application-inspectsupabasevaultasync-ts"
-          class="view"
-          data-view="src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts"
-          hidden
-        >
-          <section class="panel">
-            <h2>
-              src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts
-            </h2>
-            <article
-              class="item"
-              data-search="inspectSupabaseVaultAsync src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Inspect the portable Vault lifecycle state without requiring the managed database to exist."
-            >
-              <h3>inspectSupabaseVaultAsync</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:15:1</code
-                >
-              </p>
-              <p>
-                Inspect the portable Vault lifecycle state without requiring the managed database to
-                exist.
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="createOwner src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Create stable ownership for one persistent project and environment secret namespace."
-            >
-              <h3>createOwner</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:38:1</code
-                >
-              </p>
-              <p>
-                Create stable ownership for one persistent project and environment secret namespace.
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="hasSameIdentity src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Compare the complete persisted ownership identity without reading provider state."
-            >
-              <h3>hasSameIdentity</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:61:1</code
-                >
-              </p>
-              <p>
-                Compare the complete persisted ownership identity without reading provider state.
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="invalidSelection src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Reject lifecycle calls when the canonical SecretStore provider is not selected."
-            >
-              <h3>invalidSelection</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:74:1</code
-                >
-              </p>
-              <p>Reject lifecycle calls when the canonical SecretStore provider is not selected.</p>
-            </article>
-            <article
-              class="item"
-              data-search="invalidDatabase src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Reject Vault lifecycle composition without the Supabase database capability it extends."
-            >
-              <h3>invalidDatabase</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:88:1</code
-                >
-              </p>
-              <p>
-                Reject Vault lifecycle composition without the Supabase database capability it
-                extends.
-              </p>
-            </article>
-          </section>
-        </section>
-        <section
-          id="view-src-features-secret-store-infrastructure-application-plansupabasevaultasync-ts"
-          class="view"
-          data-view="src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts"
-          hidden
-        >
-          <section class="panel">
-            <h2>src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts</h2>
-            <article
-              class="item"
-              data-search="planSupabaseVaultAsync src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts Plan the portable Vault ownership lifecycle without requiring live database access."
-            >
-              <h3>planSupabaseVaultAsync</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts:10:1</code
-                >
-              </p>
-              <p>
-                Plan the portable Vault ownership lifecycle without requiring live database access.
-              </p>
-            </article>
-          </section>
-        </section>
-        <section
-          id="view-src-features-secret-store-infrastructure-application-reconcilesupabasevaultasync-ts"
-          class="view"
-          data-view="src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts"
-          hidden
-        >
-          <section class="panel">
-            <h2>
-              src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts
-            </h2>
-            <article
-              class="item"
-              data-search="reconcileSupabaseVaultAsync src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts Record Vault ownership after the selected Supabase database lifecycle applied its migration."
-            >
-              <h3>reconcileSupabaseVaultAsync</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts:10:1</code
-                >
-              </p>
-              <p>
-                Record Vault ownership after the selected Supabase database lifecycle applied its
-                migration.
-              </p>
-            </article>
-          </section>
-        </section>
-        <section
-          id="view-src-features-secret-store-infrastructure-composition-createinfraadapter-ts"
-          class="view"
-          data-view="src/features/secret-store-infrastructure/composition/createInfraAdapter.ts"
-          hidden
-        >
-          <section class="panel">
-            <h2>src/features/secret-store-infrastructure/composition/createInfraAdapter.ts</h2>
-            <article
-              class="item"
-              data-search="createInfraAdapter src/features/secret-store-infrastructure/composition/createInfraAdapter.ts Create the canonical Supabase Vault Infra service adapter.&#10;&#10;The selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.&#10;Infra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL&#10;client remains necessary only for explicitly confirmed destructive namespace deletion."
-            >
-              <h3>createInfraAdapter</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:19:1</code
-                >
-              </p>
-              <p>
-                Create the canonical Supabase Vault Infra service adapter. The selected Supabase
-                database lifecycle owns schema bootstrap from the public Vault migration. Infra
-                discovery, planning and `up` therefore require no host PostgreSQL connection. A
-                trusted SQL client remains necessary only for explicitly confirmed destructive
-                namespace deletion.
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="createUnavailableSqlClient src/features/secret-store-infrastructure/composition/createInfraAdapter.ts Fail closed when destructive namespace deletion is requested without trusted SQL access."
-            >
-              <h3>createUnavailableSqlClient</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:37:1</code
-                >
-              </p>
-              <p>
-                Fail closed when destructive namespace deletion is requested without trusted SQL
-                access.
-              </p>
-            </article>
-            <article
-              class="item"
-              data-search="unavailable src/features/secret-store-infrastructure/composition/createInfraAdapter.ts "
-            >
-              <h3>unavailable</h3>
-              <p class="muted">
-                <code
-                  >src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:38:9</code
-                >
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-          </section>
-        </section>
-        <section
-          id="view-src-vaultmetadata-ts"
-          class="view"
-          data-view="src/vaultMetadata.ts"
-          hidden
-        >
-          <section class="panel">
-            <h2>src/vaultMetadata.ts</h2>
-            <article class="item" data-search="selectInternalVaultMetadata src/vaultMetadata.ts ">
-              <h3>selectInternalVaultMetadata</h3>
-              <p class="muted"><code>src/vaultMetadata.ts:23:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="selectVaultMetadata src/vaultMetadata.ts ">
-              <h3>selectVaultMetadata</h3>
-              <p class="muted"><code>src/vaultMetadata.ts:38:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="serializeConfiguredFields src/vaultMetadata.ts ">
-              <h3>serializeConfiguredFields</h3>
-              <p class="muted"><code>src/vaultMetadata.ts:53:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="toSecretMetadata src/vaultMetadata.ts ">
-              <h3>toSecretMetadata</h3>
-              <p class="muted"><code>src/vaultMetadata.ts:57:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-          </section>
-        </section>
-        <section
-          id="view-src-vaultoperations-ts"
-          class="view"
-          data-view="src/vaultOperations.ts"
-          hidden
-        >
-          <section class="panel">
-            <h2>src/vaultOperations.ts</h2>
-            <article class="item" data-search="createVaultOperations src/vaultOperations.ts ">
-              <h3>createVaultOperations</h3>
-              <p class="muted"><code>src/vaultOperations.ts:36:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="createSecret src/vaultOperations.ts ">
-              <h3>createSecret</h3>
-              <p class="muted"><code>src/vaultOperations.ts:47:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="createSecretInTransaction src/vaultOperations.ts ">
-              <h3>createSecretInTransaction</h3>
-              <p class="muted"><code>src/vaultOperations.ts:59:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="getSecretMetadata src/vaultOperations.ts ">
-              <h3>getSecretMetadata</h3>
-              <p class="muted"><code>src/vaultOperations.ts:80:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="insertMetadata src/vaultOperations.ts ">
-              <h3>insertMetadata</h3>
-              <p class="muted"><code>src/vaultOperations.ts:91:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="listSecrets src/vaultOperations.ts ">
-              <h3>listSecrets</h3>
-              <p class="muted"><code>src/vaultOperations.ts:120:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="removeSecret src/vaultOperations.ts ">
-              <h3>removeSecret</h3>
-              <p class="muted"><code>src/vaultOperations.ts:140:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="removeSecretInTransaction src/vaultOperations.ts ">
-              <h3>removeSecretInTransaction</h3>
-              <p class="muted"><code>src/vaultOperations.ts:152:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="replaceSecret src/vaultOperations.ts ">
-              <h3>replaceSecret</h3>
-              <p class="muted"><code>src/vaultOperations.ts:170:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="replaceSecretInTransaction src/vaultOperations.ts ">
-              <h3>replaceSecretInTransaction</h3>
-              <p class="muted"><code>src/vaultOperations.ts:182:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="resolveSecret src/vaultOperations.ts ">
-              <h3>resolveSecret</h3>
-              <p class="muted"><code>src/vaultOperations.ts:212:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="normalizeLookup src/vaultOperations.ts ">
-              <h3>normalizeLookup</h3>
-              <p class="muted"><code>src/vaultOperations.ts:236:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="normalizeWrite src/vaultOperations.ts ">
-              <h3>normalizeWrite</h3>
-              <p class="muted"><code>src/vaultOperations.ts:243:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="buildInternalName src/vaultOperations.ts ">
-              <h3>buildInternalName</h3>
-              <p class="muted"><code>src/vaultOperations.ts:252:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="conflict src/vaultOperations.ts ">
-              <h3>conflict</h3>
-              <p class="muted"><code>src/vaultOperations.ts:256:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="notFound src/vaultOperations.ts ">
-              <h3>notFound</h3>
-              <p class="muted"><code>src/vaultOperations.ts:260:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="parsePayload src/vaultOperations.ts ">
-              <h3>parsePayload</h3>
-              <p class="muted"><code>src/vaultOperations.ts:264:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="providerFailure src/vaultOperations.ts ">
-              <h3>providerFailure</h3>
-              <p class="muted"><code>src/vaultOperations.ts:276:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-          </section>
-        </section>
+    <section class="panel">
+      <h2>src/adapter.ts</h2>
+      <article class="item" data-search="createSupabaseVaultAdapter src/adapter.ts ">
+    <h3>createSupabaseVaultAdapter</h3>
+    <p class="muted"><code>src/adapter.ts:6:1</code></p>
+    <p class="empty">No description available.</p>
+  </article>
+    </section>
+  </section><section id="view-src-features-secret-store-infrastructure-application-destroysupabasevaultasync-ts" class="view" data-view="src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts" hidden>
+    <section class="panel">
+      <h2>src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts</h2>
+      <article class="item" data-search="destroySupabaseVaultAsync src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts Delete only the confirmed project and environment namespace from the shared Vault schema.">
+    <h3>destroySupabaseVaultAsync</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts:13:1</code></p>
+    <p>Delete only the confirmed project and environment namespace from the shared Vault schema.</p>
+  </article><article class="item" data-search="isOwnedByContext src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts Match only resources whose complete identity belongs to this adapter execution.">
+    <h3>isOwnedByContext</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts:52:1</code></p>
+    <p>Match only resources whose complete identity belongs to this adapter execution.</p>
+  </article><article class="item" data-search="isConfirmed src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts Verify exact project and environment confirmation before destructive work.">
+    <h3>isConfirmed</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts:61:1</code></p>
+    <p>Verify exact project and environment confirmation before destructive work.</p>
+  </article><article class="item" data-search="resourceKey src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts Serialize the complete identity used for destructive authorization.">
+    <h3>resourceKey</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts:71:1</code></p>
+    <p>Serialize the complete identity used for destructive authorization.</p>
+  </article><article class="item" data-search="unconfirmed src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts Reject an unconfirmed destructive request.">
+    <h3>unconfirmed</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts:76:1</code></p>
+    <p>Reject an unconfirmed destructive request.</p>
+  </article><article class="item" data-search="destroyFailure src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts Translate destructive SQL failures without exposing query data.">
+    <h3>destroyFailure</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts:90:1</code></p>
+    <p>Translate destructive SQL failures without exposing query data.</p>
+  </article>
+    </section>
+  </section><section id="view-src-features-secret-store-infrastructure-application-getsupabasevaultstatusasync-ts" class="view" data-view="src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts" hidden>
+    <section class="panel">
+      <h2>src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts</h2>
+      <article class="item" data-search="getSupabaseVaultStatusAsync src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts Report the persisted Vault ownership state without requiring host access to managed PostgreSQL.">
+    <h3>getSupabaseVaultStatusAsync</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts:10:1</code></p>
+    <p>Report the persisted Vault ownership state without requiring host access to managed PostgreSQL.</p>
+  </article>
+    </section>
+  </section><section id="view-src-features-secret-store-infrastructure-application-inspectsupabasevaultasync-ts" class="view" data-view="src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts" hidden>
+    <section class="panel">
+      <h2>src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts</h2>
+      <article class="item" data-search="inspectSupabaseVaultAsync src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Inspect the portable Vault lifecycle state without requiring the managed database to exist.">
+    <h3>inspectSupabaseVaultAsync</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:15:1</code></p>
+    <p>Inspect the portable Vault lifecycle state without requiring the managed database to exist.</p>
+  </article><article class="item" data-search="createOwner src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Create stable ownership for one persistent project and environment secret namespace.">
+    <h3>createOwner</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:38:1</code></p>
+    <p>Create stable ownership for one persistent project and environment secret namespace.</p>
+  </article><article class="item" data-search="hasSameIdentity src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Compare the complete persisted ownership identity without reading provider state.">
+    <h3>hasSameIdentity</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:61:1</code></p>
+    <p>Compare the complete persisted ownership identity without reading provider state.</p>
+  </article><article class="item" data-search="invalidSelection src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Reject lifecycle calls when the canonical SecretStore provider is not selected.">
+    <h3>invalidSelection</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:74:1</code></p>
+    <p>Reject lifecycle calls when the canonical SecretStore provider is not selected.</p>
+  </article><article class="item" data-search="invalidDatabase src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts Reject Vault lifecycle composition without the Supabase database capability it extends.">
+    <h3>invalidDatabase</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts:88:1</code></p>
+    <p>Reject Vault lifecycle composition without the Supabase database capability it extends.</p>
+  </article>
+    </section>
+  </section><section id="view-src-features-secret-store-infrastructure-application-plansupabasevaultasync-ts" class="view" data-view="src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts" hidden>
+    <section class="panel">
+      <h2>src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts</h2>
+      <article class="item" data-search="planSupabaseVaultAsync src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts Plan the portable Vault ownership lifecycle without requiring live database access.">
+    <h3>planSupabaseVaultAsync</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts:10:1</code></p>
+    <p>Plan the portable Vault ownership lifecycle without requiring live database access.</p>
+  </article>
+    </section>
+  </section><section id="view-src-features-secret-store-infrastructure-application-reconcilesupabasevaultasync-ts" class="view" data-view="src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts" hidden>
+    <section class="panel">
+      <h2>src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts</h2>
+      <article class="item" data-search="reconcileSupabaseVaultAsync src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts Record Vault ownership after the selected Supabase database lifecycle applied its migration.">
+    <h3>reconcileSupabaseVaultAsync</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts:10:1</code></p>
+    <p>Record Vault ownership after the selected Supabase database lifecycle applied its migration.</p>
+  </article>
+    </section>
+  </section><section id="view-src-features-secret-store-infrastructure-composition-createinfraadapter-ts" class="view" data-view="src/features/secret-store-infrastructure/composition/createInfraAdapter.ts" hidden>
+    <section class="panel">
+      <h2>src/features/secret-store-infrastructure/composition/createInfraAdapter.ts</h2>
+      <article class="item" data-search="createInfraAdapter src/features/secret-store-infrastructure/composition/createInfraAdapter.ts Create the canonical Supabase Vault Infra service adapter.&#10;&#10;The selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.&#10;Infra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL&#10;client remains necessary only for explicitly confirmed destructive namespace deletion.">
+    <h3>createInfraAdapter</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:19:1</code></p>
+    <p>Create the canonical Supabase Vault Infra service adapter.
+
+The selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.
+Infra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL
+client remains necessary only for explicitly confirmed destructive namespace deletion.</p>
+  </article><article class="item" data-search="createUnavailableSqlClient src/features/secret-store-infrastructure/composition/createInfraAdapter.ts Fail closed when destructive namespace deletion is requested without trusted SQL access.">
+    <h3>createUnavailableSqlClient</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:37:1</code></p>
+    <p>Fail closed when destructive namespace deletion is requested without trusted SQL access.</p>
+  </article><article class="item" data-search="unavailable src/features/secret-store-infrastructure/composition/createInfraAdapter.ts ">
+    <h3>unavailable</h3>
+    <p class="muted"><code>src/features/secret-store-infrastructure/composition/createInfraAdapter.ts:38:9</code></p>
+    <p class="empty">No description available.</p>
+  </article>
+    </section>
+  </section><section id="view-src-vaultmetadata-ts" class="view" data-view="src/vaultMetadata.ts" hidden>
+    <section class="panel">
+      <h2>src/vaultMetadata.ts</h2>
+      <article class="item" data-search="selectInternalVaultMetadata src/vaultMetadata.ts ">
+    <h3>selectInternalVaultMetadata</h3>
+    <p class="muted"><code>src/vaultMetadata.ts:23:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="selectVaultMetadata src/vaultMetadata.ts ">
+    <h3>selectVaultMetadata</h3>
+    <p class="muted"><code>src/vaultMetadata.ts:38:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="serializeConfiguredFields src/vaultMetadata.ts ">
+    <h3>serializeConfiguredFields</h3>
+    <p class="muted"><code>src/vaultMetadata.ts:53:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="toSecretMetadata src/vaultMetadata.ts ">
+    <h3>toSecretMetadata</h3>
+    <p class="muted"><code>src/vaultMetadata.ts:57:1</code></p>
+    <p class="empty">No description available.</p>
+  </article>
+    </section>
+  </section><section id="view-src-vaultoperations-ts" class="view" data-view="src/vaultOperations.ts" hidden>
+    <section class="panel">
+      <h2>src/vaultOperations.ts</h2>
+      <article class="item" data-search="createVaultOperations src/vaultOperations.ts ">
+    <h3>createVaultOperations</h3>
+    <p class="muted"><code>src/vaultOperations.ts:36:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="createSecret src/vaultOperations.ts ">
+    <h3>createSecret</h3>
+    <p class="muted"><code>src/vaultOperations.ts:47:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="createSecretInTransaction src/vaultOperations.ts ">
+    <h3>createSecretInTransaction</h3>
+    <p class="muted"><code>src/vaultOperations.ts:59:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="getSecretMetadata src/vaultOperations.ts ">
+    <h3>getSecretMetadata</h3>
+    <p class="muted"><code>src/vaultOperations.ts:80:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="insertMetadata src/vaultOperations.ts ">
+    <h3>insertMetadata</h3>
+    <p class="muted"><code>src/vaultOperations.ts:91:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="listSecrets src/vaultOperations.ts ">
+    <h3>listSecrets</h3>
+    <p class="muted"><code>src/vaultOperations.ts:120:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="removeSecret src/vaultOperations.ts ">
+    <h3>removeSecret</h3>
+    <p class="muted"><code>src/vaultOperations.ts:140:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="removeSecretInTransaction src/vaultOperations.ts ">
+    <h3>removeSecretInTransaction</h3>
+    <p class="muted"><code>src/vaultOperations.ts:152:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="replaceSecret src/vaultOperations.ts ">
+    <h3>replaceSecret</h3>
+    <p class="muted"><code>src/vaultOperations.ts:170:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="replaceSecretInTransaction src/vaultOperations.ts ">
+    <h3>replaceSecretInTransaction</h3>
+    <p class="muted"><code>src/vaultOperations.ts:182:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="resolveSecret src/vaultOperations.ts ">
+    <h3>resolveSecret</h3>
+    <p class="muted"><code>src/vaultOperations.ts:212:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="normalizeLookup src/vaultOperations.ts ">
+    <h3>normalizeLookup</h3>
+    <p class="muted"><code>src/vaultOperations.ts:236:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="normalizeWrite src/vaultOperations.ts ">
+    <h3>normalizeWrite</h3>
+    <p class="muted"><code>src/vaultOperations.ts:243:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="buildInternalName src/vaultOperations.ts ">
+    <h3>buildInternalName</h3>
+    <p class="muted"><code>src/vaultOperations.ts:252:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="conflict src/vaultOperations.ts ">
+    <h3>conflict</h3>
+    <p class="muted"><code>src/vaultOperations.ts:256:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="notFound src/vaultOperations.ts ">
+    <h3>notFound</h3>
+    <p class="muted"><code>src/vaultOperations.ts:260:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="parsePayload src/vaultOperations.ts ">
+    <h3>parsePayload</h3>
+    <p class="muted"><code>src/vaultOperations.ts:264:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="providerFailure src/vaultOperations.ts ">
+    <h3>providerFailure</h3>
+    <p class="muted"><code>src/vaultOperations.ts:276:1</code></p>
+    <p class="empty">No description available.</p>
+  </article>
+    </section>
+  </section>
       </main>
     </div>
     <script>

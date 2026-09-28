@@ -1,5 +1,11 @@
 # @ankhorage/supabase-vault
 
+## 0.3.12
+
+### Patch Changes
+
+- a40473b: Update dependencies from Renovate pull request #95.
+
 ## 0.3.11
 
 ### Patch Changes
