@@ -68,7 +68,7 @@
     "@ankhorage/contracts": "^22.8.6"
   },
   "devDependencies": {
-    "@ankhorage/devtools": "^2.0.22",
+    "@ankhorage/devtools": "^2.0.25",
     "@ankhorage/paradox": "^0.2.8",
     "@types/bun": "^1.4.2",
     "@types/node": "^25.6.0",
