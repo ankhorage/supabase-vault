@@ -65,11 +65,11 @@
     "knip:test": "bun run knip:check"
   },
   "dependencies": {
-    "@ankhorage/contracts": "^25.0.1"
+    "@ankhorage/contracts": "^25.1.0"
   },
   "devDependencies": {
     "@ankhorage/devtools": "^2.3.9",
-    "@ankhorage/paradox": "^0.3.2",
+    "@ankhorage/paradox": "^0.3.3",
     "@types/bun": "^1.4.2",
     "@types/node": "^25.6.0",
     "typescript": "^5.9.3"
