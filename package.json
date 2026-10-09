@@ -65,7 +65,7 @@
     "knip:test": "bun run knip:check"
   },
   "dependencies": {
-    "@ankhorage/contracts": "^25.0.0"
+    "@ankhorage/contracts": "^25.0.1"
   },
   "devDependencies": {
     "@ankhorage/devtools": "^2.3.7",
