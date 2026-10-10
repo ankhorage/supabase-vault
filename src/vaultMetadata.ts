@@ -1,4 +1,4 @@
-import type { SecretMetadata, SecretPayload } from '@ankhorage/contracts/secrets';
+import type { SecretMetadata, SecretPayload } from '@ankhorage/secrets/port';
 
 import { SUPABASE_VAULT_METADATA_TABLE, SUPABASE_VAULT_SCHEMA } from './migrations.js';
 import type { SupabaseVaultSqlExecutor } from './types.js';
