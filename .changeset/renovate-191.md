@@ -1,5 +1,5 @@
 ---
-'@ankhorage/supabase-vault': patch
+'@ankhorage/secrets-supabase-vault': patch
 ---
 
 Update dependencies: `@ankhorage/contracts`, `@ankhorage/paradox`.
