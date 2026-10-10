@@ -11,7 +11,7 @@ import {
   type SecretStoreAdapter,
   type SecretStoreResult,
   validateSecretPayload,
-} from '@ankhorage/contracts/secrets';
+} from '@ankhorage/secrets/port';
 
 import type { SupabaseVaultSqlClient, SupabaseVaultSqlExecutor } from './types.js';
 import {

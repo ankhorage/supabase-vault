@@ -1,4 +1,4 @@
-import type { SecretStoreAdapter } from '@ankhorage/contracts/secrets';
+import type { SecretStoreAdapter } from '@ankhorage/secrets/port';
 
 export const SUPABASE_VAULT_SECRET_STORE_PROVIDER = 'supabase-vault' as const;
 

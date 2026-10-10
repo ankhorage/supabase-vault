@@ -1,3 +1,4 @@
+import { CAPABILITIES } from '@ankhorage/secrets/capabilities';
 import { expect, test } from 'bun:test';
 
 import { createSupabaseVaultAdapter } from './adapter.js';
@@ -121,6 +122,12 @@ test('resolves payload only through the trusted resolve operation', async () => 
     ok: true,
     data: { clientId: 'id', clientSecret: 'secret' },
   });
+});
+
+test('does not expose trusted secret resolution through the neutral capability catalog', () => {
+  expect(CAPABILITIES.map(({ id }) => id)).toEqual(['secrets.list', 'secrets.getMetadata']);
+  expect(JSON.stringify(CAPABILITIES)).not.toContain('resolve');
+  expect(JSON.stringify(CAPABILITIES)).not.toContain('secret-value');
 });
 
 test('rejects invalid logical references before querying Vault', async () => {

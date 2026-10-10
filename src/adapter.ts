@@ -1,4 +1,4 @@
-import type { SecretStoreAdapter } from '@ankhorage/contracts/secrets';
+import type { SecretStoreAdapter } from '@ankhorage/secrets/port';
 
 import type { SupabaseVaultAdapterOptions } from './types.js';
 import { createVaultOperations } from './vaultOperations.js';
