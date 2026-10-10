@@ -1,6 +1,6 @@
 {
   "packageName": "SUPABASE-VAULT",
-  "packageId": "@ankhorage/supabase-vault",
+  "packageId": "@ankhorage/secrets-supabase-vault",
   "description": "Server-only Supabase Vault secret-store adapter for Ankhorage.",
   "collaborators": null,
   "donation": null,
@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.3.12",
+      "value": "v1.0.0",
       "color": "cb3837"
     },
     {
@@ -55,16 +55,26 @@
     },
     {
       "id": "docs",
-      "label": "docs",
-      "value": "paradox",
-      "color": "0f766e"
+      "label": "paradox",
+      "value": "warnings",
+      "color": "ca8a04"
     }
   ],
-  "usage": null,
-  "readmeUsageDescription": null,
-  "readmeUsage": [],
-  "readmeCli": null,
-  "readmeConfig": null,
+  "usage": {
+    "packageName": "@ankhorage/secrets-supabase-vault",
+    "command": "ankh secrets-supabase-vault --help"
+  },
+  "usageEntries": [],
+  "exampleCount": 0,
+  "findings": [
+    {
+      "ruleId": "documentation.public-function.description",
+      "severity": "warning",
+      "message": "Exported function createSupabaseVaultAdapter has no documentation description.",
+      "sourcePath": "src/adapter.ts",
+      "line": 6
+    }
+  ],
   "config": null,
   "entrypoints": [
     "src/index.ts"
@@ -230,9 +240,11 @@
   "exports": [
     {
       "name": "createInfraAdapter",
+      "title": null,
       "description": "Create the canonical Supabase Vault Infra service adapter.\n\nThe selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.\nInfra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL\nclient remains necessary only for explicitly confirmed destructive namespace deletion.",
       "isReadme": true,
-      "examples": [],
+      "see": [],
+      "security": [],
       "kind": "function",
       "modulePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
       "sourceLocation": {
@@ -266,9 +278,11 @@
     },
     {
       "name": "createSupabaseVaultAdapter",
+      "title": null,
       "description": null,
       "isReadme": false,
-      "examples": [],
+      "see": [],
+      "security": [],
       "kind": "function",
       "modulePath": "src/adapter.ts",
       "sourceLocation": {
@@ -302,9 +316,11 @@
     },
     {
       "name": "infraAdapterDescriptor",
+      "title": null,
       "description": null,
       "isReadme": false,
-      "examples": [],
+      "see": [],
+      "security": [],
       "kind": "value",
       "modulePath": "src/constants/infra.ts",
       "sourceLocation": {
@@ -322,9 +338,11 @@
     },
     {
       "name": "SUPABASE_VAULT_METADATA_TABLE",
+      "title": null,
       "description": null,
       "isReadme": false,
-      "examples": [],
+      "see": [],
+      "security": [],
       "kind": "value",
       "modulePath": "src/migrations.ts",
       "sourceLocation": {
@@ -342,9 +360,11 @@
     },
     {
       "name": "SUPABASE_VAULT_MIGRATION_SQL",
+      "title": null,
       "description": null,
       "isReadme": false,
-      "examples": [],
+      "see": [],
+      "security": [],
       "kind": "value",
       "modulePath": "src/migrations.ts",
       "sourceLocation": {
@@ -362,9 +382,11 @@
     },
     {
       "name": "SUPABASE_VAULT_SCHEMA",
+      "title": null,
       "description": null,
       "isReadme": false,
-      "examples": [],
+      "see": [],
+      "security": [],
       "kind": "value",
       "modulePath": "src/migrations.ts",
       "sourceLocation": {
@@ -382,9 +404,11 @@
     },
     {
       "name": "SUPABASE_VAULT_SECRET_STORE_PROVIDER",
+      "title": null,
       "description": null,
       "isReadme": false,
-      "examples": [],
+      "see": [],
+      "security": [],
       "kind": "value",
       "modulePath": "src/types.ts",
       "sourceLocation": {
@@ -402,9 +426,11 @@
     },
     {
       "name": "SupabaseVaultAdapter",
+      "title": null,
       "description": null,
       "isReadme": false,
-      "examples": [],
+      "see": [],
+      "security": [],
       "kind": "unknown",
       "modulePath": "src/types.ts",
       "sourceLocation": {
@@ -422,9 +448,11 @@
     },
     {
       "name": "SupabaseVaultAdapterOptions",
+      "title": null,
       "description": null,
       "isReadme": false,
-      "examples": [],
+      "see": [],
+      "security": [],
       "kind": "type",
       "modulePath": "src/types.ts",
       "sourceLocation": {
@@ -452,9 +480,11 @@
     },
     {
       "name": "SupabaseVaultQueryResult",
+      "title": null,
       "description": null,
       "isReadme": false,
-      "examples": [],
+      "see": [],
+      "security": [],
       "kind": "type",
       "modulePath": "src/types.ts",
       "sourceLocation": {
@@ -480,9 +510,11 @@
     },
     {
       "name": "SupabaseVaultSqlClient",
+      "title": null,
       "description": null,
       "isReadme": false,
-      "examples": [],
+      "see": [],
+      "security": [],
       "kind": "type",
       "modulePath": "src/types.ts",
       "sourceLocation": {
@@ -518,9 +550,11 @@
     },
     {
       "name": "SupabaseVaultSqlExecutor",
+      "title": null,
       "description": null,
       "isReadme": false,
-      "examples": [],
+      "see": [],
+      "security": [],
       "kind": "type",
       "modulePath": "src/types.ts",
       "sourceLocation": {
@@ -552,6 +586,8 @@
     {
       "name": "createSupabaseVaultAdapter",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/adapter.ts",
         "line": 6,
@@ -561,6 +597,8 @@
     {
       "name": "destroySupabaseVaultAsync",
       "description": "Delete only the confirmed project and environment namespace from the shared Vault schema.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
         "line": 13,
@@ -570,6 +608,8 @@
     {
       "name": "isOwnedByContext",
       "description": "Match only resources whose complete identity belongs to this adapter execution.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
         "line": 52,
@@ -579,6 +619,8 @@
     {
       "name": "isConfirmed",
       "description": "Verify exact project and environment confirmation before destructive work.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
         "line": 61,
@@ -588,6 +630,8 @@
     {
       "name": "resourceKey",
       "description": "Serialize the complete identity used for destructive authorization.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
         "line": 71,
@@ -597,6 +641,8 @@
     {
       "name": "unconfirmed",
       "description": "Reject an unconfirmed destructive request.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
         "line": 76,
@@ -606,6 +652,8 @@
     {
       "name": "destroyFailure",
       "description": "Translate destructive SQL failures without exposing query data.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/destroySupabaseVaultAsync.ts",
         "line": 90,
@@ -615,6 +663,8 @@
     {
       "name": "getSupabaseVaultStatusAsync",
       "description": "Report the persisted Vault ownership state without requiring host access to managed PostgreSQL.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/getSupabaseVaultStatusAsync.ts",
         "line": 10,
@@ -624,6 +674,8 @@
     {
       "name": "inspectSupabaseVaultAsync",
       "description": "Inspect the portable Vault lifecycle state without requiring the managed database to exist.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
         "line": 15,
@@ -633,6 +685,8 @@
     {
       "name": "createOwner",
       "description": "Create stable ownership for one persistent project and environment secret namespace.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
         "line": 38,
@@ -642,6 +696,8 @@
     {
       "name": "hasSameIdentity",
       "description": "Compare the complete persisted ownership identity without reading provider state.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
         "line": 61,
@@ -651,6 +707,8 @@
     {
       "name": "invalidSelection",
       "description": "Reject lifecycle calls when the canonical SecretStore provider is not selected.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
         "line": 74,
@@ -660,6 +718,8 @@
     {
       "name": "invalidDatabase",
       "description": "Reject Vault lifecycle composition without the Supabase database capability it extends.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/inspectSupabaseVaultAsync.ts",
         "line": 88,
@@ -669,6 +729,8 @@
     {
       "name": "planSupabaseVaultAsync",
       "description": "Plan the portable Vault ownership lifecycle without requiring live database access.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/planSupabaseVaultAsync.ts",
         "line": 10,
@@ -678,6 +740,8 @@
     {
       "name": "reconcileSupabaseVaultAsync",
       "description": "Record Vault ownership after the selected Supabase database lifecycle applied its migration.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/application/reconcileSupabaseVaultAsync.ts",
         "line": 10,
@@ -687,6 +751,8 @@
     {
       "name": "createInfraAdapter",
       "description": "Create the canonical Supabase Vault Infra service adapter.\n\nThe selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.\nInfra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL\nclient remains necessary only for explicitly confirmed destructive namespace deletion.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
         "line": 19,
@@ -696,6 +762,8 @@
     {
       "name": "createUnavailableSqlClient",
       "description": "Fail closed when destructive namespace deletion is requested without trusted SQL access.",
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
         "line": 37,
@@ -705,6 +773,8 @@
     {
       "name": "unavailable",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
         "line": 38,
@@ -714,6 +784,8 @@
     {
       "name": "selectInternalVaultMetadata",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultMetadata.ts",
         "line": 23,
@@ -723,6 +795,8 @@
     {
       "name": "selectVaultMetadata",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultMetadata.ts",
         "line": 38,
@@ -732,6 +806,8 @@
     {
       "name": "serializeConfiguredFields",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultMetadata.ts",
         "line": 53,
@@ -741,6 +817,8 @@
     {
       "name": "toSecretMetadata",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultMetadata.ts",
         "line": 57,
@@ -750,6 +828,8 @@
     {
       "name": "createVaultOperations",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 36,
@@ -759,6 +839,8 @@
     {
       "name": "createSecret",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 47,
@@ -768,6 +850,8 @@
     {
       "name": "createSecretInTransaction",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 59,
@@ -777,6 +861,8 @@
     {
       "name": "getSecretMetadata",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 80,
@@ -786,6 +872,8 @@
     {
       "name": "insertMetadata",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 91,
@@ -795,6 +883,8 @@
     {
       "name": "listSecrets",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 120,
@@ -804,6 +894,8 @@
     {
       "name": "removeSecret",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 140,
@@ -813,6 +905,8 @@
     {
       "name": "removeSecretInTransaction",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 152,
@@ -822,6 +916,8 @@
     {
       "name": "replaceSecret",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 170,
@@ -831,6 +927,8 @@
     {
       "name": "replaceSecretInTransaction",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 182,
@@ -840,6 +938,8 @@
     {
       "name": "resolveSecret",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 212,
@@ -849,6 +949,8 @@
     {
       "name": "normalizeLookup",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 236,
@@ -858,6 +960,8 @@
     {
       "name": "normalizeWrite",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 243,
@@ -867,6 +971,8 @@
     {
       "name": "buildInternalName",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 252,
@@ -876,6 +982,8 @@
     {
       "name": "conflict",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 256,
@@ -885,6 +993,8 @@
     {
       "name": "notFound",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 260,
@@ -894,6 +1004,8 @@
     {
       "name": "parsePayload",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 264,
@@ -903,6 +1015,8 @@
     {
       "name": "providerFailure",
       "description": null,
+      "see": [],
+      "security": [],
       "sourceLocation": {
         "filePath": "src/vaultOperations.ts",
         "line": 276,

@@ -1,9 +1,11 @@
 [
   {
     "name": "createInfraAdapter",
+    "title": null,
     "description": "Create the canonical Supabase Vault Infra service adapter.\n\nThe selected Supabase database lifecycle owns schema bootstrap from the public Vault migration.\nInfra discovery, planning and `up` therefore require no host PostgreSQL connection. A trusted SQL\nclient remains necessary only for explicitly confirmed destructive namespace deletion.",
     "isReadme": true,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/features/secret-store-infrastructure/composition/createInfraAdapter.ts",
     "sourceLocation": {
@@ -37,9 +39,11 @@
   },
   {
     "name": "createSupabaseVaultAdapter",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "function",
     "modulePath": "src/adapter.ts",
     "sourceLocation": {
@@ -73,9 +77,11 @@
   },
   {
     "name": "infraAdapterDescriptor",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/constants/infra.ts",
     "sourceLocation": {
@@ -93,9 +99,11 @@
   },
   {
     "name": "SUPABASE_VAULT_METADATA_TABLE",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/migrations.ts",
     "sourceLocation": {
@@ -113,9 +121,11 @@
   },
   {
     "name": "SUPABASE_VAULT_MIGRATION_SQL",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/migrations.ts",
     "sourceLocation": {
@@ -133,9 +143,11 @@
   },
   {
     "name": "SUPABASE_VAULT_SCHEMA",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/migrations.ts",
     "sourceLocation": {
@@ -153,9 +165,11 @@
   },
   {
     "name": "SUPABASE_VAULT_SECRET_STORE_PROVIDER",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "value",
     "modulePath": "src/types.ts",
     "sourceLocation": {
@@ -173,9 +187,11 @@
   },
   {
     "name": "SupabaseVaultAdapter",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "unknown",
     "modulePath": "src/types.ts",
     "sourceLocation": {
@@ -193,9 +209,11 @@
   },
   {
     "name": "SupabaseVaultAdapterOptions",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types.ts",
     "sourceLocation": {
@@ -223,9 +241,11 @@
   },
   {
     "name": "SupabaseVaultQueryResult",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types.ts",
     "sourceLocation": {
@@ -251,9 +271,11 @@
   },
   {
     "name": "SupabaseVaultSqlClient",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types.ts",
     "sourceLocation": {
@@ -289,9 +311,11 @@
   },
   {
     "name": "SupabaseVaultSqlExecutor",
+    "title": null,
     "description": null,
     "isReadme": false,
-    "examples": [],
+    "see": [],
+    "security": [],
     "kind": "type",
     "modulePath": "src/types.ts",
     "sourceLocation": {
